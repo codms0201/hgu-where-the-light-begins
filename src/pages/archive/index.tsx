@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from "../../components/Header";
+import Footer from '../../components/Footer';
 
 // 데이터 부분
 const archiveData = [
@@ -149,6 +150,7 @@ export default function Archive() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

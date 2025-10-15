@@ -2,6 +2,7 @@ import React from 'react';
 import Link from "next/link"; 
 import Image from 'next/image';
 import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 import TeamWork from '../../../img/works_team.jpg';
 import TeamProfile from "../../../img/Image.png";
 
@@ -80,6 +81,7 @@ const WorksIndividualDetailPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

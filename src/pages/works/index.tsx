@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import { avantGarde, suitMedium } from '@/styles/fonts';
 
@@ -221,6 +222,7 @@ const WorksPage = () => {
           )}
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

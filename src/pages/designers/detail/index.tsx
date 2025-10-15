@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from "../../../components/Header";
+import Footer from '../../../components/Footer';
 import Mobile_HeaderBtn from "../../../components/mobile_headerBtn";
 import HoverImage from '../../../img/Image.png';
 import ArtWork from '../../../img/Artwork.png';
@@ -90,6 +91,7 @@ export default function DesignerDetailPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

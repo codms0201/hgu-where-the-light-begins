@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Header from '@/components/Header';
+import Footer from '../../components/Footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import HoverImage from '../../img/Image.png';
 import { avantGarde } from '@/styles/fonts';
@@ -141,6 +142,7 @@ export default function DesignersPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

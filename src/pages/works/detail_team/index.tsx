@@ -2,6 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import Image from 'next/image';
 import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 import Mobile_HeaderBtn from '../../../components/mobile_headerBtn';
 import TeamWork from '../../../img/works_team.jpg';
 import TeamProfile from "../../../img/profileImage.png";
@@ -108,6 +109,7 @@ const WorksTeamDetailPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
