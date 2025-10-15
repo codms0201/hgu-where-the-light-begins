@@ -1,18 +1,35 @@
 import React from 'react';
-import Link from "next/link"; 
+import Link from "next/link";
 import Image from 'next/image';
 import Header from '../../../components/Header';
+import Mobile_HeaderBtn from '../../../components/mobile_headerBtn';
 import TeamWork from '../../../img/works_team.jpg';
 import TeamProfile from "../../../img/profileImage.png";
 
 const WorksTeamDetailPage = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header /> 
+      {/* 데스크탑 헤더 */}
+      <div className="hidden lg:block">
+        <Header />
+      </div>
+
+      {/* 모바일 헤더 */}
+      <div className="flex lg:hidden items-center justify-between p-4">
+        <Link href="/works" aria-label="Go back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M14.5 3L6 11.5L14.5 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </Link>
+        <h1 className="font-sans font-bold text-lg tracking-wider">
+          PROJECT
+        </h1>
+        <Mobile_HeaderBtn />
+      </div>
+
       <div className="flex">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* 좌측 작품 정보 */}
-          <div className="w-130 p-8 space-y-4">
+          <div className="w-full lg:w-130 p-4 lg:p-8 space-y-4">
             {/* UX Design 태그 */}
             <div className="inline-block relative group">
               <span className="bg-white text-gray-900 px-3 py-1 font-[ITC_Avant_Garde_Gothic] text-[18px] font-weight-900 border-2 border-[#00FF36]">
@@ -29,7 +46,7 @@ const WorksTeamDetailPage = () => {
               WELLCOM: 아아아아아아아아
               <br />
               차량 커뮤니케이션의 mediator
-            </h1>            
+            </h1>
             {/* 작품 설명 */}
             <div>
               <p className="font-suit text-[18px] font-normal text-[#FF0000] leading-[170%] tracking-[-1px]">
@@ -41,9 +58,9 @@ const WorksTeamDetailPage = () => {
             </div>
             {/* 단체 프로필 */}
             <div className='mt-10'>
-              <Image 
-              src={TeamProfile} 
-              alt="Team Profile" 
+              <Image
+              src={TeamProfile}
+              alt="Team Profile"
               className="w-full h-auto object-cover"
               />
             </div>
@@ -78,13 +95,15 @@ const WorksTeamDetailPage = () => {
                 ))}
               </div>
             </div>
-          </div>          
+          </div>
+          
           {/* 우측 작품 이미지 */}
-          <div className="flex-1 p-8">
-            <Image 
-              src={TeamWork} 
-              alt="Team Work" 
-              className="w-[900px] h-full object-cover"
+          {/* order 클래스를 제거하여 기본 순서(나중에 표시)를 따르도록 합니다. */}
+          <div className="flex-1 p-4 lg:p-8">
+            <Image
+              src={TeamWork}
+              alt="Team Work"
+              className="w-full lg:w-[900px] h-full object-cover"
             />
           </div>
         </div>
