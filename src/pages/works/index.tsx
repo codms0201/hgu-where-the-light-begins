@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
+import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import { avantGarde, suitMedium } from '@/styles/fonts';
 
 type CategoryType = 'All' | 'Communication Design' | 'Service Design' | 'UX Design' | 'Industrial Design';
@@ -74,9 +75,7 @@ const WorksPage = () => {
             </svg>
           </button>
           {/* Sparkle/Asterisk Icon */}
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M24 10.7504H15.0147L21.3671 4.39804L19.602 2.62969L13.2431 8.98858V0H10.7504V8.98532L4.39804 2.62969L2.62969 4.39804L8.98206 10.7504H0V13.2463H8.98532L2.62969 19.602L4.39804 21.367L10.7504 15.0147V24H13.2431V15.0114L19.602 21.367L21.3671 19.602L15.0114 13.2463H24V10.7504Z" fill="#1C1C1C"/>
-          </svg>
+          <Mobile_HeaderBtn />
         </div>
       </header>
 
