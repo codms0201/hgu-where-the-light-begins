@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Intro from "@/components/HomePage/Intro";
 import Sketch from "@/components/HomePage/Sketch";
+import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 
 const HomePage = () => {
@@ -40,6 +41,7 @@ const HomePage = () => {
           videoFinished ? 'opacity-100' : 'opacity-0' // 영상이 끝나면 나타남
         }`}
       >
+        <Header />
         <Intro />
         <Sketch />
         <Footer />
