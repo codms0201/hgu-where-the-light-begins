@@ -129,18 +129,41 @@ const Header = () => {
   return (
     <>
       <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 bg-white relative z-50 w-full">
-        {/* Logo */}
-        <div 
-          className="flex items-center cursor-pointer" 
-          onClick={handleLogoClick}
-        >
-          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
-            Where
+        {currentPath !== '/' ? (
+          <div 
+            className="flex items-center cursor-pointer" 
+            onClick={handleLogoClick}
+          >
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
+              Where
+            </div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
           </div>
-          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
-          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
-          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
-        </div>
+        ) : (
+          <div 
+            className="flex items-center"
+            aria-hidden="true"
+            style={{ visibility: 'hidden' }} 
+          >
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
+              Where
+            </div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
+            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
+          </div>
+        )}
+        {currentPath === '/' && (
+          <div className="absolute top-8 left-8 z-20">
+            <h2 className={`${avantGarde.variable} text-[20px] tracking-wider text-black`}>
+              2025 HANDONG GLOBAL UNIVERSITY
+              <br />
+              CONTENTS CONVERGENCE DESIGN GRADUATION EXHIBITION
+            </h2>
+          </div>
+        )}
         <div 
           onMouseLeave={handleHamburgerLeave}
         >
