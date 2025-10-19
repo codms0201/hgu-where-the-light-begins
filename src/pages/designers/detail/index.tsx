@@ -15,9 +15,9 @@ export default function DesignerDetailPage() {
   };
 
   const portfolioItems = [
-    { id: 1, title: "TITLETITLE", description: "경제선 지능 청년을 위한 일자리 경험 서비스", subtitle: "BLEND IN'" },
-    { id: 2, title: "TITLETITLE", description: "경제선 지능 청년을 위한 일자리 경험 서비스", subtitle: "BLEND IN'" },
-    { id: 3, title: "TITLETITLE", description: "경제선 지능 청년을 위한 일자리 경험 서비스", subtitle: "BLEND IN'" },
+    { id: 1, title: "TITLETITLE" },
+    { id: 2, title: "TITLETITLE" },
+    { id: 3, title: "TITLETITLE" },
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function DesignerDetailPage() {
       <div className="flex lg:hidden items-center justify-between p-4 border-b border-gray-200">
         <Link href="/designers" aria-label="Go back to designers">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-            <path d="M15 3L6.5 11.5L15 20" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"/>
+            <path d="M15 3L6.5 11.5L15 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
         <h1 className={`${suitMedium.variable} font-normal text-[20px] tracking-wider`}>Designers</h1>
@@ -42,52 +42,72 @@ export default function DesignerDetailPage() {
       {/* --- CONTENT AREA START --- */}
       <div className="p-4 lg:p-12">
         {/* --- Designer Intro Section --- */}
-        {/* THIS IS THE KEY CHANGE: flex-row is now the default for mobile */}
         <div className="flex flex-row gap-4 lg:gap-16 items-start">
           
           {/* Left Column: Info & Description */}
-          <div className="w-1/2">
-            <h1 className={`${suitMedium.variable} font-normal text-[28px] text-[#1C1C1C] lg:text-[60px] font-normal leading-tight`}>
+          <div className="w-91">
+            <h1 className={`${suitMedium.variable} text-[28px] text-[#1C1C1C] lg:text-[70px] font-[600]`}>
               {designer.name}
             </h1>
-            <p className="text-[#7C7C7C] font-suit text-xs lg:text-[24px] font-normal mt-1 break-all">
+            <p className={`${suitMedium.variable} text-[#7C7C7C] text-xs lg:text-[24px] font-[500] break-all`}>
               {designer.email}
             </p>
-            <p className="w-full text-[#1C1C1C] font-suit text-sm lg:text-[18px] font-normal mt-4 lg:mt-8">
-              {designer.description}
-            </p>
+            <Image 
+                src={HoverImage}
+                alt="Designer profile picture" 
+                width={364}
+                height={546}
+                className="object-cover mt-[86px]"
+              />
           </div>
 
           {/* Right Column: Profile Image */}
-          <div className="w-1/2">
-            <div className="relative w-full aspect-square lg:aspect-[4/3]">
-              <Image 
-                src={HoverImage}
-                alt="Designer profile picture" 
-                layout="fill"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* --- Portfolio Section --- */}
-        <div className="mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {portfolioItems.map((item) => (
-              <div key={item.id} className="cursor-pointer group">
-                <div className="bg-[#00FF36] text-black px-3 py-1 text-sm font-bold inline-block mb-2">
-                  {item.title}
-                </div>
-                <div className="relative w-full aspect-[4/3]">
-                  <Image src={ArtWork} alt={item.title} layout="fill" className="object-cover"/>
-                  <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="font-bold text-xl">{item.subtitle}</h3>
-                    <p className="text-sm">{item.description}</p>
+          <div className="w-7/8">
+            <div className="relative w-5/6">
+            <p className={`${suitMedium.variable} w-full text-[#1C1C1C] text-sm lg:text-[24px] font-[500] mt-4`}>
+              {designer.description}
+            </p>
+            {/* --- Portfolio Section --- */}
+            </ div>
+            <div className="mt-12">
+              <div className="flex flex-col items-end gap-5"> {/* gap-5 is 20px */}
+                
+                {/* First row with one image */}
+                {portfolioItems.length > 0 && (
+                  <div key={portfolioItems[0].id} className="relative cursor-pointer group" style={{ width: '365px', height: '274px' }}>
+                    <Image src={ArtWork} alt={portfolioItems[0].title} width={365} height={274} className="object-cover"/>
+                    {/* This overlay now handles the border and the title */}
+                    <div className="absolute inset-0 flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className={`${suitMedium.variable} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
+                          {portfolioItems[0].title}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Second row with two images */}
+                {portfolioItems.length > 1 && (
+                  <div className="flex flex-row gap-5"> {/* gap-5 is 20px */}
+                    {portfolioItems.slice(1, 3).map((item) => (
+                      <div key={item.id} className="relative cursor-pointer group" style={{ width: '365px', height: '274px' }}>
+                        <Image src={ArtWork} alt={item.title} width={365} height={274} className="object-cover"/>
+                        {/* This overlay now handles the border and the title */}
+                        <div className="absolute inset-0 flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className={`${suitMedium.variable} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
+                              {item.title}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            ))}
+            </div>
+            
           </div>
         </div>
       </div>

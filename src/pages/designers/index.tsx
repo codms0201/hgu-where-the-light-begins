@@ -1,11 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react'; // useEffect import 추가
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '../../components/Footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import HoverImage from '../../img/Image.png';
-import { avantGarde } from '@/styles/fonts';
+import { avantGarde, suitMedium } from '@/styles/fonts';
 
 interface Designer {
   id: string;
@@ -13,7 +13,6 @@ interface Designer {
   major: string;
 }
 
-// Sample data - You can expand this list
 const designersData: Designer[] = [
   { id: '001', name: '강예은', major: 'Communication/Service' },
   { id: '002', name: '강주찬', major: 'UX' },
@@ -35,12 +34,27 @@ export default function DesignersPage() {
   const router = useRouter();
 
   const filteredDesigners = useMemo(() => {
-    if (!searchTerm.trim()) return designersData;
-    return designersData.filter(designer =>
+    const filtered = designersData.filter(designer =>
       designer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       designer.id.includes(searchTerm)
     );
-  }, [searchTerm]);
+
+    // --- MODIFICATION START ---
+    // 검색 결과가 한 명일 때 hoveredId를 해당 디자이너의 ID로 자동 설정
+    if (filtered.length === 1) {
+      setHoveredId(filtered[0].id);
+    } else if (filtered.length === 0 && hoveredId !== null) {
+      // 검색 결과가 없으면 hoveredId 초기화
+      setHoveredId(null);
+    } else if (filtered.length > 1 && hoveredId !== null && !filtered.some(d => d.id === hoveredId)) {
+        // 검색 결과가 여러 명인데, 기존 hoveredId가 필터링된 목록에 없으면 초기화
+        setHoveredId(null);
+    }
+    // --- MODIFICATION END ---
+
+    return filtered;
+  }, [searchTerm, hoveredId]); // hoveredId도 의존성 배열에 추가하여 상태 변화에 반응하도록 함
+
 
   const handleDesignerClick = (designerId: string) => {
     router.push(`/designers/detail`);
@@ -87,18 +101,19 @@ export default function DesignersPage() {
 
       <div className="flex">
         {/* 왼쪽 사이드바 (Desktop only) */}
-        <div className="hidden lg:block w-110 p-8 min-h-screen">
-          <h1 className="text-[60px] font-normal font-[AvantGarde Md BT]">Designers</h1>
+        <div className="hidden lg:block w-128 p-8 min-h-screen">
+          <h1 className={`${avantGarde.variable} text-[70px] font-normal text-[#1C1C1C]`}>Designers</h1>
           <div>
             <input
               type="text"
               placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-[50px] font-normal font-suit bg-transparent border-none outline-none placeholder-gray-400"
+              className={`${suitMedium.variable} w-full text-[50px] font-normal bg-transparent border-none outline-none placeholder-[#BBB]`}
             />
           </div>
           <div className="w-full h-full bg-white">
+            {/* hoveredId가 있거나, 필터링된 디자이너가 1명일 때 이미지를 보여줍니다. */}
             {hoveredId && (
               <div className="relative w-4/5 h-full -mt-20">
                 <Image src={HoverImage} alt="Designer preview" fill className="object-contain" />
@@ -108,35 +123,46 @@ export default function DesignersPage() {
         </div>
 
         {/* 오른쪽 메인 콘텐츠 (Full width on mobile) */}
-        <div className="flex-1 bg-white lg:pt-8 w-full">
+        <div className="flex-1 bg-white lg:pt-18 w-full">
           <div className="lg:px-8">
-            <div className="space-y-0">
-              {filteredDesigners.map((designer) => (
-                <div
-                  key={designer.id}
-                  className="cursor-pointer border-b border-gray-200"
-                  onMouseEnter={() => setHoveredId(designer.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => handleDesignerClick(designer.id)}
-                >
-                  {/* --- NEW RESPONSIVE LIST ITEM --- */}
-                  <div className="p-4 lg:py-4 lg:px-0">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-30">
-                        <span className="w-8 text-gray-500 font-mono text-sm lg:text-2xl lg:w-auto">{designer.id}</span>
-                          <span className="font-medium text-base lg:text-2xl">{designer.name}</span>
-                          <span className="text-gray-500 text-sm lg:hidden">{designer.major}</span>
+            <div className="border-b border-[#D2D2D2]">
+              {filteredDesigners.map((designer, index) => {
+                const isHovered = hoveredId === designer.id;
+                const isPreviousHovered = index > 0 && hoveredId === filteredDesigners[index - 1].id;
+
+                return (
+                  <div
+                    key={designer.id}
+                    className={`
+                      cursor-pointer border-t transition-colors duration-200
+                      ${isHovered || isPreviousHovered ? 'border-[#1C1C1C]' : 'border-[#D2D2D2]'}
+                    `}
+                    onMouseEnter={() => setHoveredId(designer.id)}
+                    onMouseLeave={() => {
+                        if (filteredDesigners.length !== 1) {
+                            setHoveredId(null);
+                        }
+                    }}
+                    onClick={() => handleDesignerClick(designer.id)}
+                  >
+                    <div className="p-4 lg:py-5 lg:px-2">
+                      <div className="flex items-start justify-start lg:gap-x-[200px]">
+                        <div className="flex items-start gap-30">
+                          <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
+                        </div>
+                        <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
+                          <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
+                        <span className={`${suitMedium.variable} hidden lg:block text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
                       </div>
-                      <span className="hidden lg:block text-2xl col-span-5">{designer.major}</span>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {searchTerm && filteredDesigners.length === 0 && (
-              <div className="text-center py-12 text-gray-500">
-                검색 결과가 없습니다.
+              <div className={`${suitMedium.variable} text-center py-12 text-[#000]`}>
+                일치하는 디자이너를 찾을 수 없습니다. 다른 이름을 시도해보세요.
               </div>
             )}
           </div>
