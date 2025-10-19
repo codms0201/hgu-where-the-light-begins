@@ -1,172 +1,215 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect, useRef } from 'react';
+import { avantGarde } from '@/styles/fonts';
 
 interface NavigationItem {
   name: string;
   path: string;
-  angle: number; // 각 메뉴 항목의 각도
+  angle: number;
 }
 
 const Header = () => {
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [animationStep, setAnimationStep] = useState(0);
+  const [currentPath, setCurrentPath] = useState('');
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const enterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 4개 메뉴 항목을 90도씩 균등하게 배치
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+
+    return () => {
+      if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
+      if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
+    };
+  }, []);
+
   const navigationItems: NavigationItem[] = [
-    { name: 'ABOUT', path: '/about', angle: 180 },      // 왼쪽
-    { name: 'WORKS', path: '/works', angle: 150 },      // 왼쪽 위
-    { name: 'DESIGNERS', path: '/designers', angle: 125 }, // 위쪽
-    { name: 'ARCHIVE', path: '/archive', angle: 90 }     // 오른쪽 위
+    { name: 'ABOUT', path: '/about', angle: 180 },
+    { name: 'WORKS', path: '/works', angle: 155 },
+    { name: 'DESIGNERS', path: '/designers', angle: 120 },
+    { name: 'ARCHIVE', path: '/archive', angle: 90 }
   ];
 
   const handleLogoClick = (): void => {
-    router.push('/');
+    window.location.href = '/';
   };
 
   const handleNavClick = (path: string): void => {
-    router.push(path);
+    window.location.href = path;
     setIsMenuOpen(false);
   };
 
   const isCurrentPath = (path: string): boolean => {
-    return router.pathname === path;
+    return currentPath === path;
   };
 
-  const toggleMenu = (): void => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleHamburgerEnter = () => {
+    if (isMenuOpen) {
+      if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
+      return;
+    }
+
+    setAnimationStep(1);
+    setIsMenuOpen(true);
+    
+    enterTimeoutRef.current = setTimeout(() => {
+      setAnimationStep(2);
+    }, 200);
   };
 
-  const StarIcon = () => (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="40" 
-      height="40" 
-      viewBox="0 0 40 40" 
-      fill="#1C1C1C"
-      className={`cursor-pointer transition-transform duration-500 ease-in-out ${
-        isMenuOpen ? 'rotate-45' : 'rotate-0'
-      }`}
-      onClick={toggleMenu}
-    >
-      <path 
-        d="M40 17.9173H25.0245L35.6118 7.33007L32.6699 4.38282L22.0718 14.981V0H17.9173V14.9755L7.33007 4.38282L4.38282 7.33007L14.9701 17.9173H0V22.0772H14.9755L4.38282 32.6699L7.33007 35.6117L17.9173 25.0245V40H22.0718V25.019L32.6699 35.6117L35.6118 32.6699L25.019 22.0772H40V17.9173Z" 
-        fill="#1C1C1C"
-        className="hover:fill-[#00FF36] transition-colors"
-      />
-    </svg>
-  );
+  const handleHamburgerLeave = () => {
+    if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
 
-  // 방사형 메뉴 아이템의 위치 계산 및 살짝 기울이기
-  const getMenuItemStyle = (angle: number, index: number) => {
-    // 글자 길이에 따른 반지름 조정 (글자 끝에서 별까지의 거리를 일정하게)
-    const baseRadius = 60; // 기본 거리
-    const textLengths = {
-      'ABOUT': 50,
-      'WORKS': 50, 
-      'DESIGNERS': 80,
-      'ARCHIVE': 50
+    setAnimationStep(1);
+    setIsMenuOpen(false);
+    setHoveredItem(null);
+    
+    leaveTimeoutRef.current = setTimeout(() => {
+      setAnimationStep(0);
+    }, 200);
+  };
+
+  const getBarStyle = (barIndex: number) => {
+    const baseStyle = {
+      transformOrigin: 'center',
+      transition: 'all 0.2s ease-in-out',
     };
+
+    let transform = '';
+    
+    if (barIndex === 1) {
+      if (animationStep === 0) transform = 'translateY(calc(-50% - 12px))';
+      else if (animationStep === 1) transform = 'translateY(-50%)';
+      else if (animationStep === 2) transform = 'translateY(-50%) rotate(45deg)';
+    } 
+    else if (barIndex === 2) { 
+      transform = 'translateY(-50%)';
+    } 
+    else if (barIndex === 3) {
+      if (animationStep === 0) transform = 'translateY(calc(-50% + 12px))';
+      else if (animationStep === 1) transform = 'translateY(-50%)';
+      else if (animationStep === 2) transform = 'translateY(-50%) rotate(-45deg)';
+    } 
+    else if (barIndex === 4) {
+      if (animationStep === 0) transform = 'translateY(-50%) scaleY(0)';
+      else if (animationStep === 1) transform = 'translateY(-50%) scaleY(0)';
+      else if (animationStep === 2) transform = 'translateY(-50%) rotate(90deg) scaleY(1)';
+    }
+
+    return { ...baseStyle, transform };
+  };
+
+  const getMenuItemStyle = (angle: number, index: number) => {
+    const baseRadius = 50;
+    const textLengths = { 'ABOUT': 120, 'WORKS': 140, 'DESIGNERS': 130, 'ARCHIVE': 90 };
     const itemName = navigationItems[index].name;
     const adjustedRadius = baseRadius + (textLengths[itemName as keyof typeof textLengths] / 2);
-    
     const radian = (angle * Math.PI) / 180;
-    const x = Math.cos(radian) * adjustedRadius;
-    const y = Math.sin(radian) * adjustedRadius;
-    
-    // 각 아이템을 별 중심으로 살짝 기울이기
-    const tiltAngle = angle - 180; // 별을 향해 기울어지도록 조정
+    let x = Math.cos(radian) * adjustedRadius;
+    let y = Math.sin(radian) * adjustedRadius;
+    if (itemName === 'ARCHIVE') {
+      x -= 30;
+    }
+    if (itemName === 'DESIGNERS') {
+      x -= 45;
+    }
+    const tiltAngle = angle - 180;
 
     return {
       transform: isMenuOpen
         ? `translate(${x}px, ${y}px) rotate(${tiltAngle}deg) scale(1)`
         : 'translate(0px, 0px) scale(0)',
       transformOrigin: 'center',
+      transition: 'transform 0.3s ease-in-out',
       transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms',
     };
   };
 
   return (
     <>
-      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 bg-white relative z-50">
+      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 bg-white relative z-50 w-full">
         {/* Logo */}
         <div 
           className="flex items-center cursor-pointer" 
           onClick={handleLogoClick}
         >
-          <div className="bg-[#00FF36] px-1 py-0.5 transition-colors" style={{
-    color: 'var(--Colors-Neutral-Black, #1C1C1C)',
-    fontFamily: '"AvantGarde Md BT"',
-    fontSize: '28px',
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 'normal',
-  }}>
+          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
             Where
           </div>
-          <div className="bg-[#00FF36] mt-[35px] px-1 py-0.5 transition-colors" style={{
-    color: 'var(--Colors-Neutral-Black, #1C1C1C)',
-    fontFamily: '"AvantGarde Md BT"',
-    fontSize: '28px',
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 'normal',
-  }}>
-            The
-          </div>
-          <div className="bg-[#00FF36] mb-[15px] px-1 py-0.5 transition-colors" style={{
-    color: 'var(--Colors-Neutral-Black, #1C1C1C)',
-    fontFamily: '"AvantGarde Md BT"',
-    fontSize: '28px',
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 'normal',
-  }}>
-            Light
-          </div>
-          <div className="bg-[#00FF36] mt-[45px] px-1 py-0.5 transition-colors" style={{
-    color: 'var(--Colors-Neutral-Black, #1C1C1C)',
-    fontFamily: '"AvantGarde Md BT"',
-    fontSize: '28px',
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 'normal',
-  }}>
-            Begins
-          </div>
+          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
+          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
+          <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
         </div>
-        
-        {/* Right side with navigation */}
-        <div className="flex items-center space-x-8 relative">
-          {/* Radial Menu Items - 별 클릭시에만 나타남 */}
-          {navigationItems.map((item, index) => (
-            <button
-              key={`radial-${item.name}`}
-              onClick={() => handleNavClick(item.path)}
-              className={`absolute text-sm whitespace-nowrap transition-all ${
-                isCurrentPath(item.path) 
-                  ? 'text-black font-bold' 
-                  : 'text-gray-600 hover:text-black'
-              } ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
-              style={getMenuItemStyle(item.angle, index)}
+        <div 
+          onMouseLeave={handleHamburgerLeave}
+        >
+          <div
+            className="absolute rounded-full"
+            style={{
+              width: '87px',
+              height: '87px',
+              backgroundColor:'transparent',
+              right: '24px',
+              top: '43%',
+              transform: 'translateY(-50%)',
+              pointerEvents: isMenuOpen ? 'auto' : 'none',
+              zIndex: 10,
+            }}
+          />
+          <div className="flex items-center relative h-full w-full">
+            {navigationItems.map((item, index) => (
+              <button
+                key={`radial-${item.name}`}
+                onClick={() => handleNavClick(item.path)}
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
+                className={`${avantGarde.variable} absolute font-normal text-[18px] whitespace-nowrap transition-all ${
+                  hoveredItem === item.name ? 'text-[#00FF36]' : 'text-[#1C1C1C]'
+                } ${isMenuOpen ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
+                style={{
+                  ...getMenuItemStyle(item.angle, index),
+                  padding: '4px 12px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  transition: 'color 0.2s ease-in-out, transform 0.3s ease-in-out',
+                  zIndex: 20,
+                }}
+              >
+                {item.name}
+              </button>
+            ))}
+            <div 
+              className="relative z-30 flex items-center justify-center h-full ml-auto"
+              onMouseEnter={handleHamburgerEnter}
             >
-              {item.name}
-            </button>
-          ))}
-
-          {/* Star Icon */}
-          <div className="relative z-10">
-            <StarIcon />
+              <div
+                className="w-10 h-10 relative flex items-center justify-center group cursor-pointer"
+                aria-label="Toggle Menu"
+              >
+                <div className="w-[39.5px] h-[24px] relative">
+                  <span
+                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
+                    style={getBarStyle(1)}
+                  ></span>
+                  <span
+                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
+                    style={getBarStyle(2)}
+                  ></span>
+                  <span
+                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
+                    style={getBarStyle(3)}
+                  ></span>
+                  <span
+                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
+                    style={getBarStyle(4)}
+                  ></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
-
-      {/* Backdrop */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-transparent z-30"
-          onClick={() => setIsMenuOpen(false)}
-        />
-      )}
     </>
   );
 };
