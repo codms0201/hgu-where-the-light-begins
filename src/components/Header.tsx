@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { avantGarde } from '@/styles/fonts';
+import { ITCavantGarde } from '@/styles/fonts';
 
 interface NavigationItem {
   name: string;
@@ -157,7 +158,11 @@ const Header = () => {
         )}
         {currentPath === '/' && (
           <div className="absolute top-8 left-8 z-20">
-            <h2 className={`${avantGarde.variable} text-[20px] tracking-wider text-black`}>
+            <h2 className={`${ITCavantGarde.variable} text-[25.926px] text-[#121212] font-[300]`}
+            style={{
+              lineHeight: '150%',
+              letterSpacing: '-0.285px',
+            }}>
               2025 HANDONG GLOBAL UNIVERSITY
               <br />
               CONTENTS CONVERGENCE DESIGN GRADUATION EXHIBITION
