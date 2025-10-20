@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import PosterImage from '../../img/poster.png';
+import { avantGarde } from '@/styles/fonts';
 
 export default function Poster() {
   return (
@@ -8,7 +9,7 @@ export default function Poster() {
       {/* Left Section - Title */}
       <div className="w-1/3 flex items-start justify-start p-8">
         <div>
-          <h1 className="text-[70px] font-normal text-[#1C1C1C]" style={{fontFamily: 'AvantGarde Md BT'}}>
+          <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
             Main Poster
           </h1>
         </div>

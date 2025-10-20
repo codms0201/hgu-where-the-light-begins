@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useMemo, RefObject } from 'react';
+import { avantGarde } from '@/styles/fonts';
+import { suitMedium } from '@/styles/fonts';
 
 type Point = {
   x: number;
@@ -9,7 +11,6 @@ interface SymbolsProps {
   containerRef: RefObject<HTMLDivElement | null>;
 }
 
-// Data for the text content, based on the provided images
 const designCategories = [
   { id: 1, title: 'Communication Design' },
   { id: 2, title: 'Service Design' },
@@ -19,16 +20,16 @@ const designCategories = [
 
 const contentData = {
   1: {
-    text: "커뮤니케이션 디자인은 메시지를 ‘확산’시키는 작업입니다. 중심에서 바깥으로 뻗어나가는 방사형 구조는 아이디어와 메시지가 다양한 매체를 통해 확장되고 연결되는 과정을 상징합니다. ",
+    text: "커뮤니케이션 디자인은 메시지를 ‘확산’시키는 작업입니다.\n 중심에서 바깥으로 뻗어나가는 방사형 구조는 아이디어와 메시지가\n 다양한 매체를 통해 확장되고 연결되는 과정을 상징합니다.",
   },
   2: {
-    text: "서비스 디자인은 사용자의 ‘경험’을 설계하는 일입니다. 겹겹이 쌓인 원형 구조는 중심에서 바깥으로 확장되는 여정을 상징하며, 사용자를 중심으로 다양한 접점과 관계가 유기적으로 이어지는 시스템을 나타냅니다. 단순하지만 반복적인 원의 흐름은 지속적인 개선과 확장을 통해 안정적인 경험을 만들어내는 서비스 디자인의 본질을 표현합니다.",
+    text: "서비스 디자인은 사용자의 ‘경험’을 설계하는 일입니다.\n 겹겹이 쌓인 원형 구조는 중심에서 바깥으로 확장되는 여정을 상징하며,\n 사용자를 중심으로 다양한 접점과 관계가 유기적으로 이어지는 시스템을 나타냅니다.\n 단순하지만 반복적인 원의 흐름은 지속적인 개선과 확장을 통해\n 안정적인 경험을 만들어내는 서비스 디자인의 본질을 표현합니다.",
   },
   3: {
-    text: "UX/UI 디자인은 사용자의 ‘흐름’을 설계하는 과정입니다. 교차된 선이 만든 구조는 길과 방향을 상징하며, 사용자가 화면 속에서 선택과 결정을 반복해 나아가는 과정을 나타냅니다. 원 안에서 교차된 형태는 복잡한 시스템 안에서도 명확한 경로를 제시하고, 일관된 흐름과 질서를 만들어내는 UX/UI 디자인의 역할을 드러냅니다.",
+    text: "UX/UI 디자인은 사용자의 ‘흐름’을 설계하는 과정입니다.\n 교차된 선이 만든 구조는 길과 방향을 상징하며, 사용자가 화면 속에서 선택과\n 결정을 반복해 나아가는 과정을 나타냅니다. 원 안에서 교차된 형태는 복잡한\n 시스템 안에서도 명확한 경로를 제시하고, 일관된 흐름과 질서를 만들어내는\n UX/UI 디자인의 역할을 드러냅니다.",
   },
   4: {
-    text: "제품 디자인은 ‘구조와 기능’을 탐구하는 작업입니다. 모듈화된 정사각형들이 질서 있게 배열된 격자 구조는 제품이 가진 체계성과 조립적 특성을 상징합니다. 단순한 반복 속에서도 변주를 만들어내는 형태는 기능과 미학이 만나는 순간을 보여주며, 끊임없는 발전과 혁신을 통해 새로운 가능성을 제시하는 제품 디자인의 본질을 담고 있습니다.",
+    text: "제품 디자인은 ‘구조와 기능’을 탐구하는 작업입니다.\n 모듈화된 정사각형들이 질서 있게 배열된 격자 구조는 제품이 가진 체계성과\n 조립적 특성을 상징합니다. 단순한 반복 속에서도 변주를 만들어내는 형태는\n 기능과 미학이 만나는 순간을 보여주며, 끊임없는 발전과 혁신을 통해\n 새로운 가능성을 제시하는 제품 디자인의 본질을 담고 있습니다.",
   },
 };
 
@@ -192,25 +193,25 @@ const Symbols = ({ containerRef }: SymbolsProps) => {
     <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
       <div className="min-h-screen bg-white flex">
         {/* Left Panel: Text Content */}
-        <div className="w-1/3 flex items-start justify-start p-8">
+        <div className="w-1/2 flex items-start justify-start p-8">
           <div className="max-w-md">
-            <h2 className="text-[70px] font-normal text-[#1C1C1C]" style={{fontFamily: 'AvantGarde Md BT'}}>Symbols</h2>
-            <ul className="space-y-3 mb-10">
+            <h2 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C] mb-8`}>Symbols</h2>
+            <ul className="space-y-3">
               {designCategories.map((category) => (
                 <li
                   key={category.id}
-                  className={`text-2xl transition-colors duration-300 ${
+                  className={`${suitMedium.className} text-[30px] transition-colors duration-300 ${
                     activeId === category.id
-                      ? 'font-bold text-black'
-                      : 'text-gray-300'
+                      ? 'font-[600] text-[#1C1C1C]'
+                      : 'font-[400] text-[#7C7C7C]'
                   }`}
                 >
                   {category.id}{' '}{category.title}
                 </li>
               ))}
             </ul>
-            <div className='mt-60'>
-            <p className="text-gray-600 leading-relaxed">{currentText}</p>
+            <div className='w-2/1 mt-39'>
+            <p className={`${suitMedium.className} text-[24px] text-[400] text-[#1C1C1C] leading-[160%] whitespace-pre-line`}>{currentText}</p>
             </div>
           </div>
         </div>

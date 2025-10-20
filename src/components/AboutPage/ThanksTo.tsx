@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { avantGarde, suitMedium } from '@/styles/fonts';
 
 import PCS_P from "../../img/박찬송 교수님 1.png";
 import LEJ_P from "../../img/이은종 교수님 1.png";
@@ -28,7 +29,7 @@ export default function ThanksTo() {
       {/* Left Section - Title */}
       <div className="w-1/3 flex items-start justify-start p-8">
         <div>
-          <h1 className="text-[70px] font-normal text-[#1C1C1C]" style={{fontFamily: 'AvantGarde Md BT'}}>
+          <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
             Thanks to
           </h1>
         </div>
@@ -38,37 +39,37 @@ export default function ThanksTo() {
       <div className="w-2/3 flex justify-end p-8 mt-30">
         <div className="flex flex-col gap-y-8">
           {/* 위쪽 행 */}
-          <div className="flex flex-row gap-x-6">
+          <div className="flex flex-row gap-x-4">
             {topRowPeople.map((person) => (
-              <div key={person.name} className="flex flex-col items-start gap-6">
-                <div className="w-40 h-40 bg-gray-200 rounded mb-3">
+              <div key={person.name} className="flex flex-col items-start gap-4">
+                <div>
                   <Image
                     src={person.img}
                     alt={person.name}
-                    width={160} 
-                    height={160} 
+                    width={201} 
+                    height={239} 
                     className="object-contain"
                   />
                 </div>
-                <p className="text-base text-center text-[#1C1C1C]">{person.name}</p>
+                <p className={`${suitMedium.className} text-[23.196px] text-[500] text-[#1C1C1C]`}>{person.name}</p>
               </div>
             ))}
           </div>
 
           {/* 아래쪽 행 */}
-          <div className="flex flex-row gap-x-6">
+          <div className="flex flex-row gap-x-4 justify-end">
             {bottomRowPeople.map((person) => (
-              <div key={person.name} className="flex flex-col items-start gap-6">
-                <div className="w-40 h-40 bg-gray-200 rounded mb-3 items-end">
+              <div key={person.name} className="flex flex-col items-start gap-4">
+                <div>
                   <Image
                     src={person.img}
                     alt={person.name}
-                    width={160} 
-                    height={160} 
+                    width={201} 
+                    height={239} 
                     className="object-contain" 
                   />
                 </div>
-                <p className="text-base text-center text-[#1C1C1C]">{person.name}</p>
+                <p className={`${suitMedium.className} text-[23.196px] text-[500] text-[#1C1C1C]`}>{person.name}</p>
               </div>
             ))}
           </div>

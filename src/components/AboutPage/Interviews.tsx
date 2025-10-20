@@ -1,4 +1,5 @@
 import React from 'react';
+import { avantGarde } from '@/styles/fonts';
 
 export default function Interviews() {
   const youtubeEmbedUrl = "https://www.youtube.com/embed/-Z0bFfNdIPk";
@@ -8,14 +9,14 @@ export default function Interviews() {
         {/* Left Section - Title */}
         <div className="w-1/3 flex items-start justify-start p-8">
           <div>
-            <h1 className="text-[70px] font-normal text-[#1C1C1C]" style={{fontFamily: 'AvantGarde Md BT'}}>
+            <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
               Interviews
             </h1>
           </div>
         </div>
         
         {/* Right Section - Content (YouTube Embedded Video) */}
-        <div className="w-2/3 flex justify-center items-center p-8 mt-40">
+        <div className="w-2/3 flex justify-end items-end p-8">
           <div 
             style={{ 
               position: 'relative', 
@@ -23,7 +24,7 @@ export default function Interviews() {
               paddingBottom: '56.25%',
               height: 0, 
               overflow: 'hidden',
-              maxWidth: '800px'
+              maxWidth: '878px'
             }}
           >
             <iframe
