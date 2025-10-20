@@ -6,6 +6,7 @@ import Footer from '../../../components/Footer';
 import Mobile_HeaderBtn from '../../../components/mobile_headerBtn';
 import TeamWork from '../../../img/works_team.jpg';
 import TeamProfile from "../../../img/profileImage.png";
+import { ITCavantGarde, suitMedium } from "@/styles/fonts";
 
 const WorksTeamDetailPage = () => {
   return (
@@ -33,7 +34,7 @@ const WorksTeamDetailPage = () => {
           <div className="w-full lg:w-130 p-4 lg:p-8 space-y-4">
             {/* UX Design 태그 */}
             <div className="inline-block relative group">
-              <span className="bg-white text-gray-900 px-3 py-1 font-[ITC_Avant_Garde_Gothic] text-[18px] font-weight-900 border-2 border-[#00FF36]">
+              <span className={`${ITCavantGarde.className} bg-white text-[#1C1C1C] px-3 py-1 text-[18px] font-[500] border-2 border-[#00FF36]`}>
                 UX Design
               </span>
               {/* 모서리 정사각형들 */}
@@ -43,14 +44,14 @@ const WorksTeamDetailPage = () => {
               <div className="absolute z-10 -bottom-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
             </div>
             {/* 작품 제목 */}
-            <h1 className="font-suit text-[32px] font-bold text-[#1C1C1C] leading-[160%] tracking-[-1px]">
+            <h1 className={`${suitMedium.className} text-[32px] font-[700] text-[#1C1C1C] leading-[160%] tracking-[-1px]`}>
               WELLCOM: 아아아아아아아아
               <br />
               차량 커뮤니케이션의 mediator
             </h1>
             {/* 작품 설명 */}
             <div>
-              <p className="font-suit text-[18px] font-normal text-[#FF0000] leading-[170%] tracking-[-1px]">
+              <p className={`${suitMedium.className} text-[18px] font-[400] text-[#FF0000] leading-[170%] tracking-[-1px]`}>
                 HOMING은 집 안의 작은 동반자이자 감각적인 디스플레이입니다.<br />
                 헤드의 표정과 시선, 부드러운 모션으로 사용자의 마음을 읽고 교감<br />
                 하며, 공간에 맞춰 빛과 정보를 자연스럽게 전합니다.  공간에 맞춰<br />
@@ -62,24 +63,24 @@ const WorksTeamDetailPage = () => {
               <Image
               src={TeamProfile}
               alt="Team Profile"
-              className="w-full h-auto object-cover"
+              className="w-334px h-auto object-cover"
               />
             </div>
             {/* 디자이너명 */}
-            <div className="mt-10 flex items-start gap-8">
-              <h3 className="font-suit text-[#1C1C1C] text-[16px] font-normal mb-4">
+            <div className="mt-10 flex items-start gap-13">
+              <h3 className={`${suitMedium.className} text-[#1C1C1C] text-[16px] font-[700] mb-4`}>
                 TeamName
               </h3>
-              <div className="ml-10 grid grid-cols-2 gap-7">
+              <div className="grid grid-cols-2 gap-7">
                 {["NAME1", "NAME2", "NAME3", "NAME4", "NAME5"].map((name, idx) => (
                   <Link
                     key={idx}
                     href="/works"
-                    className="flex items-center gap-10 font-suit text-[#1C1C1C] text-[16px] font-medium hover:text-[#00FF36] transition-colors"
+                    className={`${suitMedium.className} flex items-center gap-10 text-[#1C1C1C] text-[16px] font-[500] hover:text-[#00FF36] transition-colors`}
                   >
                     <p>{name}</p>
                     <svg
-                      className="ml-2"
+                      className="-ml-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="8"
                       height="8"
@@ -104,7 +105,7 @@ const WorksTeamDetailPage = () => {
             <Image
               src={TeamWork}
               alt="Team Work"
-              className="w-full lg:w-[900px] h-full object-cover"
+              className="w-full lg:w-[1006px] h-full object-cover"
             />
           </div>
         </div>

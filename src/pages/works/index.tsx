@@ -106,13 +106,13 @@ const WorksPage = () => {
       {/* Main container: Changes from column on mobile to row on desktop */}
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar / Mobile Filter Bar */}
-        <aside className="w-full lg:w-110 lg:p-8 lg:min-h-screen">
+        <aside className="w-full lg:w-1/4 lg:p-8 lg:min-h-screen">
           {/* Desktop Title: Hidden on mobile */}
           <div className="hidden lg:flex items-baseline mb-8 gap-4">
-            <h1 className="text-[var(--Colors-Neutral-Black,#1C1C1C)] font-[AvantGarde Md BT] text-[60px] font-normal leading-normal">
+            <h1 className={`${avantGarde.className} text-[#1C1C1C] text-[70px] font-[400]`}>
               Works
             </h1>
-            <p className="font-[AvantGarde Md BT] text-[25px] font-normal leading-normal">
+            <p className={`${avantGarde.className} text-[30px] font-[400]`}>
               <span className="text-[#1C1C1C]">{filteredProjects.length}</span>
               <span className="text-[#7C7C7C]">/90</span>
             </p>
@@ -176,7 +176,7 @@ const WorksPage = () => {
                   )}
                 >
                   <span className="lg:hidden">{shortCategoryNames[category]}</span>
-                  <span className="hidden lg:inline">{category}</span>
+                  <span className={`${suitMedium.className} font-[20px] text-[400] hidden lg:inline`}>{category}</span>
                 </span>
               </button>
             ))}
@@ -190,14 +190,14 @@ const WorksPage = () => {
               <p className="text-xl text-gray-400 font-[SUIT]">No projects found</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-y-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-y-8">
               {filteredProjects.map((project) => (
                 <div 
                   key={project.id} 
                   className="group cursor-pointer"
                   onClick={() => handleProjectClick(project.id)}
                 >
-                  <div className="aspect-[4/3] bg-gray-100 mb-2 relative transition-all lg:group-hover:border-2 lg:group-hover:border-[#00FF36]">
+                  <div className="aspect-[4/3 mb-2 relative transition-all lg:group-hover:border-2 lg:group-hover:border-[#00FF36]">
                     <img
                       src={project.image}
                       alt={project.name}
@@ -207,14 +207,12 @@ const WorksPage = () => {
                     <div className="absolute z-10 -top-1 -right-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute z-10 -bottom-1 -left-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute z-10 -bottom-1 -right-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute -bottom-7.2 left-2 bg-[#00FF36] px-2 py-1 text-[14px] font-medium text-black shadow-lg opacity-0 
-                    font-[SUIT] lg:group-hover:opacity-100 transition-opacity duration-300">
-                      Artwork Name Designer
+                    <div className={`${suitMedium.className} absolute -bottom-7.2 left-2 bg-[#00FF36] px-2 py-1 text-[#1C1C1C] text-[14px] text-[600] shadow-lg opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300`}>
+                      artwork name Designer
                     </div>
                   </div>
                   <div className="lg:group-hover:opacity-0 transition-opacity duration-300">
-                      <h3 className="text-[14px] font-[SUIT] text-[#000] font-medium">Project</h3>
-                      <p className="text-[12px] font-[SUIT] text-gray-600 truncate">{project.name}</p>
+                      <h3 className={`${suitMedium.className} text-[14px] text-[#1C1C1C] font-medium`}>Project</h3>
                   </div>
                 </div>
               ))}
