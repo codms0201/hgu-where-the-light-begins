@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from 'next/image';
 import Header from '../../../components/Header';
@@ -6,9 +8,25 @@ import Footer from '../../../components/Footer';
 import Mobile_HeaderBtn from '../../../components/mobile_headerBtn';
 import TeamWork from '../../../img/works_team.jpg';
 import TeamProfile from "../../../img/profileImage.png";
-import { ITCavantGarde, suitMedium } from "@/styles/fonts";
+import { ITCavantGarde, suitMedium, avantGarde } from "@/styles/fonts";
+import MobileFooter from '../../../components/mobile_footer';
+
+const useWindowWidth = () => {
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setWidth(window.innerWidth);
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+  return width;
+};
 
 const WorksTeamDetailPage = () => {
+  const width = useWindowWidth();
+
   return (
     <div className="min-h-screen bg-white">
       {/* 데스크탑 헤더 */}
@@ -23,7 +41,7 @@ const WorksTeamDetailPage = () => {
             <path d="M14.5 3L6 11.5L14.5 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
-        <h1 className="font-sans font-bold text-lg tracking-wider">
+        <h1 className={`${avantGarde.className} font-[400] text-[20px] tracking-wider`}>
           PROJECT
         </h1>
         <Mobile_HeaderBtn />
@@ -44,20 +62,30 @@ const WorksTeamDetailPage = () => {
               <div className="absolute z-10 -bottom-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
             </div>
             {/* 작품 제목 */}
-            <h1 className={`${suitMedium.className} text-[32px] font-[700] text-[#1C1C1C] leading-[160%] tracking-[-1px]`}>
+            <h1 className={`${suitMedium.className} text-[20px] lg:text-[32px] font-[700] text-[#1C1C1C] leading-[160%] tracking-[-1px]`}>
               WELLCOM: 아아아아아아아아
               <br />
               차량 커뮤니케이션의 mediator
             </h1>
             {/* 작품 설명 */}
             <div>
-              <p className={`${suitMedium.className} text-[18px] font-[400] text-[#FF0000] leading-[170%] tracking-[-1px]`}>
-                HOMING은 집 안의 작은 동반자이자 감각적인 디스플레이입니다.<br />
-                헤드의 표정과 시선, 부드러운 모션으로 사용자의 마음을 읽고 교감<br />
-                하며, 공간에 맞춰 빛과 정보를 자연스럽게 전합니다.  공간에 맞춰<br />
+              <p className={`${suitMedium.className} text-[16px] lg:text-[18px] font-[400] text-[#1C1C1C] leading-[170%] tracking-[-1px]`}>
+                HOMING은 집 안의 작은 동반자이자 감각적인 디스플레이입니다.
+                헤드의 표정과 시선, 부드러운 모션으로 사용자의 마음을 읽고 교감
+                하며, 공간에 맞춰 빛과 정보를 자연스럽게 전합니다.  공간에 맞춰
                 빛과 정보를 자연스럽게 전합니다.  공간에 맞춰 빛과 정보를 아요
               </p>
             </div>
+
+            {/* 모바일 전용 작품 이미지 (중간 삽입) */}
+            <div className="block lg:hidden -mx-4 my-4">
+              <Image
+                src={TeamWork}
+                alt="Team Work"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
             {/* 단체 프로필 */}
             <div className='mt-10'>
               <Image
@@ -97,11 +125,9 @@ const WorksTeamDetailPage = () => {
                 ))}
               </div>
             </div>
-          </div>
-          
-          {/* 우측 작품 이미지 */}
-          {/* order 클래스를 제거하여 기본 순서(나중에 표시)를 따르도록 합니다. */}
-          <div className="flex-1 p-4 lg:p-8">
+          </div>          
+          {/* 데스크탑 전용 작품 이미지 */}
+          <div className="flex-1 p-4 lg:p-8 hidden lg:block">
             <Image
               src={TeamWork}
               alt="Team Work"
@@ -110,7 +136,7 @@ const WorksTeamDetailPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {width > 0 && (width <= 390 ? <MobileFooter /> : <Footer />)}
     </div>
   );
 };
