@@ -34,7 +34,7 @@ export default function DesignerDetailPage() {
             <path d="M15 3L6.5 11.5L15 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
-        <h1 className={`${suitMedium.variable} font-normal text-[20px] tracking-wider`}>Designers</h1>
+        <h1 className={`${suitMedium.className} font-normal text-[20px] tracking-wider`}>Designers</h1>
         <Mobile_HeaderBtn />
         
       </div>
@@ -46,10 +46,10 @@ export default function DesignerDetailPage() {
           
           {/* Left Column: Info & Description */}
           <div className="w-91">
-            <h1 className={`${suitMedium.variable} text-[28px] text-[#1C1C1C] lg:text-[70px] font-[600]`}>
+            <h1 className={`${suitMedium.className} text-[28px] text-[#1C1C1C] lg:text-[70px] font-[600]`}>
               {designer.name}
             </h1>
-            <p className={`${suitMedium.variable} text-[#7C7C7C] text-xs lg:text-[24px] font-[500] break-all`}>
+            <p className={`${suitMedium.className} text-[#7C7C7C] text-xs lg:text-[24px] font-[500] break-all`}>
               {designer.email}
             </p>
             <Image 
@@ -64,7 +64,7 @@ export default function DesignerDetailPage() {
           {/* Right Column: Profile Image */}
           <div className="w-7/8">
             <div className="relative w-5/6">
-            <p className={`${suitMedium.variable} w-full text-[#1C1C1C] text-sm lg:text-[24px] font-[500] mt-4`}>
+            <p className={`${suitMedium.className} w-full text-[#1C1C1C] text-sm lg:text-[24px] font-[500] mt-4`}>
               {designer.description}
             </p>
             {/* --- Portfolio Section --- */}
@@ -79,7 +79,7 @@ export default function DesignerDetailPage() {
                     {/* This overlay now handles the border and the title */}
                     <div className="absolute inset-0 flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className={`${suitMedium.variable} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
+                        <div className={`${suitMedium.className} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
                           {portfolioItems[0].title}
                         </div>
                       </div>
@@ -96,7 +96,7 @@ export default function DesignerDetailPage() {
                         {/* This overlay now handles the border and the title */}
                         <div className="absolute inset-0 flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
                           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div className={`${suitMedium.variable} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
+                            <div className={`${suitMedium.className} bg-[#00FF36] text-[#1C1C1C] px-3 py-1 text-[16px] font-[600]`}>
                               {item.title}
                             </div>
                           </div>

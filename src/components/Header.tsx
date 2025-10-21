@@ -137,12 +137,12 @@ const Header = () => {
             className="flex items-center cursor-pointer" 
             onClick={handleLogoClick}
           >
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
               Where
             </div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
           </div>
         ) : (
           <div 
@@ -150,17 +150,17 @@ const Header = () => {
             aria-hidden="true"
             style={{ visibility: 'hidden' }} 
           >
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
               Where
             </div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
-            <div className={`${avantGarde.variable} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mt-10 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>The</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mb-3 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Light</div>
+            <div className={`${avantGarde.className} bg-[#00FF36] px-1 mt-13 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>Begins</div>
           </div>
         )}
         {currentPath === '/' && (
           <div className="absolute top-8 left-8 z-20">
-            <h2 className={`${ITCavantGarde.variable} text-[25.926px] text-[#121212] font-[300]`}
+            <h2 className={`${ITCavantGarde.className} text-[25.926px] text-[#121212] font-[300]`}
             style={{
               lineHeight: '150%',
               letterSpacing: '-0.285px',

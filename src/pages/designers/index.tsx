@@ -79,7 +79,7 @@ export default function DesignersPage() {
             autoFocus
           />
         ) : (
-          <h1 className={`${avantGarde.variable} text-#1C1C1C text-[40px] font-normal`}>Designers</h1>
+          <h1 className={`${avantGarde.className} text-#1C1C1C text-[40px] font-normal`}>Designers</h1>
         )}
         <div className="flex items-center gap-4">
           <button onClick={() => setMobileSearchOpen(!isMobileSearchOpen)}>
@@ -102,14 +102,14 @@ export default function DesignersPage() {
       <div className="flex">
         {/* 왼쪽 사이드바 (Desktop only) */}
         <div className="hidden lg:block w-128 p-8 min-h-screen">
-          <h1 className={`${avantGarde.variable} text-[70px] font-normal text-[#1C1C1C]`}>Designers</h1>
+          <h1 className={`${avantGarde.className} text-[70px] font-normal text-[#1C1C1C]`}>Designers</h1>
           <div>
             <input
               type="text"
               placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`${suitMedium.variable} w-full text-[50px] font-normal bg-transparent border-none outline-none placeholder-[#BBB]`}
+              className={`${suitMedium.className} w-full text-[50px] font-normal bg-transparent border-none outline-none placeholder-[#BBB]`}
             />
           </div>
           <div className="w-full h-full bg-white">
@@ -148,11 +148,11 @@ export default function DesignersPage() {
                     <div className="p-4 lg:py-5 lg:px-2">
                       <div className="flex items-start justify-start lg:gap-x-[200px]">
                         <div className="flex items-start gap-30">
-                          <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
+                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
                         </div>
-                        <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
-                          <span className={`${suitMedium.variable} w-8 text-[#1C1C1C] text-sm lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
-                        <span className={`${suitMedium.variable} hidden lg:block text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
+                        <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
+                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
+                        <span className={`${suitMedium.className} hidden lg:block text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
                       </div>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function DesignersPage() {
             </div>
 
             {searchTerm && filteredDesigners.length === 0 && (
-              <div className={`${suitMedium.variable} text-center py-12 text-[#000]`}>
+              <div className={`${suitMedium.className} text-center py-12 text-[#000]`}>
                 일치하는 디자이너를 찾을 수 없습니다. 다른 이름을 시도해보세요.
               </div>
             )}
