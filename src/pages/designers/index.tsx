@@ -1,8 +1,9 @@
-import { useState, useMemo, useEffect } from 'react'; // useEffect import 추가
+import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '../../components/Footer';
+import MobileFooter from '../../components/mobile_footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import HoverImage from '../../img/Image.png';
 import { avantGarde, suitMedium } from '@/styles/fonts';
@@ -39,21 +40,16 @@ export default function DesignersPage() {
       designer.id.includes(searchTerm)
     );
 
-    // --- MODIFICATION START ---
-    // 검색 결과가 한 명일 때 hoveredId를 해당 디자이너의 ID로 자동 설정
     if (filtered.length === 1) {
       setHoveredId(filtered[0].id);
     } else if (filtered.length === 0 && hoveredId !== null) {
-      // 검색 결과가 없으면 hoveredId 초기화
       setHoveredId(null);
     } else if (filtered.length > 1 && hoveredId !== null && !filtered.some(d => d.id === hoveredId)) {
-        // 검색 결과가 여러 명인데, 기존 hoveredId가 필터링된 목록에 없으면 초기화
         setHoveredId(null);
     }
-    // --- MODIFICATION END ---
 
     return filtered;
-  }, [searchTerm, hoveredId]); // hoveredId도 의존성 배열에 추가하여 상태 변화에 반응하도록 함
+  }, [searchTerm, hoveredId]);
 
 
   const handleDesignerClick = (designerId: string) => {
@@ -67,7 +63,7 @@ export default function DesignersPage() {
         <Header />
       </div>
 
-      {/* --- NEW MOBILE HEADER --- */}
+      {/* MOBILE HEADER */}
       <div className="flex lg:hidden items-center justify-between p-4">
         {isMobileSearchOpen ? (
           <input
@@ -75,11 +71,11 @@ export default function DesignersPage() {
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full font-suit text-lg bg-transparent border-none outline-none"
+            className={`${suitMedium.className} w-[319px] text-[20px] text-[#7C7C7C] bg-transparent border-b border-[#7C7C7C] outline-none`}
             autoFocus
           />
         ) : (
-          <h1 className={`${avantGarde.className} text-#1C1C1C text-[40px] font-normal`}>Designers</h1>
+          <h1 className={`${avantGarde.className} text-#1C1C1C text-[40px] font-[400]`}>Designers</h1>
         )}
         <div className="flex items-center gap-4">
           <button onClick={() => setMobileSearchOpen(!isMobileSearchOpen)}>
@@ -146,12 +142,12 @@ export default function DesignersPage() {
                     onClick={() => handleDesignerClick(designer.id)}
                   >
                     <div className="p-4 lg:py-5 lg:px-2">
-                      <div className="flex items-start justify-start lg:gap-x-[200px]">
+                      <div className="flex items-start justify-start gap-x-18 lg:gap-x-[200px]">
                         <div className="flex items-start gap-30">
-                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
+                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-[13px] lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
                         </div>
-                        <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
-                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-sm lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
+                        <span className={`${suitMedium.className} w-10 text-[#1C1C1C] text-[13px] lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
+                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-[13px] lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
                         <span className={`${suitMedium.className} hidden lg:block text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
                       </div>
                     </div>
@@ -168,7 +164,15 @@ export default function DesignersPage() {
           </div>
         </div>
       </div>
-      <Footer />
+      
+      {/* Desktop Footer */}
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
+      {/* Mobile Footer */}
+      <div className="lg:hidden">
+        <MobileFooter />
+      </div>
     </div>
   );
 }

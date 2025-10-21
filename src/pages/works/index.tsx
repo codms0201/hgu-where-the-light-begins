@@ -12,6 +12,14 @@ type CategoryType = 'All' | 'Communication Design' | 'Service Design' | 'UX Desi
 interface Project { id: number; name: string; category: CategoryType; image: string; }
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 
+const useIsMounted = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  return isMounted;
+};
+
 const useWindowWidth = () => {
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -31,6 +39,7 @@ const WorksPage = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const width = useWindowWidth();
+  const isMounted = useIsMounted();
 
   const categories: CategoryType[] = ['All', 'Communication Design', 'Service Design', 'UX Design', 'Industrial Design'];
   const shortCategoryNames: { [key in CategoryType]: string } = {
@@ -65,6 +74,8 @@ const WorksPage = () => {
       <div className="hidden lg:block">
         <Header />
       </div>
+
+      {/* Show Header only if Search is NOT open */}
       {!isSearchOpen && (
         <header className="lg:hidden flex justify-between items-center px-5 py-4">
           <h1 className={`${avantGarde.className} text-[40px] font-[400] text-[#1C1C1C]`}>
@@ -82,7 +93,7 @@ const WorksPage = () => {
         </header>
       )}
 
-      {/* Mobile Search Bar with Underline */}
+      {/* [MODIFIED] Mobile Search Bar with Underline */}
       {isSearchOpen && (
         <div className="lg:hidden px-5 py-4 relative">
           <div className="w-[319px] border-b border-[#7C7C7C]">
@@ -91,7 +102,7 @@ const WorksPage = () => {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`${suitMedium.className} w-full focus:outline-none text-[20px] pb-3`}
+              className={`${suitMedium.className} w-full focus:outline-none text-[20px] pb-3`} // Added pb-3
               autoFocus
             />
           </div>
@@ -122,6 +133,7 @@ const WorksPage = () => {
               <span className="text-[#7C7C7C]">/90</span>
             </p>
           </div>
+          
           <nav className="flex gap-2 p-4 overflow-x-auto lg:flex-col lg:gap-0 lg:space-y-4 lg:p-0 items-center lg:items-start">
              {categories.map((category, index) => (
               <React.Fragment key={category}>
@@ -148,13 +160,13 @@ const WorksPage = () => {
                       `${suitMedium.className} text-[16px] px-2 py-1 lg:text-[20px] lg:rounded-none lg:border-none lg:px-0 lg:py-0`,
                       
                       selectedCategory === category
-                        ? cn(
+                        ? cn( // 선택된 상태
                             'text-[#1C1C1C] font-[600] lg:text-black lg:bg-transparent',
                             category === 'All'
                               ? 'bg-transparent'
                               : 'bg-[#00FF36] border border-[#00FF36] lg:translate-x-6'
                           )
-                        : cn(
+                        : cn( // 선택 안 된 상태
                             'text-[#7C7C7C] font-[400] hover:text-[#1C1C1C] lg:text-gray-400 lg:hover:text-gray-600 lg:translate-x-0',
                             category !== 'All' && 'border border-[#00FF36]'
                           )
@@ -164,6 +176,8 @@ const WorksPage = () => {
                     <span className="hidden lg:inline">{category}</span>
                   </span>
                 </button>
+                
+                {/* 'All' (index 0) 뒤에 구분선 추가 */}
                 {index === 0 && (
                   <div className="border-l border-[#7C7C7C] h-4 self-center lg:hidden mr-2" />
                 )}
@@ -202,7 +216,7 @@ const WorksPage = () => {
                   </div>
                   <div className="lg:group-hover:opacity-0 transition-opacity duration-300">
                       <h3 className={`${suitMedium.className} text-[14px] text-[#1C1C1C] font-[500]`}>Project</h3>
-                      <p className={`${suitMedium.className} text-[12px] text-[#1C1C1C] font-[500] mb-8 lg:hidden`}>{project.name}</p>
+                      <p className={`${suitMedium.className} text-[12px] text-[#1C1C1C] font-[500] mb-8`}>{project.name}</p>
                   </div>
                 </div>
               ))}
@@ -210,9 +224,7 @@ const WorksPage = () => {
           )}
         </main>
       </div>
-
-      {/* Footer (Conditional Rendering) */}
-      {width > 0 && (width <= 390 ? <MobileFooter /> : <Footer />)}
+      {isMounted && (width <= 390 ? <MobileFooter /> : <Footer />)}
     </div>
   );
 };

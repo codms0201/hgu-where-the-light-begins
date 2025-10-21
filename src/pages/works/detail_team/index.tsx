@@ -11,21 +11,32 @@ import TeamProfile from "../../../img/profileImage.png";
 import { ITCavantGarde, suitMedium, avantGarde } from "@/styles/fonts";
 import MobileFooter from '../../../components/mobile_footer';
 
-const useWindowWidth = () => {
-  const [width, setWidth] = useState(0);
+// ▼▼▼ [수정됨] 마운트 상태를 추적하는 훅 ▼▼▼
+const useIsMounted = () => {
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => setWidth(window.innerWidth);
-      handleResize();
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
+    setIsMounted(true);
+  }, []);
+  return isMounted;
+};
+// ▲▲▲ [수정됨] 마운트 상태를 추적하는 훅 ▲▲▲
+
+// useWindowWidth 훅 (동일)
+const useWindowWidth = () => {
+  const [width, setWidth] = useState(0); // 0으로 초기화
+  useEffect(() => {
+    // 이 코드는 클라이언트에서만 실행됨
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize(); // 마운트 시 실제 너비로 설정
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   return width;
 };
 
 const WorksTeamDetailPage = () => {
   const width = useWindowWidth();
+  const isMounted = useIsMounted(); // ▼▼▼ [수정됨] 마운트 훅 사용 ▼▼▼
 
   return (
     <div className="min-h-screen bg-white">
@@ -37,7 +48,7 @@ const WorksTeamDetailPage = () => {
       {/* 모바일 헤더 */}
       <div className="flex lg:hidden items-center justify-between p-4">
         <Link href="/works" aria-label="Go back">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none">
             <path d="M14.5 3L6 11.5L14.5 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
@@ -50,6 +61,7 @@ const WorksTeamDetailPage = () => {
       <div className="flex">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-130 p-4 lg:p-8 space-y-4">
+            {/* ... (페이지 내용 동일) ... */}
             {/* UX Design 태그 */}
             <div className="inline-block relative group">
               <span className={`${ITCavantGarde.className} bg-white text-[#1C1C1C] px-3 py-1 text-[18px] font-[500] border-2 border-[#00FF36]`}>
@@ -125,7 +137,8 @@ const WorksTeamDetailPage = () => {
                 ))}
               </div>
             </div>
-          </div>          
+          </div>
+          
           {/* 데스크탑 전용 작품 이미지 */}
           <div className="flex-1 p-4 lg:p-8 hidden lg:block">
             <Image
@@ -136,7 +149,12 @@ const WorksTeamDetailPage = () => {
           </div>
         </div>
       </div>
-      {width > 0 && (width <= 390 ? <MobileFooter /> : <Footer />)}
+
+      {/* ▼▼▼ [수정됨] isMounted로 래핑 ▼▼▼ */}
+      {/* isMounted가 false일 때(서버 렌더링, 클라이언트 첫 렌더링)는 아무것도 렌더링하지 않습니다.
+        isMounted가 true가 된 후(클라이언트 두 번째 렌더링)에만 width를 비교하여 푸터를 렌더링합니다.
+      */}
+      {isMounted && (width <= 390 ? <MobileFooter /> : <Footer />)}
     </div>
   );
 };
