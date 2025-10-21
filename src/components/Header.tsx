@@ -107,7 +107,9 @@ const Header = () => {
     const itemName = navigationItems[index].name;
     const adjustedRadius = baseRadius + (textLengths[itemName as keyof typeof textLengths] / 2);
     const radian = (angle * Math.PI) / 180;
+    // eslint-disable-next-line prefer-const
     let x = Math.cos(radian) * adjustedRadius;
+    // eslint-disable-next-line prefer-const
     let y = Math.sin(radian) * adjustedRadius;
     if (itemName === 'ARCHIVE') {
       x -= 30;
