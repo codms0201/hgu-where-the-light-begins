@@ -23,23 +23,21 @@ const bottomRowPeople = [
   { name: '최인욱 교수님', img: CIW_P },
 ];
 
+const allPeople = [...topRowPeople, ...bottomRowPeople];
+
 export default function ThanksTo() {
   return (
-    <div className="min-h-screen bg-white flex">
-      {/* Left Section - Title */}
-      <div className="w-1/3 flex items-start justify-start p-8">
+    <div className="bg-white flex flex-col lg:flex-row p-4 lg:p-8">
+      <div className="w-full lg:w-1/3">
         <div>
-          <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
+          <h1 className={`${avantGarde.className} text-[24px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>
             Thanks to
           </h1>
         </div>
       </div>
-      
-      {/* Right Section - Content Grid */}
-      <div className="w-2/3 flex justify-end p-8 mt-30">
-        <div className="flex flex-col gap-y-8">
-          {/* 위쪽 행 */}
-          <div className="flex flex-row gap-x-4">
+      <div className="w-full lg:w-2/3 flex justify-center lg:justify-end mt-8 lg:mt-30">
+        <div className="hidden lg:flex flex-col gap-y-8 w-full">
+          <div className="flex flex-nowrap justify-end gap-x-4">
             {topRowPeople.map((person) => (
               <div key={person.name} className="flex flex-col items-start gap-4">
                 <div>
@@ -51,13 +49,11 @@ export default function ThanksTo() {
                     className="object-contain"
                   />
                 </div>
-                <p className={`${suitMedium.className} text-[23.196px] text-[500] text-[#1C1C1C]`}>{person.name}</p>
+                <p className={`${suitMedium.className} text-[23.196px] font-[500] text-[#1C1C1C]`}>{person.name}</p>
               </div>
             ))}
           </div>
-
-          {/* 아래쪽 행 */}
-          <div className="flex flex-row gap-x-4 justify-end">
+          <div className="flex flex-nowrap justify-end gap-x-4">
             {bottomRowPeople.map((person) => (
               <div key={person.name} className="flex flex-col items-start gap-4">
                 <div>
@@ -69,11 +65,28 @@ export default function ThanksTo() {
                     className="object-contain" 
                   />
                 </div>
-                <p className={`${suitMedium.className} text-[23.196px] text-[500] text-[#1C1C1C]`}>{person.name}</p>
+                <p className={`${suitMedium.className} text-[23.196px] font-[500] text-[#1C1C1C]`}>{person.name}</p>
               </div>
             ))}
           </div>
         </div>
+        <div className="grid grid-cols-3 gap-2 w-full lg:hidden">
+          {allPeople.map((person) => (
+            <div key={person.name} className="flex flex-col items-start gap-2">
+              <Image
+                src={person.img}
+                alt={person.name}
+                width={201}
+                height={239}
+                className="object-contain w-full h-auto"
+              />
+              <p className={`${suitMedium.className} text-[12px] font-[500] text-[#1C1C1C]`}>
+                {person.name}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );

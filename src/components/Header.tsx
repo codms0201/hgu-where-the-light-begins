@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router'; // useRouter 임포트
 import { avantGarde } from '@/styles/fonts';
 import { ITCavantGarde } from '@/styles/fonts';
 
@@ -11,19 +12,22 @@ interface NavigationItem {
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [animationStep, setAnimationStep] = useState(0);
-  const [currentPath, setCurrentPath] = useState('');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const enterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
+  // useRouter 훅을 사용하여 pathname을 직접 가져옵니다.
+  const router = useRouter();
+  const currentPath = router.pathname;
 
+  useEffect(() => {
+    // currentPath 설정 로직은 제거됨
+    // 타이머 클린업 로직만 남김
     return () => {
       if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
       if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
     };
-  }, []);
+  }, []); // 의존성 배열은 비워 둡니다.
 
   const navigationItems: NavigationItem[] = [
     { name: 'ABOUT', path: '/about', angle: 180 },
@@ -33,17 +37,20 @@ const Header = () => {
   ];
 
   const handleLogoClick = (): void => {
-    window.location.href = '/';
+    // window.location.href 대신 router.push를 사용하는 것이 Next.js 방식에 더 적합합니다.
+    router.push('/');
   };
 
   const handleNavClick = (path: string): void => {
-    window.location.href = path;
+    // window.location.href 대신 router.push를 사용합니다.
+    router.push(path);
     setIsMenuOpen(false);
   };
 
-  const isCurrentPath = (path: string): boolean => {
-    return currentPath === path;
-  };
+  // isCurrentPath 함수는 이제 필요 없습니다. (currentPath를 직접 비교)
+  // const isCurrentPath = (path: string): boolean => {
+  //   return currentPath === path;
+  // };
 
   const handleHamburgerEnter = () => {
     if (isMenuOpen) {
@@ -231,7 +238,7 @@ const Header = () => {
                     style={getBarStyle(3)}
                   ></span>
                   <span
-                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
+                    className="block absolute h-[4px] w-full bg-black top-1/C1C1C top-1/2 left-0" // 오타 수정: bg-black
                     style={getBarStyle(4)}
                   ></span>
                 </div>

@@ -5,22 +5,19 @@ export default function Interviews() {
   const youtubeEmbedUrl = "https://www.youtube.com/embed/-Z0bFfNdIPk";
 
   return (
-      <div className="min-h-screen bg-white flex">
-        {/* Left Section - Title */}
-        <div className="w-1/3 flex items-start justify-start p-8">
+      <div className="bg-white flex flex-col lg:flex-row p-4 lg:p-8 mb-38">
+        <div className="w-full lg:w-1/3 flex items-start justify-start">
           <div>
-            <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
+            <h1 className={`${avantGarde.className} text-[24px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>
               Interviews
             </h1>
           </div>
         </div>
-        
-        {/* Right Section - Content (YouTube Embedded Video) */}
-        <div className="w-2/3 flex justify-end items-end p-8">
+        <div className="w-full lg:w-2/3 flex justify-center lg:justify-end items-center mt-8 lg:mt-40">
           <div 
             style={{ 
               position: 'relative', 
-              width: '100%', 
+              width: '100%',
               paddingBottom: '56.25%',
               height: 0, 
               overflow: 'hidden',

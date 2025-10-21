@@ -11,6 +11,7 @@ import ThanksTo from "../../components/AboutPage/ThanksTo";
 import Executives from '@/components/AboutPage/Executives';
 import Sponsers from '@/components/AboutPage/Sponser';
 import Footer from '@/components/Footer';
+import MobileFooter from '../../components/mobile_footer';
 import { avantGarde } from '@/styles/fonts';
 
 const AboutPage = () => {
@@ -25,8 +26,8 @@ const AboutPage = () => {
 
       {/* 모바일용 헤더 (데스크탑에서 숨김) */}
       <div className="flex lg:hidden items-center justify-between p-4">
-        <h1 className={`${avantGarde.variable} font-normal text-[40px]`}>About</h1>
-          <Mobile_HeaderBtn />
+        <h1 className={`${avantGarde.className} font-[400] text-[40px] text-[#1C1C1C]`}>About</h1>
+        <Mobile_HeaderBtn />
       </div>
 
       <Intro />
@@ -34,28 +35,26 @@ const AboutPage = () => {
       <div className="hidden lg:block">
         <Poster />
       </div>
-      
-      {/* --- THIS IS THE CHANGED PART --- */}
-
-      {/* Desktop Symbols Component (hidden on mobile) */}
       <div className="hidden lg:block">
         <div ref={symbolsContainerRef} className="relative h-[800vh]">
           <Symbols containerRef={symbolsContainerRef} />
         </div>
       </div>
-
-      {/* Mobile Symbols_mobile Component (hidden on desktop) */}
-      <div className="lg:hidden">
+      <div className="lg:hidden mb-26">
         <Symbols_mobile />
       </div>
-      
-      {/* --- CHANGES END HERE --- */}
-
       <Interviews />
       <ThanksTo />
       <Executives />
       <Sponsers />
-      <Footer />
+      {/* Desktop Footer */}
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
+      {/* Mobile Footer */}
+      <div className="lg:hidden">
+        <MobileFooter />
+      </div>
     </div>
   )
 }

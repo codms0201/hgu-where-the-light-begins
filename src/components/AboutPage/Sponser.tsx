@@ -10,52 +10,59 @@ import S5 from "@/img/Sponsers/Moorim.svg";
 
 export default function Sponser() {
   return (
-    <div className="h-[500px] bg-white flex">
+    <div className="mt-28 lg:h-[500px] bg-white flex flex-col lg:flex-row p-4 lg:p-8">
+      
       {/* Left Section - Title */}
-      <div className="w-1/3 flex items-start justify-start p-8">
+      <div className="w-full lg:w-1/3 flex items-start justify-start">
         <div>
-          <h1 className={`${avantGarde.className} text-[70px] font-[400] text-[#1C1C1C]`}>
+          <h1 className={`${avantGarde.className} text-[24px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>
             Sponsers
           </h1>
         </div>
       </div>
       
       {/* Right Section - Content */}
-      <div className="w-2/3 flex flex-col justify-center items-end p-8 gap-y-10">
-        <div className="flex items-center gap-x-14">          
+      {/* [수정 1] 모바일: items-start (좌측 정렬) / 데스크톱: lg:items-end (우측 정렬) */}
+      <div className="w-full lg:w-2/3 flex flex-col justify-center items-start lg:items-end p-0 lg:p-8 gap-y-10 mt-8 lg:mt-0">
+        
+        {/* [수정 2] 모바일: justify-start (좌측 정렬), gap-4 (간격) / 데스크톱: lg:justify-center (중앙 정렬) */}
+        <div className="flex flex-wrap justify-start lg:justify-center lg:flex-nowrap items-center gap-4 lg:gap-x-14">          
           <Link href="https://yoondesign.com/"> 
             <Image 
               src={S1}
               alt="Yoondesign"
-              className="object-contain max-w-full h-auto"
+              // 모바일 크기(w-24) 지정, 데스크톱(lg:w-auto)은 자동
+              className="object-contain h-auto w-24 lg:w-auto"
             />
           </Link>          
           <Image 
             src={S2}
             alt="Yesod"
-            className="object-contain max-w-full h-auto"
+            className="object-contain h-auto w-24 lg:w-auto"
           />
         </div>
-        <div className="flex items-center gap-x-14">
-          <Link href="https://www.adsland.com/" className="-mt-3"> 
+        
+        {/* [수정 2] 위와 동일하게 수정 */}
+        <div className="flex flex-wrap justify-start lg:justify-center lg:flex-nowrap items-center gap-4 lg:gap-x-14">
+          <Link href="https://www.adsland.com/" className="lg:-mt-3"> 
             <Image 
               src={S3}
               alt="Adsland"
-              className="object-contain max-w-full h-auto"
+              className="object-contain h-auto w-24 lg:w-auto"
             />
           </Link>
-          <Link href="https://www.rixfontcloud.com/?gad_source=1&gad_campaignid=20512970115&gbraid=0AAAAACWCE78OzZLlWXzsKw3hUl-AqfVs6&gclid=CjwKCAjwr8LHBhBKEiwAy47uUlhLnOUBDNlJd3av777ckCs1FMXYmf-3QCrOW3eSWanuGsBSHdZMRoCfjIQAvD_BwE" className="mt-0 mb-0">
+          <Link href="https://www.rixfontcloud.com/?gad_source=1&gad_campaignid=20512970115&gbraid=0AAAAACWCE78OzZLlWXzsKw3hUl-AqfVs6&gclid=CjwKCAjwr8LHBhBKEiwAy47uUlhLnOUBDNlJd3av777ckCs1FMXYmf-3QCrOW3eSWanuGsBSHdZMRoCfjIQAvD_BwE" className="lg:mt-0 lg:mb-0">
             <Image 
               src={S4}
               alt="RixFont"
-              className="object-contain max-w-full h-auto"
+              className="object-contain h-auto w-24 lg:w-auto"
             />
           </Link>
-          <Link href="https://www.moorim.co.kr:13002/" className="mb-7"> 
+          <Link href="https://www.moorim.co.kr:13002/" className="mb-2 lg:mb-7"> 
             <Image 
               src={S5}
               alt="Moorim"
-              className="object-contain max-w-full h-auto"
+              className="object-contain h-auto w-24 lg:w-auto"
             />
           </Link>          
         </div>

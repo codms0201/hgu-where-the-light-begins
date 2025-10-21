@@ -200,7 +200,7 @@ const WorksPage = () => {
                   className="group cursor-pointer"
                   onClick={() => handleProjectClick(project.id)}
                 >
-                  <div className="aspect-[4/3 mb-2 relative transition-all lg:group-hover:border-2 lg:group-hover:border-[#00FF36]">
+                  <div className="aspect-[4/3] mb-2 relative transition-all lg:group-hover:border-2 lg:group-hover:border-[#00FF36]">
                     <img
                       src={project.image}
                       alt={project.name}
