@@ -6,6 +6,8 @@ import Sketch2 from '../../../public/img/home/Sketch_2.png';
 import Sketch3 from '../../../public/img/home/Sketch_3.png';
 import Sketch4 from '../../../public/img/home/Sketch_4.png';
 
+import { avantGarde } from '@/styles/fonts';
+
 const sketches = [
   { id: 1, src: Sketch1, alt: 'Sketch image 1' },
   { id: 2, src: Sketch2, alt: 'Sketch image 2' },
@@ -17,7 +19,7 @@ export default function Sketch() {
   return (
     <div className="min-h-screen bg-white px-8 py-24">
       <div className="mb-12">
-        <h1 className="text-[70px] font-normal text-[#1C1C1C]" style={{ fontFamily: 'AvantGarde Md BT' }}>
+        <h1 className={`${avantGarde.className} text-[40px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>
           Sketch
         </h1>
       </div>
