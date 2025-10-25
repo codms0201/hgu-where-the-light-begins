@@ -36,7 +36,7 @@ export default function SlideOutMenu() {
     <>
       <button
         onClick={toggleMenu}
-        className="rounded-md text-gray-700 hover:focus:outline-none"
+        className="rounded-md text-[#1C1C1C] hover:focus:outline-none"
         aria-label="메뉴 열기"
       >
         <StarIcon />

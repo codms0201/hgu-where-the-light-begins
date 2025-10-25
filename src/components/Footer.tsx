@@ -1,22 +1,22 @@
 import React from 'react';
+import { avantGarde } from '@/styles/fonts';
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black py-8">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600">
-          <div className="text-center sm:text-left mb-4 sm:mb-0">
-            <p className="font-['AvantGarde_Md_BT'] text-[14px] font-[400]">26th CCD Graduation Exhibition: Where The Light Begins</p>
-            <p className="mt-1 font-['AvantGarde_Md_BT'] text-[14px] font-[400]">© 2025. Handong Global University, Contents Convergence Design. All Rights Reserved.</p>
+    <footer className="bg-white text-[#1C1C1C] p-8">
+        <div className="flex flex-row justify-between items-center">
+          <div className="text-left">
+            <p className={`${avantGarde.className} text-[14px] font-[400]`}>26th CCD Graduation Exhibition: Where The Light Begins</p>
+            <p className={`${avantGarde.className} mt-1 text-[14px] font-[400]`}>© 2025. Handong Global University, Contents Convergence Design. All Rights Reserved.</p>
           </div>
-          <div className="text-center sm:text-right font-['AvantGarde_Md_BT'] text-[14px] font-[400]">
+          <div className={`${avantGarde.className} text-right text-[14px] font-[400]`}>
             <p>
               <span>website | </span>
               <a 
                 href="http://www.handong.edu" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="underline hover:text-gray-900 transition-colors"
+                className="underline"
               >
                 www.handong.edu
               </a>
@@ -27,14 +27,13 @@ const Footer = () => {
                 href="https://www.instagram.com/hgu.exhibition.2025" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="underline hover:text-gray-900 transition-colors"
+                className="underline"
               >
                 @hgu.exhibition.2025
               </a>
             </p>
           </div>
         </div>
-      </div>
     </footer>
   );
 };
