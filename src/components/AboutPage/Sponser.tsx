@@ -10,7 +10,7 @@ import S5 from "@/img/Sponsers/Moorim.svg";
 
 export default function Sponser() {
   return (
-    <div className="mt-28 lg:h-[500px] bg-white flex flex-col lg:flex-row p-4 lg:p-8">
+    <div className="mt-28 lg:h-[300px] bg-white flex flex-col lg:flex-row p-4 lg:p-8">
       
       {/* Left Section - Title */}
       <div className="w-full lg:w-1/3 flex items-start justify-start">
@@ -22,10 +22,7 @@ export default function Sponser() {
       </div>
       
       {/* Right Section - Content */}
-      {/* [수정 1] 모바일: items-start (좌측 정렬) / 데스크톱: lg:items-end (우측 정렬) */}
-      <div className="w-full lg:w-2/3 flex flex-col justify-center items-start lg:items-end p-0 lg:p-8 gap-y-10 mt-8 lg:mt-0">
-        
-        {/* [수정 2] 모바일: justify-start (좌측 정렬), gap-4 (간격) / 데스크톱: lg:justify-center (중앙 정렬) */}
+      <div className="w-full lg:w-2/3 flex flex-col justify-center items-start lg:items-end p-0 lg:p-8 gap-y-4 mt-7 lg:mt-0">
         <div className="flex flex-wrap justify-start lg:justify-center lg:flex-nowrap items-center gap-4 lg:gap-x-14">          
           <Link href="https://yoondesign.com/"> 
             <Image 
@@ -41,8 +38,6 @@ export default function Sponser() {
             className="object-contain h-auto w-24 lg:w-auto"
           />
         </div>
-        
-        {/* [수정 2] 위와 동일하게 수정 */}
         <div className="flex flex-wrap justify-start lg:justify-center lg:flex-nowrap items-center gap-4 lg:gap-x-14">
           <Link href="https://www.adsland.com/" className="lg:-mt-3"> 
             <Image 

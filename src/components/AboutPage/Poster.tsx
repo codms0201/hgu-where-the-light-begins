@@ -5,7 +5,7 @@ import { avantGarde } from '@/styles/fonts';
 
 export default function Poster() {
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="min-h-screen bg-white flex mb-30">
       {/* Left Section - Title */}
       <div className="w-1/3 flex items-start justify-start p-8">
         <div>

@@ -6,9 +6,8 @@ import { suitMedium } from '@/styles/fonts';
 
 export default function Intro() {
   return (
-    <div className="min-h-screen bg-white relative p-4 lg:p-0">
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        
+    <div className="min-h-screen bg-white relative p-4 lg:p-0 mb-24">
+      <div className="flex flex-col lg:flex-row min-h-screen"> 
         {/* Top/Left Section - Title */}
         <div className="w-full lg:w-1/2 flex items-start justify-start lg:p-8">
           <div>
