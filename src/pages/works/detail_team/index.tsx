@@ -41,12 +41,12 @@ const WorksTeamDetailPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* 데스크탑 헤더 */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
 
       {/* 모바일 헤더 */}
-      <div className="flex lg:hidden items-center justify-between p-4">
+      <div className="flex lg:hidden sticky top-0 z-50 bg-white items-center justify-between p-4">
         <Link href="/works" aria-label="Go back">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none">
             <path d="M14.5 3L6 11.5L14.5 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>

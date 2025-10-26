@@ -20,12 +20,12 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       {/* 데스크탑 헤더 (모바일에서 숨김) */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
 
       {/* 모바일용 헤더 (데스크탑에서 숨김) */}
-      <div className="flex lg:hidden items-center justify-between p-4">
+      <div className="flex lg:hidden sticky top-0 z-50 bg-white items-center justify-between p-4">
         <h1 className={`${avantGarde.className} font-[400] text-[40px] text-[#1C1C1C]`}>About</h1>
         <Mobile_HeaderBtn />
       </div>
