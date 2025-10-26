@@ -52,7 +52,7 @@ const WorksTeamDetailPage = () => {
             <path d="M14.5 3L6 11.5L14.5 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
-        <h1 className={`${avantGarde.className} font-[400] text-[20px] tracking-wider`}>
+        <h1 className={`${avantGarde.className} text-[#000000] font-[400] text-[24px] tracking-wider`}>
           PROJECT
         </h1>
         <Mobile_HeaderBtn />
@@ -61,7 +61,6 @@ const WorksTeamDetailPage = () => {
       <div className="flex">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-130 p-4 lg:p-8 space-y-4">
-            {/* ... (페이지 내용 동일) ... */}
             {/* UX Design 태그 */}
             <div className="inline-block relative group">
               <span className={`${ITCavantGarde.className} bg-white text-[#1C1C1C] px-3 py-1 text-[18px] font-[500] border-2 border-[#00FF36]`}>
