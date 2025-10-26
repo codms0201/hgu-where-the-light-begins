@@ -6,7 +6,7 @@ import Mobile_HeaderBtn from "../../../components/mobile_headerBtn";
 import MobileFooter from "../../../components/mobile_footer"; // MobileFooter import 확인
 import HoverImage from '../../../img/Image.png';
 import ArtWork from '../../../img/Artwork.png';
-import { suitMedium } from '@/styles/fonts';
+import { avantGarde, suitMedium } from '@/styles/fonts';
 
 export default function DesignerDetailPage() {
   const designer = {
@@ -35,14 +35,14 @@ export default function DesignerDetailPage() {
             <path d="M15 3L6.5 11.5L15 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </Link>
-        <h1 className={`${suitMedium.className} font-[590] text-[20px] text-[#000000]`}>Designers</h1>
+        <h1 className={`${avantGarde.className} font-[400] text-[24px] text-[#000000]`}>Designers</h1>
         <Mobile_HeaderBtn />
         
       </div>
       <div className="p-4 lg:p-12">
         <div className="flex flex-col lg:flex-row lg:gap-16 items-start">
           
-          {/* Left Column (Mobile: Info + Image) */}
+          {/* Left Column */}
           <div className="w-full lg:w-91">
             <div className="flex flex-row gap-4 lg:flex-col">
               {/* Info Box */}
@@ -76,7 +76,7 @@ export default function DesignerDetailPage() {
           <div className="w-full lg:w-7/8">
             {/* Desktop-only Description */}
             <div className="relative w-5/6 hidden lg:block">
-              <p className={`${suitMedium.className} w-full text-[#1C1C1C] text-sm lg:text-[24px] font-[500] mt-4`}>
+              <p className={`${suitMedium.className} w-full text-[#1C1C1C] text-[20px] font-[500] mt-4`}>
                 {designer.description}
               </p>
             </ div>
@@ -98,7 +98,7 @@ export default function DesignerDetailPage() {
                         alt={portfolioItems[0].title} 
                         width={365} 
                         height={274} 
-                        className="object-cover w-full h-auto"
+                        className="object-cover w-full h-auto lg:w-[365px] lg:h-[274px]"
                       />
                       {/* 데스크톱 전용 호버 오버레이 (hidden lg:flex) */}
                       <div className="absolute inset-0 hidden lg:flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
@@ -127,7 +127,7 @@ export default function DesignerDetailPage() {
                             alt={item.title} 
                             width={365} 
                             height={274} 
-                            className="object-cover w-full h-auto"
+                            className="object-cover w-full h-auto lg:w-[365px] lg:h-[274px]"
                           />
                           <div className="absolute inset-0 hidden lg:flex items-center justify-center border-2 border-transparent group-hover:border-[#00FF36] transition-all duration-300">
                             <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">

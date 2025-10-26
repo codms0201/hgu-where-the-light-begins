@@ -182,7 +182,7 @@ const WorksPage = () => {
         
         {/* 데스크톱 사이드바 (고정) */}
         {/* 헤더 높이 140px + 7px 오차 = 147px로 설정 (이전 코드 값 유지) */}
-        <aside className="w-full lg:w-1/4 lg:sticky lg:top-[147px] lg:h-[calc(100vh_-_140px)]"> 
+        <aside className="hidden lg:block lg:w-1/4 lg:fixed lg:top-[147px] lg:h-[calc(100vh_-_147px)]"> 
         <div className="lg:h-full lg:overflow-y-auto lg:p-8">
           <div className="hidden lg:flex items-baseline mb-8 gap-4">
             <h1 className={`${avantGarde.className} text-[#1C1C1C] text-[70px] font-[400]`}>
@@ -249,7 +249,7 @@ const WorksPage = () => {
         </aside>
 
         {/* --- 메인 프로젝트 그리드 --- */}
-        <main className="flex-1 p-4 lg:p-8">
+        <main className="flex-1 p-4 lg:p-8 lg:ml-[25%]">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-gray-400 font-[SUIT]">No projects found</p>
