@@ -38,7 +38,7 @@ const Header = () => {
 
   const handleLogoClick = (): void => {
     // window.location.href 대신 router.push를 사용하는 것이 Next.js 방식에 더 적합합니다.
-    router.push('/');
+    router.push('/?skipVideo=true');
   };
 
   const handleNavClick = (path: string): void => {
@@ -138,7 +138,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 bg-white relative z-50 w-full">
+      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full">
         {currentPath !== '/' ? (
           <div 
             className="flex items-center cursor-pointer" 
