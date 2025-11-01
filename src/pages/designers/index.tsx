@@ -25,7 +25,7 @@ const categoryToMajorMap: { [key: string]: string } = {
   industrial: 'Industrial',
 };
 
-const designersData: Designer[] = DESIGNERS.map((designer: { id: number; nameKo: string; works: any[] }) => {
+const designersData: Designer[] = DESIGNERS.map((designer: { id: number; nameKo: string; works: { category: string }[] }) => {
   const categories = [...new Set(designer.works.map((work: { category: string }) => work.category))];
   const major = categories
     .map((cat: string) => categoryToMajorMap[cat] || cat.charAt(0).toUpperCase() + cat.slice(1))
@@ -195,6 +195,8 @@ export default function DesignersPage() {
           </div>
         </div>
       </div>
+      
+      {/* 푸터 */}
       <div className="hidden lg:block relative z-50">
         <Footer />
       </div>

@@ -15,14 +15,6 @@ export default function DesignerDetailPage() {
   const router = useRouter();
   const { designerId } = router.query;
 
-  if (!router.isReady) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        {/* 로딩 스피너나 스켈레톤 UI를 여기에 두는 것이 좋습니다. */}
-      </div>
-    );
-  }
-
   const designer = DESIGNERS.find(d => String(d.id) === designerId);
 
   const portfolioItems = useMemo(() => {
@@ -42,8 +34,14 @@ export default function DesignerDetailPage() {
       }
       return acc;
     }, [] as { id: number; title: string; thumbnail: string }[]); 
-  }, [designer]);
+  }, [designer]); 
 
+  if (!router.isReady) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+      </div>
+    );
+  }
 
   if (!designer) {
     return (
@@ -55,7 +53,6 @@ export default function DesignerDetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* --- 헤더 부분 (변경 없음) --- */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
@@ -68,12 +65,11 @@ export default function DesignerDetailPage() {
         <h1 className={`${avantGarde.className} font-[400] text-[24px] text-[#000000]`}>Designers</h1>
         <Mobile_HeaderBtn />
       </div>
-      {/* --- 헤더 끝 --- */}
 
       <div className="p-4 lg:p-8">
         <div className="flex flex-col lg:flex-row lg:gap-16 items-start">
           
-          {/* Left Column (변경 없음) */}
+          {/* Left Column */}
           <div className="w-full lg:w-91">
             <div className="flex flex-row gap-4 lg:flex-col">
               {/* Info Box */}
@@ -89,7 +85,7 @@ export default function DesignerDetailPage() {
                 </p>
               </div>
 
-              {/* Image Box (변경 없음) */}
+              {/* Image Box */}
               <div className="w-1/2 lg:w-full">
                 <Image 
                     src={`${DOMAIN}${designer.img}`} 
@@ -104,7 +100,7 @@ export default function DesignerDetailPage() {
             </div>
           </div>
           
-          {/* Right Column (Mobile: Portfolio) */}
+          {/* Right Column */}
           <div className="w-full lg:w-7/8">
             <div className="relative w-5/6 hidden lg:block">
               <p className={`${suitMedium.className} w-full text-[#1C1C1C] text-[20px] font-[500] mt-4 whitespace-pre-line`}>
@@ -112,16 +108,15 @@ export default function DesignerDetailPage() {
               </p>
             </div>
 
-            {/* --- 포트폴리오 렌더링 부분 (🌟 로직 수정됨) --- */}
+            {/* 포트폴리오 렌더링  */}
             <div className="mt-12">
               <div className="flex flex-col items-center lg:items-end gap-5">             
                 
-                {/* 🌟 1. 첫 번째 열: 1개일 땐 'invisible'로 숨김 */}
                 {portfolioItems.length > 0 && (
                   <div 
                     key={portfolioItems[0].id} 
                     className={`w-full max-w-[365px] ${
-                      portfolioItems.length === 1 ? 'invisible' : '' // 🌟 여기
+                      portfolioItems.length === 1 ? 'invisible' : ''
                     }`}
                   >
                     <div className={`${suitMedium.className} w-fit text-[#1C1C1C] bg-[#00FF36] text-[14px] font-[600] mb-2 lg:hidden p-1`}>
@@ -146,13 +141,12 @@ export default function DesignerDetailPage() {
                   </div>
                 )}
 
-                {/* 🌟 2. 두 번째 열: 항상 올바른 아이템을 렌더링 */}
                 {portfolioItems.length > 0 && (
                   <div className="flex flex-col lg:flex-row gap-5 w-full lg:w-auto justify-center lg:justify-end">
                     
                     {(portfolioItems.length === 1
-                      ? portfolioItems.slice(0, 1) // 1개면: 0번 인덱스 아이템
-                      : portfolioItems.slice(1, 3) // 2개 이상이면: 1, 2번 인덱스 아이템
+                      ? portfolioItems.slice(0, 1) 
+                      : portfolioItems.slice(1, 3) 
                     ).map((item) => (
                       <div key={item.id} className="w-full max-w-[365px]">
                         <div className={`${suitMedium.className} w-fit text-[#1C1C1C] bg-[#00FF36] text-[14px] font-[600] mb-2 lg:hidden p-1`}>
@@ -184,7 +178,7 @@ export default function DesignerDetailPage() {
         </div>
       </div>
 
-      {/* --- 푸터 (변경 없음) --- */}
+      {/* 푸터 */}
       <div className="hidden lg:block">
         <Footer />
       </div>
