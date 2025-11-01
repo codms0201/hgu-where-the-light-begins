@@ -1,3 +1,5 @@
+'use client'; 
+
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -5,31 +7,38 @@ import Header from '@/components/Header';
 import Footer from '../../components/Footer';
 import MobileFooter from '../../components/mobile_footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
-import HoverImage from '../../img/Image.png';
 import { avantGarde, suitMedium } from '@/styles/fonts';
+import { DESIGNERS } from '../../constants/designers';
+import { DOMAIN, PATHS } from '../../constants/paths';
 
 interface Designer {
-  id: string;
+  id: string; 
+  numericId: number; 
   name: string;
   major: string;
 }
 
-const designersData: Designer[] = [
-  { id: '001', name: '강예은', major: 'Communication/Service' },
-  { id: '002', name: '강주찬', major: 'UX' },
-  { id: '003', name: '강하라', major: 'Communication/Service' },
-  { id: '004', name: '권미소', major: 'UX' },
-  { id: '005', name: '김민지', major: 'Communication/Service' },
-  { id: '006', name: '김수현', major: 'Major' },
-  { id: '007', name: '박지원', major: 'Major' },
-  { id: '008', name: '이서연', major: 'Major' },
-  { id: '009', name: '강예은', major: 'Communication/Service' },
-  { id: '010', name: '강주찬', major: 'UX' },
-  { id: '011', name: '강하라', major: 'Communication/Service' },
-  { id: '012', name: '강예은', major: 'Communication/Service' },
-  { id: '013', name: '강주찬', major: 'UX' },
-  { id: '014', name: '강하라', major: 'Communication/Service' },
-];
+const categoryToMajorMap: { [key: string]: string } = {
+  communication: 'Communication',
+  service: 'Service',
+  ux: 'UX',
+  industrial: 'Industrial',
+};
+
+const designersData: Designer[] = DESIGNERS.map((designer: { id: number; nameKo: string; works: any[] }) => {
+  const categories = [...new Set(designer.works.map((work: { category: string }) => work.category))];
+  const major = categories
+    .map((cat: string) => categoryToMajorMap[cat] || cat.charAt(0).toUpperCase() + cat.slice(1))
+    .join(' / ');
+
+  return {
+    id: String(designer.id).padStart(3, '0'),
+    numericId: designer.id,
+    name: designer.nameKo,
+    major: major,
+  };
+});
+
 
 export default function DesignersPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,13 +63,12 @@ export default function DesignersPage() {
     return filtered;
   }, [searchTerm, hoveredId]);
 
-
-  const handleDesignerClick = (designerId: string) => {
-    router.push(`/designers/detail`);
+  const handleDesignerClick = (designerId: number) => {
+    router.push(PATHS.DESIGNER_DETAIL.replace(':designerId', String(designerId)));
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#1C1C1C]">
+    <div className="min-h-screen bg-white text-[#1C1C1C] flex flex-col">
       {/* Desktop Header */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
@@ -99,10 +107,9 @@ export default function DesignersPage() {
             </button>
           </div>
         )}
-
       </div>
 
-      <div className="flex">
+      <div className="flex flex-1">
         {/* 왼쪽 사이드바 */}
         <div className="hidden lg:block w-128 lg:fixed lg:top-[147px] lg:h-[calc(100vh_-_147px)]">
           <div className="h-full flex flex-col p-8">
@@ -117,18 +124,38 @@ export default function DesignersPage() {
               />
             </div>
             <div className="w-full flex-1 bg-white overflow-hidden">
-              {hoveredId && (
-                <div className="relative w-4/5 h-full -mt-20">
-                  <Image src={HoverImage} alt="Designer preview" fill className="object-contain" />
-                </div>
-              )}
+              <div className="relative w-[289px] h-[434px] mt-30">
+                {DESIGNERS.map((designer) => {
+                  const isActive = String(designer.id).padStart(3, '0') === hoveredId;
+                  return (
+                    <Image 
+                      key={designer.id}
+                      src={`${DOMAIN}${designer.img}`} 
+                      alt={`${designer.nameKo} preview`} 
+                      fill
+                      className={`object-contain transition-opacity duration-300 ${
+                        isActive ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      loading="lazy"
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-        {/* 오른쪽 메인 콘텐츠 (Full width on mobile) */}
+        
+        {/* 오른쪽 메인 콘텐츠 */}
         <div className="flex-1 bg-white lg:pt-18 w-full lg:ml-128">
           <div className="lg:px-8">
-            <div className="border-b border-[#D2D2D2]">
+            <div 
+              className="border-b border-[#D2D2D2]"
+              onMouseLeave={() => {
+                if (filteredDesigners.length !== 1) {
+                  setHoveredId(null);
+                }
+              }}
+            >
               {filteredDesigners.map((designer, index) => {
                 const isHovered = hoveredId === designer.id;
                 const isPreviousHovered = index > 0 && hoveredId === filteredDesigners[index - 1].id;
@@ -140,21 +167,19 @@ export default function DesignersPage() {
                       ${isHovered || isPreviousHovered ? 'border-[#1C1C1C]' : 'border-[#D2D2D2]'} px-4 lg:px-0
                     `}
                     onMouseEnter={() => setHoveredId(designer.id)}
-                    onMouseLeave={() => {
-                        if (filteredDesigners.length !== 1) {
-                            setHoveredId(null);
-                        }
-                    }}
-                    onClick={() => handleDesignerClick(designer.id)}
+                    onClick={() => handleDesignerClick(designer.numericId)}
                   >
-                    <div className="py-4 lg:py-5 lg:px-2">
-                      <div className="flex items-start justify-start gap-x-18 lg:gap-x-[200px]">
-                        <div className="flex items-start gap-30">
-                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-[13px] lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.id}</span>   
-                        </div>
-                        <span className={`${suitMedium.className} w-10 text-[#1C1C1C] text-[13px] lg:text-[24px] lg:w-auto transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.name}</span>
-                          <span className={`${suitMedium.className} w-8 text-[#1C1C1C] text-[13px] lg:hidden transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
-                        <span className={`${suitMedium.className} hidden lg:block text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>{designer.major}</span>
+                    <div className={`py-4 lg:py-5 lg:px-2`}>
+                      <div className={`grid items-start grid-cols-[60px_90px_auto] lg:grid-cols-[180px_300px_auto] ${suitMedium.className}`}>
+                        <span className={`text-[#1C1C1C] text-[13px] lg:text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>
+                          {designer.id}
+                        </span>
+                        <span className={`text-[#1C1C1C] text-[13px] lg:text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>
+                          {designer.name}
+                        </span>
+                        <span className={`text-[#1C1C1C] text-[13px] lg:text-[24px] transition-all ${isHovered ? 'font-[600]' : 'font-[400]'}`}>
+                          {designer.major}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -170,12 +195,9 @@ export default function DesignersPage() {
           </div>
         </div>
       </div>
-      
-      {/* Desktop Footer */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block relative z-50">
         <Footer />
       </div>
-      {/* Mobile Footer */}
       <div className="lg:hidden">
         <MobileFooter />
       </div>

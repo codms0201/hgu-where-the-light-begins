@@ -138,7 +138,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full">
+      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full bg-white">
         {currentPath !== '/' ? (
           <div 
             className="flex items-center cursor-pointer" 

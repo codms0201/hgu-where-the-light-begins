@@ -2,7 +2,7 @@ import React from 'react';
 import { avantGarde } from '@/styles/fonts';
 
 export default function Interviews() {
-  const youtubeEmbedUrl = "https://www.youtube.com/embed/-Z0bFfNdIPk";
+  const youtubeEmbedUrl = "https://www.youtube.com/embed/NSw-B3FHRzQ";
 
   return (
       <div className="bg-white flex flex-col lg:flex-row p-4 lg:p-8 mb-30 lg:mt-10">
