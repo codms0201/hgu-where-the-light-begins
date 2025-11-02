@@ -10,12 +10,12 @@ export interface Works {
 export interface Work {
   id: number;
   teamName: string | null;
+  teamImg: string | null;
   designer: DesignerWorksInfo[];
   professor: string;
   title: string;
   summary: string;
   description: string;
-  teamImg?: string;
   thumbnail: string;
   creation: Creation[];
 }

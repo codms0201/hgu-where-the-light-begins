@@ -6,6 +6,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 1,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 70, nameKo: "최예영", studentId: 22100744 }],
       professor: "이진구",
       title: "LAVOKE",
@@ -24,6 +25,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 2,
       teamName: "기성이변",
+      teamImg: "images/designers/team/Kiseongebyeon.jpg",
       designer: [{ id: 7, nameKo: "기은찬", studentId: 21900058}, { id: 35, nameKo: "변지민", studentId: 22000838}, { id: 38, nameKo: "성윤지", studentId: 22000362}],
       professor: "이진구",
       title: "37°",
@@ -87,6 +89,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 3,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 50, nameKo: "윤규인", studentId: 22100471}],
       professor: "이진구",
       title: "공공예식 연",
@@ -105,6 +108,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 4,
       teamName: "위미",
+      teamImg: "images/designers/team/Wimi.jpg",
       designer: [{ id: 1, nameKo: "강예은", studentId: 22000009}, { id: 3, nameKo: "강진희", studentId: 22000012}, { id: 53, nameKo: "이유진", studentId: 22000554}, { id: 75, nameKo: "한지원", studentId: 22000792}],
       professor: "이진구",
       title: "독도런",
@@ -128,6 +132,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 5,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 53, nameKo: "이유진", studentId: 22000554}],
       professor: "이진구",
       title: "디클러터 아카이브",
@@ -146,6 +151,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 6,
       teamName: "양떼목장",
+      teamImg: "images/designers/team/Yanttea.jpg",
       designer: [{ id: 26, nameKo: "박선영", studentId: 22100276}, { id: 52, nameKo: "이어진", studentId: 22000540}, { id: 45, nameKo: "오은경", studentId: 22101051}, { id: 70, nameKo: "최예영", studentId: 22100744}],
       professor: "이진구",
       title: "무릉부릉",
@@ -164,6 +170,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 7,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 6, nameKo: "권미소", studentId: 22100051}],
       professor: "이진구",
       title: "보해 복(福)분자주",
@@ -192,6 +199,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 8,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 52, nameKo: "이어진", studentId: 22000540}],
       professor: "이진구",
       title: "숲칫둠칫: 마음이 춤추는 숲",
@@ -210,6 +218,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 9,
       teamName: "알덴테",
+      teamImg: "images/designers/team/Aldente.jpg",
       designer: [{ id: 24, nameKo: "류하나", studentId: 22100256}, { id: 28, nameKo: "박예빈", studentId: 21900288}, { id: 44, nameKo: "오신영", studentId: 22000427}, { id: 76, nameKo: "홍현지", studentId: 22001079}],
       professor: "이진구",
       title: "슬로울릉",
@@ -228,6 +237,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 10,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 3, nameKo: "강진희", studentId: 22000012}],
       professor: "이진구",
       title: "아케이드 서울 리브랜딩",
@@ -246,6 +256,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 11,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 60, nameKo: "장한나", studentId: 22100642}],
       professor: "이진구",
       title: "어린이 동화구독 서비스, 밀리키즈",
@@ -274,6 +285,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 12,
       teamName: "울롱울롱",
+      teamImg: "images/designers/team/Degrechacha.jpg",
       designer: [{ id: 12, nameKo: "김민하", studentId: 22000081}, { id: 21, nameKo: "김채영", studentId: 22100209}, { id: 33, nameKo: "박하은", studentId: 22000313}],
       professor: "이진구",
       title: "울롱울롱",
@@ -362,6 +374,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 13,
       teamName: "데데디디",
+      teamImg: "images/designers/team/Dededidi.jpg",
       designer: [{ id: 46, nameKo: "유은강", studentId: 22100465}, { id: 56, nameKo: "임사랑", studentId: 22100609}, { id: 60, nameKo: "장한나", studentId: 22100642}, { id: 65, nameKo: "조하민", studentId: 22000727}],
       professor: "이진구",
       title: "울링",
@@ -445,6 +458,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 14,
       teamName: "APE +",
+      teamImg: "images/designers/team/APE.jpg",
       designer: [{ id: 2, nameKo: "강주찬", studentId: 21900015}, { id: 10, nameKo: "김민준", studentId: 21800075}, { id: 49, nameKo: "육지민", studentId: 22100470}, { id: 57, nameKo: "임정훈", studentId: 21700619}],
       professor: "이진구",
       title: "울멍 FESTA",
@@ -473,6 +487,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 15,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 1, nameKo: "강예은", studentId: 22000009}],
       professor: "이진구",
       title: "자연韓첩",
@@ -491,6 +506,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 16,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 56, nameKo: "임사랑", studentId: 22100609}],
       professor: "이진구",
       title: "전주 국제단편영화제 리브랜딩",
@@ -519,6 +535,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 17,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 73, nameKo: "한상일", studentId: 21900782}],
       professor: "이진구",
       title: "정찬1962",
@@ -547,6 +564,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 18,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 75, nameKo: "한지원", studentId: 22000792}],
       professor: "이진구",
       title: "토종씨앗도서관",
@@ -565,6 +583,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 19,
       teamName: "독땅",
+      teamImg: "images/designers/team/Dokthang.jpg",
       designer: [{ id: 14, nameKo: "김선우", studentId: 21900108}, { id: 25, nameKo: "모리야 토모키", studentId: 22100819}, { id: 27, nameKo: "박아나", studentId: 22100821}, { id: 73, nameKo: "한상일", studentId: 21900782}],
       professor: "이진구",
       title: "한잔에 담긴 울릉도",
@@ -583,6 +602,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 20,
       teamName: "구조",
+      teamImg: "images/designers/team/Gujo.jpg",
       designer: [{ id: 55, nameKo: "이지애", studentId: 21900566}, { id: 50, nameKo: "윤규인", studentId: 22100471}, { id: 42, nameKo: "연승아", studentId: 21800437}],
       professor: "이진구",
       title: "해보길 | 해바라길",
@@ -601,6 +621,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 21,
       teamName: "섭씨 25도",
+      teamImg: "images/designers/team/Degree25.jpg",
       designer: [{ id: 6, nameKo: "권미소", studentId: 22100051}, { id: 30, nameKo: "박정현", studentId: 21800312}, { id: 40, nameKo: "안민애", studentId: 22101048}, { id: 48, nameKo: "유하은", studentId: 22200478}],
       professor: "이진구",
       title: "해보이소",
@@ -624,6 +645,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 22,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 20, nameKo: "김종욱", studentId: 22000169}],
       professor: "이진구",
       title: "A2F",
@@ -642,6 +664,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 23,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 24, nameKo: "류하나", studentId: 22100256}],
       professor: "이진구",
       title: "And Job",
@@ -665,6 +688,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 24,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 42, nameKo: "연승아", studentId: 21800437}],
       professor: "이진구",
       title: "ANT STRATEGY:",
@@ -683,6 +707,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 25,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 45, nameKo: "오은경", studentId: 22101051}],
       professor: "이진구",
       title: "Avo Haus",
@@ -701,6 +726,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 26,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 4, nameKo: "강하라", studentId: 21900018}],
       professor: "이진구",
       title: "Coree",
@@ -759,6 +785,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 27,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 27, nameKo: "박아나", studentId: 22100821}],
       professor: "이진구",
       title: "Cotidi",
@@ -777,6 +804,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 28,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 33, nameKo: "박하은", studentId: 22000313}],
       professor: "이진구",
       title: "Dang",
@@ -815,6 +843,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 29,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 27, nameKo: "박아나", studentId: 22100821}],
       professor: "이진구",
       title: "DAWN",
@@ -843,6 +872,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 30,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 76, nameKo: "홍현지", studentId: 22001079}],
       professor: "이진구",
       title: "ETUDE",
@@ -871,6 +901,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 31,
       teamName: null,
+      teamImg: null,
       designer: [{id: 21, nameKo: "김채영", studentId: 22100209}],
       professor: "이진구",
       title: "eve:lot",
@@ -899,6 +930,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 32,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 35, nameKo: "변지민", studentId: 22000838}],
       professor: "이진구",
       title: "Fairy Lab",
@@ -917,6 +949,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 33,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 7, nameKo: "기은찬", studentId: 21900058}],
       professor: "이진구",
       title: "Fender: Korea",
@@ -965,6 +998,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 34,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 67, nameKo: "천예은", studentId: 22000746}],
       professor: "이진구",
       title: "FLEUR",
@@ -998,6 +1032,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 35,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 72, nameKo: "최현성", studentId: 22001072}],
       professor: "이진구",
       title: "GARC",
@@ -1030,6 +1065,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     },
     {
       id: 36,
+      teamImg: null,
       teamName: null,
       designer: [{ id: 40, nameKo: "안민애", studentId: 22101048}],
       professor: "이진구",
@@ -1059,6 +1095,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 37,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 38, nameKo: "성윤지", studentId: 22000362}],
       professor: "이진구",
       title: "JIMCarry",
@@ -1107,6 +1144,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 38,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 69, nameKo: "최서우", studentId: 22100732}],
       professor: "이진구",
       title: "KARENCIA",
@@ -1150,6 +1188,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 39,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 41, nameKo: "양진솔", studentId: 22000414}],
       professor: "이진구",
       title: "Kissy Journey",
@@ -1168,6 +1207,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 40,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 26, nameKo: "박선영", studentId: 22100276}],
       professor: "이진구",
       title: "KOMOREBI",
@@ -1196,6 +1236,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 41,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 36, nameKo: "서주빈", studentId: 22000348}],
       professor: "이진구",
       title: "light, Many",
@@ -1244,6 +1285,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 42,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 49, nameKo: "육지민", studentId: 22100470}],
       professor: "이진구",
       title: "LOOP",
@@ -1292,6 +1334,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 43,
       teamName: "디용즈",
+      teamImg: "images/designers/team/Dyeoz.jpg",
       designer: [{ id: 4, nameKo: "강하라", studentId: 21900018}, { id: 20, nameKo: "김종욱", studentId: 22000169}, { id: 43, nameKo: "오사랑", studentId: 22000424}, { id: 69, nameKo: "최서우", studentId: 22100732}],
       professor: "이진구",
       title: "O'rum",
@@ -1310,6 +1353,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 44,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 12, nameKo: "김민하", studentId: 22000081}],
       professor: "이진구",
       title: "poti",
@@ -1353,6 +1397,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 45,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 65, nameKo: "조하민", studentId: 22000727}],
       professor: "이진구",
       title: "PREKA",
@@ -1381,6 +1426,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 46,
       teamName: "PUUM",
+      teamImg: "images/designers/team/PUUM.jpg",
       designer: [{ id: 36, nameKo: "서주빈", studentId: 22000348}, { id: 41, nameKo: "양진솔", studentId: 22000414}, { id: 67, nameKo: "천예은", studentId: 22000746}, { id: 72, nameKo: "최현성", studentId: 22001072}],
       professor: "이진구",
       title: "PUUM",
@@ -1399,6 +1445,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 47,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 57, nameKo: "임정훈", studentId: 21700619}],
       professor: "이진구",
       title: "Redbull X Cybertruck",
@@ -1422,6 +1469,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 48,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 25, nameKo: "모리야 토모키", studentId: 22100819}],
       professor: "이진구",
       title: "SALIGHT",
@@ -1450,6 +1498,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 49,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 10, nameKo: "김민준", studentId: 21800075}],
       professor: "이진구",
       title: "Soolé",
@@ -1483,6 +1532,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 50,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 44, nameKo: "오신영", studentId: 22000427}],
       professor: "이진구",
       title: "SŌUL",
@@ -1516,6 +1566,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 51,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 43, nameKo: "오사랑", studentId: 22000424}],
       professor: "이진구",
       title: "SOUND採掘團",
@@ -1544,6 +1595,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 52,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 28, nameKo: "박예빈", studentId: 21900288}],
       professor: "이진구",
       title: "TeaAmo",
@@ -1562,6 +1614,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 53,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 55, nameKo: "이지애", studentId: 21900566}],
       professor: "이진구",
       title: "The Final Cut",
@@ -1580,6 +1633,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 54,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 2, nameKo: "강주찬", studentId: 21900015}],
       professor: "이진구",
       title: "UNDID",
@@ -1608,6 +1662,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 55,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 46, nameKo: "유은강", studentId: 22100465}],
       professor: "이진구",
       title: "UNHYANG",
@@ -1641,6 +1696,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 56,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 14, nameKo: "김선우", studentId: 21900108}],
       professor: "이진구",
       title: "UNIQ:LO",
@@ -1679,6 +1735,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 57,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 48, nameKo: "유하은", studentId: 22200478}],
       professor: "이진구",
       title: "What's Your BGM?",
@@ -1707,6 +1764,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 58,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 30, nameKo: "박정현", studentId: 21800312}],
       professor: "이진구",
       title: "X : 열 번째 계절",
@@ -1757,6 +1815,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 1,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 31, nameKo: "박지윤", studentId: 22100308}],
       professor: "박찬송",
       title: "2100: New Access",
@@ -1775,6 +1834,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 2,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 13, nameKo: "김서영", studentId: 22100106}],
       professor: "박찬송",
       title: "LumiON",
@@ -1793,6 +1853,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 3,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 68, nameKo: "최민서", studentId: 22000750}],
       professor: "박찬송",
       title: "MV 2T",
@@ -1811,6 +1872,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 4,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 54, nameKo: "이재은", studentId: 22000562}],
       professor: "박찬송",
       title: "Therra",
@@ -1829,6 +1891,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 5,
       teamName: null,
+      teamImg: null,
       designer: [{ id: 19, nameKo: "김은수", studentId: 22100169}],
       professor: "박찬송",
       title: "Waterless Shower",
@@ -1859,6 +1922,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 1,
       teamName: "BEYONIC",
+      teamImg: "images/designers/team/BEYONIC.jpg",
       designer: [{ id: 35, nameKo: "변지민", studentId: 22000838}, { id: 42, nameKo: "연승아", studentId: 21800437}, { id: 50, nameKo: "윤규인", studentId: 22100471}],
       professor: "이중섭",
       title: "길찾기가 쉬워지는 도로명주소 시스템",
@@ -1887,6 +1951,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 2,
       teamName: "APE +",
+      teamImg: "images/designers/team/APE.jpg",
       designer: [{ id: 2, nameKo: "강주찬", studentId: 21900015}, { id: 10, nameKo: "김민준", studentId: 21800075}, { id: 49, nameKo: "육지민", studentId: 22100470}, { id: 57, nameKo: "임정훈", studentId: 21700619}],
       professor: "이중섭",
       title: "내오시옷",
@@ -1910,6 +1975,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 3,
       teamName: "디그리차차!",
+      teamImg: "images/designers/team/Degrechacha.jpg",
       designer: [{ id: 12, nameKo: "김민하", studentId: 22000081}, { id: 21, nameKo: "김채영", studentId: 22100209}, { id: 33, nameKo: "박하은", studentId: 22000313}, { id: 38, nameKo: "성윤지", studentId: 22000362}],
       professor: "이중섭",
       title: "머뭄",
@@ -1993,6 +2059,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 4,
       teamName: "섭씨 25도",
+      teamImg: "images/designers/team/Degree25.jpg",
       designer: [{ id: 6, nameKo: "권미소", studentId: 22100051}, { id: 30, nameKo: "박정현", studentId: 21800312}, { id: 40, nameKo: "안민애", studentId: 22101048}, { id: 48, nameKo: "유하은", studentId: 22200478}],
       professor: "이중섭",
       title: "배우보죠",
@@ -2011,6 +2078,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 5,
       teamName: "양떼목장",
+      teamImg: "images/designers/team/Yanttea.jpg",
       designer: [{ id: 26, nameKo: "박선영", studentId: 22100276}, { id: 52, nameKo: "이어진", studentId: 22000540}, { id: 45, nameKo: "오은경", studentId: 22101051}, { id: 70, nameKo: "최예영", studentId: 22100744}],
       professor: "이재선",
       title: "쑥쏙",
@@ -2029,6 +2097,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 6,
       teamName: "띵필+",
+      teamImg: "images/designers/team/Thingpill.jpg",
       designer: [{ id: 36, nameKo: "서주빈", studentId: 22000348}, { id: 41, nameKo: "양진솔", studentId: 22000414}, { id: 67, nameKo: "천예은", studentId: 22000746}, { id: 72, nameKo: "최현성", studentId: 22001072}],
       professor: "이중섭",
       title: "온길",
@@ -2047,6 +2116,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 7,
       teamName: "알덴테",
+      teamImg: "images/designers/team/Aldente.jpg",
       designer: [{ id: 24, nameKo: "류하나", studentId: 22100256}, { id: 28, nameKo: "박예빈", studentId: 21900288}, { id: 44, nameKo: "오신영", studentId: 22000427}, { id: 76, nameKo: "홍현지", studentId: 22001079}],
       professor: "이재선",
       title: "byBYE",
@@ -2065,6 +2135,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 8,
       teamName: "디용즈",
+      teamImg: "images/designers/team/Dyeoz.jpg",
       designer: [{ id: 4, nameKo: "강하라", studentId: 21900018}, { id: 20, nameKo: "김종욱", studentId: 22000169}, { id: 43, nameKo: "오사랑", studentId: 22000424}, { id: 69, nameKo: "최서우", studentId: 22100732}],
       professor: "이중섭",
       title: "CYRO",
@@ -2098,6 +2169,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 9,
       teamName: "데데디디",
+      teamImg: "images/designers/team/Dededidi.jpg",
       designer: [{ id: 46, nameKo: "유은강", studentId: 22100465}, { id: 56, nameKo: "임사랑", studentId: 22100609}, { id: 60, nameKo: "장한나", studentId: 22100642}, { id: 65, nameKo: "조하민", studentId: 22000727}],
       professor: "이재선",
       title: "INT",
@@ -2126,6 +2198,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 10,
       teamName: "TriKru",
+      teamImg: "images/designers/team/TriKru.jpg",
       designer: [{ id: 7, nameKo: "기은찬", studentId: 21900058}, { id: 25, nameKo: "모리야 토모키", studentId: 22100819}, { id: 27, nameKo: "박아나", studentId: 22100821}],
       professor: "이재선",
       title: "LessQ",
@@ -2144,6 +2217,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 11,
       teamName: "옹뜨리옹",
+      teamImg: "images/designers/team/Ongtreeong.jpg",
       designer: [{ id: 14, nameKo: "김선우", studentId: 21900108}, { id: 55, nameKo: "이지애", studentId: 21900566}, { id: 73, nameKo: "한상일", studentId: 21900782}],
       professor: "이중섭",
       title: "Myhaus",
@@ -2162,6 +2236,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 12,
       teamName: "위미",
+      teamImg: "images/designers/team/Wimi.jpg",
       designer: [{ id: 1, nameKo: "강예은", studentId: 22000009}, { id: 3, nameKo: "강진희", studentId: 22000012}, { id: 53, nameKo: "이유진", studentId: 22000554}, { id: 75, nameKo: "한지원", studentId: 22000792}],
       professor: "이재선",
       title: "ZIP",
@@ -2187,7 +2262,8 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 1,
       teamName: "MiMO",
-      designer: [{ id: 17, nameKo: "김수아", studentId: 22000108}, { id: 66, nameKo: "조환", studentId: 21900719}, { id: 5, nameKo: "강희", studentId: 22100027}, { id: 34, nameKo: "백송이", studentId: 22100340}, { id: 47, nameKo: "유재선", studentId: 22000461}],
+      teamImg: "images/designers/team/Mimo.jpg",
+      designer: [{ id: 5, nameKo: "강희", studentId: 22100027}, { id: 17, nameKo: "김수아", studentId: 22000108}, { id: 34, nameKo: "백송이", studentId: 22100340}, { id: 47, nameKo: "유재선", studentId: 22000461}, { id: 66, nameKo: "조환", studentId: 21900719}],
       professor: "이은종",
       title: "All About Me",
       summary: "All About Me: Beyond View",
@@ -2250,6 +2326,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 2,
       teamName: "Fourest✿",
+      teamImg: "images/designers/team/Fourest.jpg",
       designer: [{ id: 23, nameKo: "김혜나", studentId: 22100238}, { id: 51, nameKo: "이수빈", studentId: 22000528}, { id: 61, nameKo: "정경난", studentId: 22100657}, { id: 77, nameKo: "홍휘영", studentId: 22100805}],
       professor: "이은종",
       title: "Bridge Talk",
@@ -2278,6 +2355,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 3,
       teamName: "HIPPY DEEPY",
+      teamImg: "images/designers/team/HIPPYDEEPY.jpg",
       designer: [{ id: 17, nameKo: "김수아", studentId: 22000108}, { id: 66, nameKo: "조환", studentId: 21900719}],
       professor: "이은종",
       title: "CHRISTHON",
@@ -2336,6 +2414,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 4,
       teamName: "CREA:PATH",
+      teamImg: "images/designers/team/CREAPATH.jpg",
       designer: [{ id: 8, nameKo: "김고은", studentId: 22100071}, { id: 16, nameKo: "김수빈", studentId: 21900127}, { id: 63, nameKo: "조예은", studentId: 22100705}, { id: 71, nameKo: "최찬희", studentId: 21900768}],
       professor: "이은종",
       title: "CLORBIT",
@@ -2369,6 +2448,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 5,
       teamName: "Marimo",
+      teamImg: "images/designers/team/Marimo.jpg",
       designer: [{ id: 5, nameKo: "강희", studentId: 22100027}, { id: 34, nameKo: "백송이", studentId: 22100340}, { id: 47, nameKo: "유재선", studentId: 22000461}],
       professor: "손성찬",
       title: "EVERPORT",
@@ -2442,6 +2522,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 6,
       teamName: "Fourest✿",
+      teamImg: "images/designers/team/Fourest.jpg",
       designer: [{ id: 23, nameKo: "김혜나", studentId: 22100238}, { id: 51, nameKo: "이수빈", studentId: 22000528}, { id: 61, nameKo: "정경난", studentId: 22100657}, { id: 77, nameKo: "홍휘영", studentId: 22100805}],
       professor: "이은종",
       title: "Haven",
@@ -2470,6 +2551,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 7,
       teamName: "FRIGUYS",
+      teamImg: "images/designers/team/FRIGUYS.jpg",
       designer: [{ id: 15, nameKo: "김소영", studentId: 22200102}, { id: 18, nameKo: "김수정", studentId: 22000112}, { id: 22, nameKo: "김채영", studentId: 22000191}, { id: 62, nameKo: "정승준", studentId: 22000675}],
       professor: "이은종",
       title: "HOMING",
@@ -2513,6 +2595,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 8,
       teamName: "好樂好樂: 호락호락",
+      teamImg: "images/designers/team/Horakhorak.jpg",
       designer: [{ id: 9, nameKo: "김근희", studentId: 22000052}, { id: 37, nameKo: "석예슬", studentId: 22000356}, { id: 58, nameKo: "장수민", studentId: 22000623}, { id: 64, nameKo: "조예준", studentId: 22000721}],
       professor: "이은종",
       title: "LooME",
@@ -2556,6 +2639,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 9,
       teamName: "반도",
+      teamImg: "images/designers/team/Bando.jpg",
       designer: [{ id: 11, nameKo: "김민지", studentId: 22100098}, { id: 39, nameKo: "송연수", studentId: 22100393}, { id: 59, nameKo: "장주영", studentId: 21900631}],
       professor: "이은종",
       title: "Pipe-lo",
@@ -2604,6 +2688,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 10,
       teamName: "DE:CODE",
+      teamImg: "images/designers/team/DECODE.jpg",
       designer: [{ id: 29, nameKo: "박정민", studentId: 22100295}, { id: 32, nameKo: "박창휘", studentId: 21900321}, { id: 74, nameKo: "한지영", studentId: 22100779}],
       professor: "손성찬",
       title: "Project NAIN",
@@ -2677,6 +2762,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 11,
       teamName: "好樂好樂: 호락호락",
+      teamImg: "images/designers/team/Horakhorak.jpg",
       designer: [{ id: 9, nameKo: "김근희", studentId: 22000052}, { id: 37, nameKo: "석예슬", studentId: 22000356}, { id: 58, nameKo: "장수민", studentId: 22000623}, { id: 64, nameKo: "조예준", studentId: 22000721}],
       professor: "손성찬",
       title: "Proto-Hour",
@@ -2720,6 +2806,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 12,
       teamName: "DE:CODE",
+      teamImg: "images/designers/team/DECODE.jpg",
       designer: [{ id: 29, nameKo: "박정민", studentId: 22100295}, { id: 32, nameKo: "박창휘", studentId: 21900321}, { id: 74, nameKo: "한지영", studentId: 22100779}],
       professor: "이은종",
       title: "stayz.",
@@ -2783,6 +2870,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 13,
       teamName: "CREA:PATH",
+      teamImg: "images/designers/team/CREAPATH.jpg",
       designer: [{ id: 8, nameKo: "김고은", studentId: 22100071}, { id: 16, nameKo: "김수빈", studentId: 21900127}, { id: 63, nameKo: "조예은", studentId: 22100705}, { id: 71, nameKo: "최찬희", studentId: 21900768}],
       professor: "이은종",
       title: "Talk-Zip",
@@ -2836,6 +2924,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 14,
       teamName: "FRIGUYS",
+      teamImg: "images/designers/team/FRIGUYS.jpg",
       designer: [{ id: 15, nameKo: "김소영", studentId: 22200102}, { id: 18, nameKo: "김수정", studentId: 22000112}, { id: 22, nameKo: "김채영", studentId: 22000191}, { id: 62, nameKo: "정승준", studentId: 22000675}],
       professor: "이은종",
       title: "Threads Hub",
@@ -2869,6 +2958,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 15,
       teamName: "반도",
+      teamImg: "images/designers/team/Bando.jpg",
       designer: [{ id: 11, nameKo: "김민지", studentId: 22100098}, { id: 39, nameKo: "송연수", studentId: 22100393}, { id: 59, nameKo: "장주영", studentId: 21900631}],
       professor: "이은종",
       title: "TUK",

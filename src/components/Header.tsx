@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router'; // useRouter 임포트
+import { useRouter } from 'next/router'; 
 import { avantGarde } from '@/styles/fonts';
 import { ITCavantGarde } from '@/styles/fonts';
 
@@ -16,18 +18,15 @@ const Header = () => {
   const enterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // useRouter 훅을 사용하여 pathname을 직접 가져옵니다.
   const router = useRouter();
   const currentPath = router.pathname;
 
   useEffect(() => {
-    // currentPath 설정 로직은 제거됨
-    // 타이머 클린업 로직만 남김
     return () => {
       if (enterTimeoutRef.current) clearTimeout(enterTimeoutRef.current);
       if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
     };
-  }, []); // 의존성 배열은 비워 둡니다.
+  }, []);
 
   const navigationItems: NavigationItem[] = [
     { name: 'ABOUT', path: '/about', angle: 180 },
@@ -37,20 +36,24 @@ const Header = () => {
   ];
 
   const handleLogoClick = (): void => {
-    // window.location.href 대신 router.push를 사용하는 것이 Next.js 방식에 더 적합합니다.
-    router.push('/?skipVideo=true');
+    // 🚀 수정된 로직: 로고 클릭 시 무조건 페이지를 새로고침하여
+    // HomePage의 영상 재생 로직이 처음부터 다시 실행되도록 합니다.
+    if (router.pathname === '/') {
+        // 이미 홈 경로일 경우 바로 새로고침
+        window.location.reload(); 
+    } else {
+        // 다른 경로에서 홈으로 이동하는 경우
+        // Next.js 라우팅으로 홈으로 이동한 후, 브라우저 새로고침을 유발
+        router.push('/').then(() => {
+            window.location.reload(); 
+        });
+    }
   };
 
   const handleNavClick = (path: string): void => {
-    // window.location.href 대신 router.push를 사용합니다.
     router.push(path);
     setIsMenuOpen(false);
   };
-
-  // isCurrentPath 함수는 이제 필요 없습니다. (currentPath를 직접 비교)
-  // const isCurrentPath = (path: string): boolean => {
-  //   return currentPath === path;
-  // };
 
   const handleHamburgerEnter = () => {
     if (isMenuOpen) {
@@ -138,7 +141,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full bg-white">
+      {/* 🌟 수정된 부분: 배경색 및 블러 효과 적용 (tailwind.config.js 설정 필수) */}
+      <header className={`flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full ${
+        currentPath === '/' 
+          ? 'bg-transparent' 
+          : 'bg-white'
+      }`}>
         {currentPath !== '/' ? (
           <div 
             className="flex items-center cursor-pointer" 
@@ -157,6 +165,7 @@ const Header = () => {
             aria-hidden="true"
             style={{ visibility: 'hidden' }} 
           >
+            {/* 로고 공백 유지 */}
             <div className={`${avantGarde.className} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
               Where
             </div>
@@ -237,8 +246,9 @@ const Header = () => {
                     className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
                     style={getBarStyle(3)}
                   ></span>
+                  {/* 🌟 햄버거 메뉴 오타 수정: top-1/C1C1C 제거 */}
                   <span
-                    className="block absolute h-[4px] w-full bg-black top-1/C1C1C top-1/2 left-0" // 오타 수정: bg-black
+                    className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
                     style={getBarStyle(4)}
                   ></span>
                 </div>

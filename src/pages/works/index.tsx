@@ -1,17 +1,30 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/router'; // 🌟 'next/navigation' -> 'next/router'로 변경
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import { avantGarde, suitMedium } from '@/styles/fonts';
 import MobileFooter from '../../components/mobile_footer';
+import { WORKS } from '../../constants/works';
+import { DOMAIN, PATHS } from '../../constants/paths'; // 🌟 PATHS import 추가
 
 type CategoryType = 'All' | 'Communication Design' | 'Service Design' | 'UX Design' | 'Industrial Design';
-interface Project { id: number; name: string; category: CategoryType; image: string; }
+
+// 🌟 Project 인터페이스 수정 (TypeScript 오류 해결)
+interface Project { 
+  id: number; 
+  name: string;
+  category: CategoryType; 
+  image: string;
+  title: string;
+  designerName: string;
+  teamName?: string | null; // 🌟 수정: string | undefined -> string | null | undefined
+}
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 
+// --- (useIsMounted, useWindowWidth 훅은 변경 없음) ---
 const useIsMounted = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -33,8 +46,16 @@ const useWindowWidth = () => {
   return width;
 };
 
+// 🌟 UI 카테고리 이름을 URL 경로 키로 변환하는 맵 추가
+const categoryToUrlKey: { [key in CategoryType]?: string } = {
+  'Communication Design': 'communication',
+  'Service Design': 'service',
+  'UX Design': 'ux',
+  'Industrial Design': 'industrial',
+};
+
 const WorksPage = () => {
-  const router = useRouter();
+  const router = useRouter(); // 🌟 'next/router'의 useRouter 사용
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,41 +71,90 @@ const WorksPage = () => {
     'Industrial Design': 'Industrial'
   };
 
-  const projects: Project[] = Array.from({ length: 90 }, (_, i) => ({
-    id: i + 1,
-    name: `Name, Name, Name, Name ${i + 1}`,
-    category: categories[Math.floor(Math.random() * (categories.length - 1)) + 1] as CategoryType,
-    image: `https://picsum.photos/400/300?random=${i + 1}`
-  }));
-
-  const filteredProjects = projects
-    .filter(project => selectedCategory === 'All' || project.category === selectedCategory) // 'selectedTargegory' 오타 수정
-    .filter(project => project.name.toLowerCase().includes(searchQuery.toLowerCase()));
-
-  const handleCategoryChange = (category: CategoryType) => {
-    setSelectedCategory(category);
+  const dataKeyToCategory: { [key in keyof typeof WORKS]?: CategoryType } = {
+    COMMUNICATION: 'Communication Design',
+    SERVICE: 'Service Design',
+    UX: 'UX Design',
+    INDUSTRIAL: 'Industrial Design',
   };
 
-  const handleProjectClick = (projectId: number) => {
-    router.push('/works/detail_team');
+  // --- (useMemo 로직 변경 없음) ---
+  const projects: Project[] = useMemo(() => {
+    const allProjects: Project[] = [];
+
+    (Object.keys(WORKS) as (keyof typeof WORKS)[]).forEach(dataKey => {
+      const categoryUI = dataKeyToCategory[dataKey];
+      if (!categoryUI) return; 
+
+      const worksArray = WORKS[dataKey];
+      
+      worksArray.forEach(work => {
+        const designerNames = work.designer?.map(d => d.nameKo).join(', ') || 'Unknown Designer';
+        
+        const combinedName = `${work.title} - ${designerNames}`; 
+        
+        allProjects.push({
+          id: work.id,
+          name: combinedName,
+          title: work.title,
+          designerName: designerNames,
+          teamName: work.teamName,
+          category: categoryUI,
+          image: `${DOMAIN}${work.thumbnail}`, 
+        });
+      });
+    });
+    
+    return allProjects;
+  }, []); 
+
+  // --- (필터링 로직 변경 없음) ---
+  const filteredProjects = projects
+    .filter(project => selectedCategory === 'All' || project.category === selectedCategory) 
+    .filter(project => project.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+  // --- (핸들러 함수들) ---
+  const handleCategoryChange = (category: CategoryType) => {
+    setSelectedCategory(category);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  };
+
+  // 🌟 handleProjectClick 함수 수정
+  const handleProjectClick = (project: Project) => {
+    // 'All' 카테고리는 실제 데이터에 없으므로 예외처리
+    if (project.category === 'All') return; 
+
+    const urlKey = categoryToUrlKey[project.category];
+    
+    if (!urlKey) {
+      console.error('Invalid category key for project:', project);
+      return;
+    }
+
+    // PATHS 상수를 사용하여 동적 경로 생성
+    const path = PATHS.WORKS_DETAIL
+      .replace(':category', urlKey)
+      .replace(':workId', String(project.id));
+      
+    router.push(path);
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* --- 데스크톱 헤더 (고정) --- */}
+      {/* --- 데스크톱 헤더 (변경 없음) --- */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50 lg:bg-white">
         <Header />
       </div>
 
-      {/* --- 모바일 헤더 + 검색 + 필터 (고정 래퍼) --- */}
+      {/* --- 모바일 헤더 (변경 없음) --- */}
      <div className="lg:hidden sticky top-0 z-50 bg-white">
-        {/* Mobile Header */}
         <header className="flex justify-between items-center p-4">
           <h1 className={`${avantGarde.className} text-[40px] font-[400] text-[#1C1C1C]`}>
             Works
           </h1>
           <div className="flex items-end justify-end space-x-5">
-            {/* Search Icon */}
             <button onClick={() => setIsSearchOpen(true)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                 <path d="M9.59961 0.5C14.9015 0.5 19.2 4.79786 19.2002 10.0996L19.1875 10.5938C19.0902 12.5133 18.4279 14.2834 17.3652 15.7432L23.4609 21.8389C24.0467 22.4247 24.0467 23.3752 23.4609 23.9609C22.8753 24.5465 21.9256 24.5462 21.3398 23.9609L15.2432 17.8643C13.6588 19.0178 11.7093 19.7002 9.59961 19.7002L9.10645 19.6875C4.03387 19.4306 0 15.236 0 10.0996C0.000168531 4.79801 4.29795 0.500237 9.59961 0.5ZM9.59961 3.5C5.95477 3.50024 3.00017 6.4549 3 10.0996C3 13.7445 5.95467 16.7 9.59961 16.7002C13.2448 16.7002 16.2002 13.7446 16.2002 10.0996C16.2 6.45475 13.2446 3.5 9.59961 3.5Z" fill="#1C1C1C"/>
@@ -93,8 +163,6 @@ const WorksPage = () => {
             <Mobile_HeaderBtn />
           </div>
         </header>
-
-        {/* Mobile Search Bar */}
         {isSearchOpen && (
           <div className="px-5 py-4 relative">
             <div className="w-[319px] border-b border-[#7C7C7C]">
@@ -120,8 +188,7 @@ const WorksPage = () => {
               </button>
           </div>
         )}
-        
-        {/* [변경점 1] 모바일용 필터 <nav> (고정 래퍼 안에 추가됨) */}
+        {/* --- 모바일 필터 (변경 없음) --- */}
         <nav className="flex gap-2 p-4 overflow-x-auto lg:hidden bg-white border-b border-gray-200">
            {categories.map((category, index) => (
             <React.Fragment key={category}>
@@ -165,8 +232,6 @@ const WorksPage = () => {
                   <span className="hidden lg:inline">{category}</span>
                 </span>
               </button>
-              
-              {/* 'All' (index 0) 뒤에 구분선 추가 */}
               {index === 0 && (
                 <div className="border-l border-[#7C7C7C] h-4 self-center lg:hidden mr-2" />
               )}
@@ -174,14 +239,9 @@ const WorksPage = () => {
           ))}
         </nav>
       </div>
-      {/* --- 모바일 고정 래퍼 끝 --- */}
-
-
-      {/* --- 메인 컨테이너 (사이드바 + 그리드) --- */}
+      {/* --- 메인 컨테이너 (사이드바 + 그리드) (변경 없음) --- */}
       <div className="flex flex-col lg:flex-row">
-        
-        {/* 데스크톱 사이드바 (고정) */}
-        {/* 헤더 높이 140px + 7px 오차 = 147px로 설정 (이전 코드 값 유지) */}
+        {/* --- 데스크톱 사이드바 (변경 없음) --- */}
         <aside className="hidden lg:block lg:w-1/4 lg:fixed lg:top-[147px] lg:h-[calc(100vh_-_147px)]"> 
         <div className="lg:h-full lg:overflow-y-auto lg:p-8">
           <div className="hidden lg:flex items-baseline mb-8 gap-4">
@@ -190,11 +250,9 @@ const WorksPage = () => {
             </h1>
             <p className={`${avantGarde.className} text-[30px] font-[400]`}>
               <span className="text-[#1C1C1C]">{filteredProjects.length}</span>
-              <span className="text-[#7C7C7C]">/90</span>
+              <span className="text-[#7C7C7C]">/{projects.length}</span>
             </p>
           </div>
-
-          {/* [변경점 2] 데스크톱용 <nav> (모바일에선 숨김) */}
           <nav className="hidden lg:flex gap-2 p-4 overflow-x-auto lg:flex-col lg:gap-0 lg:space-y-4 lg:p-0 items-center lg:items-start">
              {categories.map((category, index) => (
               <React.Fragment key={category}>
@@ -248,11 +306,11 @@ const WorksPage = () => {
           </div>
         </aside>
 
-        {/* --- 메인 프로젝트 그리드 --- */}
-        <main className="flex-1 p-4 lg:p-8 lg:ml-[25%]">
+        {/* --- 메인 프로젝트 그리드 (변경 없음) --- */}
+        <main className="flex-1 p-4 lg:p-8">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-xl text-gray-400 font-[SUIT]">No projects found</p>
+              <p className={`${suitMedium.className} text-xl text-gray-400`}>No projects found</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-x-3.5 lg:grid-cols-[repeat(3,336px)] lg:gap-y-8 lg:gap-x-0 lg:justify-end">
@@ -260,9 +318,9 @@ const WorksPage = () => {
                 <div 
                   key={project.id} 
                   className="group cursor-pointer"
-                  onClick={() => handleProjectClick(project.id)}
+                  onClick={() => handleProjectClick(project)} // 🌟 project 객체 전달
                 >
-                  <div className="aspect-[4/3] lg:aspect-auto lg:h-[224px] mb-2 relative transition-all lg:group-hover:outline lg:group-hover:outline-2 lg:group-hover:outline-[#00FF36] lg:group-hover:outline-offset-[-2px]">
+                  <div className="aspect-[3/2] lg:w-[336px] lg:h-[254px] mb-2 relative transition-all lg:group-hover:outline lg:group-hover:outline-2 lg:group-hover:outline-[#00FF36] lg:group-hover:outline-offset-[-2px]">
                     <img
                       src={project.image}
                       alt={project.name}
@@ -272,13 +330,15 @@ const WorksPage = () => {
                     <div className="absolute z-10 -top-1 -right-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute z-10 -bottom-1 -left-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute z-10 -bottom-1 -right-1 w-2 h-2 bg-[#fff] border-2 border-[#00FF36] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className={`${suitMedium.className} absolute -bottom-7.2 left-2 bg-[#00FF36] px-2 py-1 text-[#1C1C1C] text-[1Apx] text-[600] shadow-lg opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300`}>
-                      artwork name Designer
+                    {/* --- 데스크톱 호버 텍스트 (로직 변경됨) --- */}
+                    <div className={`${suitMedium.className} absolute -bottom-7.2 left-2 bg-[#00FF36] px-2 py-1 text-[#1C1C1C] text-[14px] text-[600] shadow-lg opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300`}>
+                      {project.title} {project.teamName || project.designerName}
                     </div>
                   </div>
+                  {/* --- 모바일 텍스트 (변경 없음) --- */}
                   <div className="lg:group-hover:opacity-0 transition-opacity duration-300">
-                      <h3 className={`${suitMedium.className} text-[14px] text-[#1C1C1C] font-[500] lg:hidden`}>Project</h3>
-                      <p className={`${suitMedium.className} text-[12px] text-[#1C1C1C] font-[500] mb-8`}>{project.name}</p>
+                      <h3 className={`${suitMedium.className} text-[14px] text-[#1C1C1C] font-[500] lg:hidden`}>{project.title}</h3>
+                      <p className={`${suitMedium.className} text-[12px] text-[#1C1C1C] font-[500] mb-8`}>{project.designerName}</p>
                   </div>
                 </div>
               ))}
@@ -287,7 +347,7 @@ const WorksPage = () => {
         </main>
       </div>
 
-      {/* --- 푸터 --- */}
+      {/* --- 푸터 (변경 없음) --- */}
       {isMounted && (width <= 390 ? <MobileFooter /> : <Footer />)}
     </div>
   );
