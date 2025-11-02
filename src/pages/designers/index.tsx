@@ -1,6 +1,6 @@
 'use client'; 
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Header from '@/components/Header';
@@ -47,21 +47,23 @@ export default function DesignersPage() {
   const router = useRouter();
 
   const filteredDesigners = useMemo(() => {
-    const filtered = designersData.filter(designer =>
+    return designersData.filter(designer =>
       designer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       designer.id.includes(searchTerm)
     );
+  }, [searchTerm]);
 
-    if (filtered.length === 1) {
-      setHoveredId(filtered[0].id);
-    } else if (filtered.length === 0 && hoveredId !== null) {
+  useEffect(() => {
+    if (filteredDesigners.length === 1) {
+      setHoveredId(filteredDesigners[0].id);
+    } else if (filteredDesigners.length === 0) {
       setHoveredId(null);
-    } else if (filtered.length > 1 && hoveredId !== null && !filtered.some(d => d.id === hoveredId)) {
+    } else {
+      if (hoveredId !== null && !filteredDesigners.some(d => d.id === hoveredId)) {
         setHoveredId(null);
+      }
     }
-
-    return filtered;
-  }, [searchTerm, hoveredId]);
+  }, [filteredDesigners, hoveredId]); 
 
   const handleDesignerClick = (designerId: number) => {
     router.push(PATHS.DESIGNER_DETAIL.replace(':designerId', String(designerId)));
@@ -69,12 +71,9 @@ export default function DesignersPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#1C1C1C] flex flex-col">
-      {/* Desktop Header */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
-
-      {/* MOBILE HEADER BLOCK */}
       <div className="lg:hidden sticky top-0 z-50 bg-white">
         <header className="flex items-center justify-between p-4">
           <h1 className={`${avantGarde.className} text-[#1C1C1C] text-[40px] font-[400]`}>Designers</h1>
@@ -110,7 +109,6 @@ export default function DesignersPage() {
       </div>
 
       <div className="flex flex-1">
-        {/* 왼쪽 사이드바 */}
         <div className="hidden lg:block w-128 lg:fixed lg:top-[147px] lg:h-[calc(100vh_-_147px)]">
           <div className="h-full flex flex-col p-8">
             <h1 className={`${avantGarde.className} text-[70px] font-normal text-[#1C1C1C]`}>Designers</h1>
@@ -144,8 +142,6 @@ export default function DesignersPage() {
             </div>
           </div>
         </div>
-        
-        {/* 오른쪽 메인 콘텐츠 */}
         <div className="flex-1 bg-white lg:pt-18 w-full lg:ml-128">
           <div className="lg:px-8">
             <div 
@@ -196,7 +192,7 @@ export default function DesignersPage() {
         </div>
       </div>
       
-      {/* 푸터 */}
+      {/* --- 푸터 (변경 없음) --- */}
       <div className="hidden lg:block relative z-50">
         <Footer />
       </div>
