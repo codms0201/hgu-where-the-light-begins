@@ -139,7 +139,7 @@ const WorksTeamDetailPage = () => {
                   autoplay: 1,
                   modestbranding: 0,
                   mute: 1,
-                  controls: 0,
+                  controls: 1,
                   loop: 1,
                   playlist: item.src, 
                 },
@@ -193,17 +193,28 @@ const WorksTeamDetailPage = () => {
               "lg:sticky lg:top-[147px] lg:h-[calc(100vh-147px)] lg:overflow-y-auto lg:self-start"
               }> 
               
-              <div className="inline-block relative group">
-                 <span className={`${ITCavantGarde.className} bg-white text-[#1C1C1C] px-3 py-1 text-[18px] font-[500] border-2 border-[#00FF36]`}>
-                  {uiCategoryName}
-                </span>
-                <div className="absolute z-10 -top-1.5 -left-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
-                <div className="absolute z-10 -top-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
-                <div className="absolute z-10 -bottom-1.5 -left-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
-                <div className="absolute z-10 -bottom-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
+              {/* === MODIFICATION START: Combined Category and Professor Display === */}
+              <div className="flex justify-between items-center">
+                <div className="inline-block relative group">
+                   <span className={`${ITCavantGarde.className} bg-white text-[#1C1C1C] px-3 py-1 text-[18px] font-[500] border-2 border-[#00FF36]`}>
+                    {uiCategoryName}
+                  </span>
+                  <div className="absolute z-10 -top-1.5 -left-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
+                  <div className="absolute z-10 -top-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
+                  <div className="absolute z-10 -bottom-1.5 -left-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
+                  <div className="absolute z-10 -bottom-1.5 -right-1 w-2 h-2 bg-white border-2 border-[#00FF36]"></div>
+                </div>
+
+                {work.professor && (
+                  <p className={`${suitMedium.className} text-[#1C1C1C] text-[16px] font-[400]`}>
+                    지도교수 <strong className="font-[700]">{work.professor}</strong>
+                  </p>
+                )}
               </div>
+              {/* === MODIFICATION END === */}
+              
               <h1 className={`${suitMedium.className} text-[20px] lg:text-[32px] font-[700] text-[#1C1C1C] leading-[160%] tracking-[-1px] whitespace-pre-line`}>
-                {work.title}
+                {work.summary}
               </h1>
               <div>
                 <p className={`${suitMedium.className} text-[16px] lg:text-[18px] font-[400] text-[#1C1C1C] leading-[170%] tracking-[-1px] whitespace-pre-line`}>
@@ -216,9 +227,9 @@ const WorksTeamDetailPage = () => {
               </div>
 
               <div className="mt-10">
-                <h3 className={`${suitMedium.className} text-[#1C1C1C] text-[16px] font-[700] mb-4`}>
-                  {work.teamName || (work.designer.length > 1 ? "Designers" : "")}
-                </h3>
+                
+                {/* 팀 이름 제목 h3은 제거됨 */}
+                
                 {!work.teamImg && work.designer.length === 1 && work.designer[0] ? (
                   <div className="flex items-start gap-4">
                     <Image
@@ -228,6 +239,7 @@ const WorksTeamDetailPage = () => {
                       width={218}
                       height={327}
                     />
+                    {/* 단독 디자이너: 사진 옆에 이름만 수직으로 배치 (원래 구조) */}
                     <div className="pt-2"> 
                       <Link
                         key={work.designer[0].id}
@@ -259,14 +271,14 @@ const WorksTeamDetailPage = () => {
                       <Image
                         src={`${DOMAIN}${work.teamImg}`}
                         alt={work.teamName || 'Team Profile'}
-                        className="w-[334px] h-auto object-cover mb-7" 
+                        className="w-[334px] h-auto object-contain mb-7" 
                         width={334}
                         height={334} 
                       />
                     )}
 
                     {!work.teamImg && work.designer.length > 1 && (
-                      <div className="w-full max-w-[334px] grid grid-cols-2 gap-4 mb-7">
+                      <div className="w-full w-[334px] grid grid-cols-2 gap-4 mb-7">
                         {work.designer.map((designer) => (
                           <div key={designer.id}>
                             <Image
@@ -280,31 +292,39 @@ const WorksTeamDetailPage = () => {
                         ))}
                       </div>
                     )}
-
-                    <div className="grid grid-cols-2 gap-7">
-                      {work.designer.map((designer) => (
-                        <Link
-                          key={designer.id}
-                          href={PATHS.DESIGNER_DETAIL.replace(':designerId', String(designer.id))}
-                          className={`${suitMedium.className} flex items-center gap-10 text-[#1C1C1C] text-[16px] font-[500] hover:text-[#00FF36] transition-colors`}
-                        >
-                          <p>{designer.nameKo}</p>
-                          <svg
-                            className="-ml-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="8"
-                            height="8"
-                            viewBox="0 0 8 8"
-                            fill="none"
+                    
+                    {/* ⭐ 팀/다수 디자이너 레이아웃 수정: justify-between -> gap-8로 간격 좁힘 */}
+                    <div className="flex items-start pt-4 gap-13"> 
+                      <h3 className={`${suitMedium.className} text-[#1C1C1C] text-[16px] font-[700] flex-shrink-0`}>
+                        {work.teamName || (work.designer.length > 1 ? "Designers" : "")}
+                      </h3>
+                      
+                      {/* 우측 팀원 이름 목록 (2열 그리드) */}
+                      <div className="grid grid-cols-2 gap-x-8 gap-y-2"> 
+                        {work.designer.map((designer) => (
+                          <Link
+                            key={designer.id}
+                            href={PATHS.DESIGNER_DETAIL.replace(':designerId', String(designer.id))}
+                            className={`${suitMedium.className} flex items-center text-[#1C1C1C] text-[16px] font-[500] hover:text-[#00FF36] transition-colors`}
                           >
-                            <path
-                              d="M0.629395 0.915527H6.99997M6.99997 0.915527V7.2861M6.99997 0.915527L0.629395 7.2861"
-                              stroke="currentColor"
-                              strokeWidth="0.910082"
-                            />
-                          </svg>
-                        </Link>
-                      ))}
+                            <p>{designer.nameKo}</p>
+                            <svg
+                              className="ml-8"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="8"
+                              height="8"
+                              viewBox="0 0 8 8"
+                              fill="none"
+                            >
+                              <path
+                                d="M0.629395 0.915527H6.99997M6.99997 0.915527V7.2861M6.99997 0.915527L0.629395 7.2861"
+                                stroke="currentColor"
+                                strokeWidth="0.910082"
+                              />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </>
                   

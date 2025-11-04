@@ -224,7 +224,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "슬로울릉",
       summary: "슬로우한 울릉 스테이, 슬로울릉",
       description:
-        "‘슬로울릉’은 바쁜 일상 속에서 잠시 멈춰, 느림의 시간을 경험하고 싶은 사람들이 모이는 게스트 하우스입니다. 울릉도의 고유한 자연과 삶의 속도를 따라가며, 잠시 머무는 그 순간 속에서 잃어버린 삶의 리듬을 다시 찾아갑니다.",
+        "‘슬로울릉’은 바쁜 일상 속에서 잠시 멈춰,\n느림의 시간을 경험하고 싶은 사람들이 모이는 게스트 하우스입니다.\n울릉도의 고유한 자연과 삶의 속도를 따라가며, 잠시 머무는 그 순간 속에서 잃어버린 삶의 리듬을 다시 찾아갑니다.",
       thumbnail: "images/works/communication/Aldente/thumbnail.webp",
       creation: [
         {
@@ -262,7 +262,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "어린이 동화구독 서비스, 밀리키즈",
       summary: "어린이 동화구독 서비스, 밀리키즈",
       description:
-        "밀리의 서재가 선보이는 밀리키즈는 1세부터 6세 미취학 아동을\n위한 동화 구독 서비스입니다. 아이의 발달 단계와 흥미에 맞춘\n맞춤형 큐레이션으로, 글자를 읽기 전 단계부터 자연스럽게 책과\n친해지도록 돕습니다. 밀리키즈와 함께 우리 아이의 상상력을\n키워보세요!",
+        "밀리의 서재가 선보이는 밀리키즈는 1세부터 6세 미취학 아동을 위한 동화 구독 서비스입니다. 아이의 발달 단계와 흥미에 맞춘 맞춤형 큐레이션으로, 글자를 읽기 전 단계부터 자연스럽게 책과 친해지도록 돕습니다. 밀리키즈와 함께 우리 아이의 상상력을 키워보세요!",
       thumbnail: "images/works/communication/HannaJang/thumbnail.webp",
       creation: [
         {
@@ -285,7 +285,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     {
       id: 12,
       teamName: "울롱울롱",
-      teamImg: "images/designers/team/Degrechacha.jpg",
+      teamImg: "images/designers/team/Degreechacha.jpeg",
       designer: [{ id: 12, nameKo: "김민하", studentId: 22000081}, { id: 21, nameKo: "김채영", studentId: 22100209}, { id: 33, nameKo: "박하은", studentId: 22000313}],
       professor: "이진구",
       title: "울롱울롱",
@@ -457,7 +457,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     },
     {
       id: 14,
-      teamName: "APE +",
+      teamName: "울멍",
       teamImg: "images/designers/team/APE.jpg",
       designer: [{ id: 2, nameKo: "강주찬", studentId: 21900015}, { id: 10, nameKo: "김민준", studentId: 21800075}, { id: 49, nameKo: "육지민", studentId: 22100470}, { id: 57, nameKo: "임정훈", studentId: 21700619}],
       professor: "이진구",
@@ -729,10 +729,10 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       teamImg: null,
       designer: [{ id: 4, nameKo: "강하라", studentId: 21900018}],
       professor: "이진구",
-      title: "Coree",
+      title: "Coree ",
       summary: "을유문화사 85주년 빛나는 순간을 기록하는 Coree",
       description:
-        "출판은 곧 건국사업이라는 정신으로 창립된 을유문화사,\n2030년 85주년을 맞아 기록 앱 꼬레를 선보입니다.\n꼬레는 곡선처럼 자유롭게 삶을 기록하며, 건강하고 밝은 대한민국을 만들어갑니다.\nFlow in curves, write your light!",
+        "출판은 곧 건국사업이라는 정신으로 창립된 을유문화사,\n2030년 85주년을 맞아 기록 앱 꼬레를 선보입니다.\n꼬레는 곡선처럼 자유롭게 삶을 기록하며, 건강하고 밝은\n대한민국을 만들어갑니다. Flow in curves, write your light!",
       thumbnail: "images/works/communication/HaraKang/thumbnail.webp",
       creation: [
         {
@@ -878,7 +878,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "ETUDE",
       summary: "에뛰드 공주의 새로운 변신, 화장놀이",
       description:
-        "화장은 어릴 적 놀이에서 나를 표현하는 언어로 변합니다. 오늘, 에뛰드와 함께 나만의 플레이리스트로 나만의 색을 찾아가는 새로운 공주가 되어보세요.\n평범한 공주와 달리, 나는 나만의 룰로 움직입니다.\nMake your playlist with Etude!",
+        "화장은 어릴 적 놀이에서 나를 표현하는 언어로 변합니다.\n오늘, 에뛰드와 함께\n나만의 플레이리스트로 나만의 색을 찾아가는 새로운 공주가 되어보세요.\n평범한 공주와 달리, 나는 나만의 룰로!\nMake your playlist with Etude!",
       thumbnail: "images/works/communication/HyeonjiHong/thumbnail.webp",
       creation: [
         {
@@ -1004,7 +1004,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "FLEUR",
       summary: "플라워 브랜드, FLEUR",
       description:
-        "플레르는 잠깐의 아름다움을 넘어, 마음에 오래도록 남는 ‘기억의\n흔적’을 전하는 야생화 브랜드입니다. 흔하지 않기에 더 소중한\n가치를 담아, 특별한 시간을 기념하고 마음을 전하며 위로를 건네는\n— 꽃과 함께하는 모든 순간, 플레르가 함께합니다.",
+        "플레르는 잠깐의 아름다움을 넘어, 마음에 오래도록 남는\n‘기억의 흔적’을 전하는 야생화 브랜드입니다. 흔하지\n않기에 더 소중한 가치를 담아, 특별한 시간을 기념하고\n마음을 전하며 위로를 건네는 — 꽃과 함께하는 모든 순간\n플레르가 함께합니다.",
       thumbnail: "images/works/communication/YeeunCheon/thumbnail.webp",
       creation: [
         {
@@ -1150,7 +1150,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "KARENCIA",
       summary: "II COMBINED의 5번째\n가상 브랜드 KARENCIA",
       description:
-        "II COMBINED의 가상 브랜드 KARENCIA는 공간을 완성하는 라이프센스를 제안합니다. 기능보다 무드를, 조형미를 중시하며 감각을 빚어 분위기의 급과 태도를 완성합니다. 취향이 공간을 바꾸는 순간, KARENCIA와 함께 당신의 라이프센스를 펼쳐보세요.",
+        "II COMBINED의 가상 브랜드 KARENCIA는 공간을 완성하는\n라이프센스를 제안합니다. 기능보다 무드를, 조형미를 중시하며\n감각을 빚어 분위기의 급과 태도를 완성합니다. 취향이 공간을 바꾸는 순간, 당신의 라이프센스를 펼쳐보세요.",
       thumbnail: "images/works/communication/SeowooChoi/thumbnail.webp",
       creation: [
         {
@@ -1194,7 +1194,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "Kissy Journey",
       summary: "키스오프라이프 3주년 팬미팅 'Kissy Journey'",
       description:
-        "2026년, 데뷔 3주년을 맞이하는 키스오프라이프의\n첫 국내 정식 팬미팅은 키오프와 팬(KISSY)이\n함께 ‘처음’을 맞이하며 미래를 꿈꾸는 여정의 출발점입니다.\n서로가 서로의 나침반이자 꿈을 향한 원동력이 되어\n함께 꿈을 완성해나갈 '여정'을 시작합니다.",
+        "2026년, 데뷔 3주년을 맞이하는 키스오프라이프의  첫 국내 정식 팬미팅은 키오프와 팬(KISSY)이 함께 ‘처음’을 맞이하며 미래를 꿈꾸는 여정의 출발점입니다. 서로가 서로의 나침반이자 꿈을 향한 원동력이 되어 함께 꿈을 완성해나갈 '여정'을 시작합니다.",
       thumbnail: "images/works/communication/JinsolYang/thumbnail.webp",
       creation: [
         {
@@ -1340,7 +1340,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "O'rum",
       summary: "울릉도 헛개꿀, 오름",
       description:
-        "울릉도의 맑은 자연과 가장 먼저 떠오르는 해에서 영감을 받아 탄생한 오름은 정직함과 회복의 가치를 담은 프리미엄 헛개꿀 브랜드입니다.",
+        "울릉도의 맑은 자연과 가장 먼저 떠오르는 해에서\n영감을 받아 탄생한 오름은 정직함과 회복의 가치를\n담은 프리미엄 헛개꿀 브랜드입니다.",
       thumbnail: "images/works/communication/DiYongJeu/thumbnail.webp",
       creation: [
         {
@@ -1359,7 +1359,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "poti",
       summary: "식물 큐레이션 브랜드, poti",
       description:
-        "poti는 단순히 식물을 판매하는 것이 아닌 각자의 공간과 취향, 리듬에 맞는 식물을 큐레이션하는 브랜드입니다.\n식물은 하루하루 작은 변화를 만들어가고, 그 안에서 나의 이야기가 자라납니다.\npoti를 통해 그 과정 속에서, 나의 이야기를 발견하길 기대합니다.",
+        "poti는 단순히 식물을 판매하는 것이 아닌 각자의 공간과 취향, 리듬에 맞는 식물을 큐레이션하는 브랜드입니다.\n식물은 하루하루 작은 변화를 만들어가고, 그 안에서 나의 이야기가 자라납니다. poti를 통해 그 과정 속에서, 나의 이야기를 발견하길 기대합니다.",
       thumbnail: "images/works/communication/MinhaKim/thumbnail.webp",
       creation: [
         {
@@ -1457,7 +1457,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 1,
           extension: "webp",
-          src: "works/communication/JunghoonLim/contents_01.webp",
+          src: "images/works/communication/JunghoonLim/contents_01.webp",
         },
         {
           id: 2,
@@ -1505,7 +1505,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "진로 프리미엄 와인 리브랜딩 'Soolé'",
       description:
         "술래 soole〉는 한국의 풍류를 현대 과일와인으로 번역한 작업입니다. 바람의 곡선과 산수의 여백으로 사계의 향과 풍류의 리듬을 한 잔에 응축해, 가벼운 첫모금과 오래 남는 잔향을 느낄 수 있도록 만들었습니다.",
-      thumbnail: "images/works/communication/MinJunKim/thumbnail.webp", // 안보임
+      thumbnail: "images/works/communication/MinJunKim/thumbnail.webp",
       creation: [
         {
           id: 1,
@@ -1572,7 +1572,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "SOUND採掘團",
       summary: "ALPS 5주년 기념 팝업스토어:\nSOUND採掘團",
       description:
-        "플랫폼 중심의 음악 소비가 일상이 된 지금, 우리는 다시금 함께\n듣고 나누던 아날로그적 경험을 갈망합니다. 뮤직&컬처 컴퍼니\nALPS의 5주년 기념 팝업스토어, ‘SOUND採掘團’에서 사소한\n공유와 시간 낭비로 시작되는 행복을 느껴보세요.",
+        "플랫폼 중심의 음악 소비가 일상이 된 지금, 우리는 다시금 함께 듣고 나누던 아날로그적 경험을 갈망합니다. 뮤직&컬처 컴퍼니\nALPS의 5주년 기념 팝업스토어, ‘SOUND採掘團’에서 사소한 공유와 시간 낭비로 시작되는 행복을 느껴보세요.",
       thumbnail: "images/works/communication/SarangO/thumbnail.webp",
       creation: [
         {
@@ -1821,7 +1821,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "2100: New Access",
       summary: "2100 Aquapolis: New Access",
       description:
-        "해수면 상승으로 물과 공존하게 될 미래, 22세기. 도시와 바다 그 사이를 잇는 새로운 접근 시스템을 제안한다.",
+        "해수면 상승으로 물과 공존하게 될 미래, 22세기.\n도시와 바다 그 사이를 잇는 새로운 접근 시스템을 제안한다.",
       thumbnail: "images/works/industrial/JiyoonPark/thumbnail.webp",
       creation: [
         {
@@ -1878,7 +1878,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "Therra",
       summary: "Re-imagining clinical therapy tools",
       description:
-        "Gen MZ lives at the intersection of hyper-connection and solitude.\NTherra bridges nature and technology, supporting clinical psychologists through EMDR, bilateral stimulation, and intelligent data analysis.",
+        "Gen MZ lives at the intersection of hyper-connection and solitude.\nTherra bridges nature and technology, supporting clinical psychologists\nthrough EMDR, bilateral stimulation, and intelligent data analysis.",
       thumbnail: "images/works/industrial/JaeeunLee/thumbnail.png",
       creation: [
         {
@@ -2104,12 +2104,12 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "초고령 시대 고령자의 이동 편의를 돕는 서비스, 온길",
       description:
         "전동휠체어를 이용하는 고령자를 위한 실내 길안내 서비스 ‘온길’은 초고령 사회에 맞춰 이동을 쉽고 안전하게 돕는 서비스를 제공합니다. ‘온길’은 실내 공간에서의 이동 경험에 초점을 맞춰, 사용자가 목적지까지 편안하게 이동할 수 있는 새로운 길안내를 제시합니다.",
-      thumbnail: "images/works/service/ThingPil/thumbnaill.webp", // 안보임
+      thumbnail: "images/works/service/ThingPil/thumbnaill.webp",
       creation: [
         {
           id: 1,
           extension: "webp",
-          src: "images/works/service/ThingPil+/contents_01.webp",
+          src: "images/works/service/ThingPil/contents_01.webp",
         },
       ],
     },
@@ -2601,7 +2601,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "LooME",
       summary: "LooME: Light That Moves You.",
       description:
-        "LooME는 공간의 흐름과 나의 리듬을 이해해, 건강한 home life를 만들어주는 AI companion입니다. 익숙한 공간 속 작은 변화를 통해 나다운 일상의 균형을 찾아갑니다",
+        "LooME는 공간의 흐름과 나의 리듬을 이해해, 건강한 home life를 만들어주는 AI\ncompanion입니다.\n익숙한 공간 속 작은 변화를 통해 나다운 일상의 균형을 찾아갑니다",
       thumbnail: "images/works/ux/Horakorak/LooMe/thumbnail.webp",
       creation: [
         {
@@ -2638,7 +2638,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     },
     {
       id: 9,
-      teamName: "반도",
+      teamName: "Bando",
       teamImg: "images/designers/team/Bando.jpg",
       designer: [{ id: 11, nameKo: "김민지", studentId: 22100098}, { id: 39, nameKo: "송연수", studentId: 22100393}, { id: 59, nameKo: "장주영", studentId: 21900631}],
       professor: "이은종",
@@ -2768,7 +2768,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "Proto-Hour",
       summary: "Proto-Hour: Anchoring the City",
       description:
-        "도시의 새로운 중심이자 연결의 거점이 되는 ‘프로토아워’는 아이디어가 모이고 실험이 일어나는 앵커 스페이스입니다. 시민과 창업가가 함께 도시의 변화를 설계하며, 관계와 가능성이 교차하는 시간과 공간을 만듭니다",
+        "도시의 새로운 중심이자 연결의 거점이 되는 ‘프로토아워’는\n아이디어가 모이고 실험이 일어나는 앵커 스페이스입니다.\n시민과 창업가가 함께 도시의 변화를 설계하며, 관계와 가능성이\n교차하는 시간과 공간을 만듭니다.",
       thumbnail: "images/works/ux/Horakorak/Proto-Hour/thumbnail.webp",
       creation: [
         {
@@ -2957,7 +2957,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
     },
     {
       id: 15,
-      teamName: "반도",
+      teamName: "Bando",
       teamImg: "images/designers/team/Bando.jpg",
       designer: [{ id: 11, nameKo: "김민지", studentId: 22100098}, { id: 39, nameKo: "송연수", studentId: 22100393}, { id: 59, nameKo: "장주영", studentId: 21900631}],
       professor: "이은종",
@@ -2975,7 +2975,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 2,
           extension: "webp",
-          src: "images/works/ux/Bando/TUK/contents_03.webp",
+          src: "images/works/ux/Bando/TUK/contents_02.webp",
         },
         {
           id: 3,

@@ -84,10 +84,10 @@ export const DESIGNERS = [
     id: 4,
     nameKo: "강하라",
     nameEng: "Hara Kang",
-    email: "hra689@gmail.com",
+    email: "hara689@gmail.com",
     img: "images/designers/comm/HaraKang.jpg",
     description:
-      "파아란 하늘을 올려다보며 미소 지을 줄 아는 사람, 따뜻한 그림과 디자인으로 일상에 온기와 행복을 전합니다.\nLet my soul be rest again, for the LORD has been good to me. ",
+      "파아란 하늘을 올려다보며 미소 지을 줄 아는 사람,\n따뜻한 그림과 디자인으로 일상에 온기와 행복을 전합니다.\nLet my soul be rest again, for the LORD has been good to me. ",
     works: [
       {
         work: WORKS.COMMUNICATION,
@@ -467,7 +467,7 @@ export const DESIGNERS = [
     nameKo: "김채영",
     nameEng: "Chaeyoung Kim",
     email: "codud0831@handong.co.kr",
-    img: "images/designers/comm/ChaeyoungKim.jpg",
+    img: "images/designers/comm/ChaeyeongKim2.jpg",
     description:
       "꿈꾸는 디자이너",
     works: [
@@ -492,8 +492,8 @@ export const DESIGNERS = [
     id: 22,
     nameKo: "김채영",
     nameEng: "Chaeyoung Kim",
-    email: "hannahk1206@gmail.com",
-    img: "images/designers/ux/ChaeyeongKim2.jpg",
+    email: "chaeyeongkim72@gmail.com",
+    img: "images/designers/ux/ChaeyoungKim.jpg",
     description:
       "자연스럽게 받아들여지는 혁신을 탐구합니다.\nI explore innovations that are naturally embraced.",
     works: [
@@ -537,7 +537,7 @@ export const DESIGNERS = [
     email: "hanaryu024@gmail.com",
     img: "images/designers/comm/HanaRyu.jpg",
     description:
-      "사람들과 디자인 이야기를 나누는 것을 좋아합니다. 대화를 통해 서로에게 배우고, 새로운 시너지를 만들어가는 디자이너가 되고 싶습니다.",
+      "사람들과 디자인 이야기를 나누는 것을 좋아합니다.\n 대화를 통해 서로에게 배우고, 새로운 시너지를 만들어가는 디자이너가 되고 싶습니다.",
     works: [
       {
         work: WORKS.COMMUNICATION,
@@ -801,7 +801,7 @@ export const DESIGNERS = [
     nameKo: "변지민",
     nameEng: "Jeemin Byon",
     email: "jmb410910@gmail.com",
-    img: "images/designers/comm/HyeonjiHong.jpg",
+    img: "images/designers/comm/JeeminByon.jpg",
     description:
       "상상을 현실로",
     works: [
@@ -1406,7 +1406,7 @@ export const DESIGNERS = [
     nameKo: "장한나",
     nameEng: "Hanna Jang",
     email: "nahanna1234@naver.com",
-    img: "images/designers/comm/HanaRyu.jpg",
+    img: "images/designers/comm/HannaJang.jpg",
     description:
       "한 번 더 돌아보고, 한 번 더 곱씹게 되는 디자인을 하고 싶습니다.",
     works: [
@@ -1732,7 +1732,7 @@ export const DESIGNERS = [
     email: "anninick7156@gmail.com",
     img: "images/designers/ux/JiyoungHan.jpg",
     description:
-      "복잡한 세상이 조금이라도 편해지도록 고민합니다.\n일상 속 사소한 불편함이 소소한 즐거움이 되도록 색다른 시선으로 관찰하고 섬세하게 디자인하고 싶습니다",
+      "복잡한 세상이 조금이라도 편해지도록 고민합니다.\n일상 속 사소한 불편함이 소소한 즐거움이 되도록 색다른 시선으로 관찰하고 섬세하게 디자인하고 싶습니다.",
     works: [
       {
         work: WORKS.UX,

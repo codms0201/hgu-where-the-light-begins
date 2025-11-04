@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Header from "../../../components/Header";
 import Footer from '../../../components/Footer';
 import Mobile_HeaderBtn from "../../../components/mobile_headerBtn";
@@ -14,8 +14,21 @@ import { PATHS, DOMAIN } from "../../../constants/paths";
 export default function DesignerDetailPage() {
   const router = useRouter();
   const { designerId } = router.query;
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const designer = DESIGNERS.find(d => String(d.id) === designerId);
+
+  const handleEmailClick = async () => {
+    if (designer?.email) {
+      try {
+        await navigator.clipboard.writeText(designer.email);
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 1000);
+      } catch (err) {
+        console.error('Failed to copy email:', err);
+      }
+    }
+  };
 
   const portfolioItems = useMemo(() => {
     if (!designer) {
@@ -30,10 +43,11 @@ export default function DesignerDetailPage() {
           id: workData.id,
           title: workData.title,
           thumbnail: workData.thumbnail,
+          category: designerWork.category,
         });
       }
       return acc;
-    }, [] as { id: number; title: string; thumbnail: string }[]); 
+    }, [] as { id: number; title: string; thumbnail: string; category: string }[]); 
   }, [designer]); 
 
   if (!router.isReady) {
@@ -77,9 +91,19 @@ export default function DesignerDetailPage() {
                 <h1 className={`${suitMedium.className} text-[28px] text-[#1C1C1C] lg:text-[70px] font-[600]`}>
                   {designer.nameKo}
                 </h1>
-                <p className={`${suitMedium.className} text-[#7C7C7C] text-[11px] lg:text-[24px] font-[400] break-all`}>
-                  {designer.email}
-                </p>
+                <div className="relative">
+                  <button
+                    onClick={handleEmailClick}
+                    className={`${suitMedium.className} text-[#7C7C7C] text-[11px] lg:text-[24px] font-[400] break-all hover:underline cursor-pointer text-left`}
+                  >
+                    {designer.email}
+                  </button>
+                  {emailCopied && (
+                    <span className={`${suitMedium.className} absolute left-0 -bottom-6 text-[10px] lg:text-[14px] text-[#00FF36] font-[500]`}>
+                      이메일이 복사되었습니다!
+                    </span>
+                  )}
+                </div>
                 <p className={`${suitMedium.className} w-full text-[#1C1C1C] text-[12px] font-[400] leading-[22px] mt-4 lg:hidden whitespace-pre-line`}>
                   {designer.description}
                 </p>
@@ -92,7 +116,7 @@ export default function DesignerDetailPage() {
                     alt={`${designer.nameKo} profile picture`}
                     width={364}
                     height={546}
-                    className="object-cover w-full h-auto lg:mt-[86px]"
+                    className="object-cover w-full h-auto lg:mt-[78px]"
                     priority
                     sizes="(max-width: 1024px) 50vw, 364px"
                   />
@@ -109,14 +133,15 @@ export default function DesignerDetailPage() {
             </div>
 
             {/* 포트폴리오 렌더링  */}
-            <div className="mt-12">
+            <div className="mt-12 lg:mt-[86px]">
               <div className="flex flex-col items-center lg:items-end gap-5">             
                 
                 {portfolioItems.length > 0 && (
-                  <div 
+                  <Link
+                    href={`${PATHS.WORKS}/${portfolioItems[0].category}/${portfolioItems[0].id}`}
                     key={portfolioItems[0].id} 
                     className={`w-full max-w-[365px] ${
-                      portfolioItems.length === 1 ? 'invisible' : ''
+                      portfolioItems.length <= 2 ? 'lg:invisible' : ''
                     }`}
                   >
                     <div className={`${suitMedium.className} w-fit text-[#1C1C1C] bg-[#00FF36] text-[14px] font-[600] mb-2 lg:hidden p-1`}>
@@ -138,17 +163,23 @@ export default function DesignerDetailPage() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 )}
 
                 {portfolioItems.length > 0 && (
                   <div className="flex flex-col lg:flex-row gap-5 w-full lg:w-auto justify-center lg:justify-end">
                     
                     {(portfolioItems.length === 1
-                      ? portfolioItems.slice(0, 1) 
+                      ? portfolioItems.slice(0, 1)
+                      : portfolioItems.length === 2
+                      ? portfolioItems.slice(0, 2)
                       : portfolioItems.slice(1, 3) 
                     ).map((item) => (
-                      <div key={item.id} className="w-full max-w-[365px]">
+                      <Link
+                        href={`${PATHS.WORKS}/${item.category}/${item.id}`}
+                        key={item.id}
+                        className="w-full max-w-[365px]"
+                      >
                         <div className={`${suitMedium.className} w-fit text-[#1C1C1C] bg-[#00FF36] text-[14px] font-[600] mb-2 lg:hidden p-1`}>
                           {item.title}
                         </div>
@@ -168,7 +199,7 @@ export default function DesignerDetailPage() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 )}
