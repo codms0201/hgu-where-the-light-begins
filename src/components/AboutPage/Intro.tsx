@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import PosterImage from '../../img/poster.png';
 import { avantGarde } from '@/styles/fonts';
 import { suitMedium } from '@/styles/fonts';
+import { DOMAIN } from '../../constants/paths';
 
 export default function Intro() {
   return (
-    <div className="min-h-screen bg-white relative p-4 lg:p-0 mb-24">
+    <div className="min-h-screen relative p-4 lg:p-0 mb-24">
       <div className="flex flex-col lg:flex-row min-h-screen"> 
         {/* Top/Left Section - Title */}
         <div className="w-full lg:w-1/2 flex items-start justify-start lg:p-8">
@@ -27,7 +27,7 @@ export default function Intro() {
         
         {/* Bottom/Right Section - Content */}
         <div className="w-full lg:w-2/3 flex items-center justify-start lg:p-8">
-          <div className="w-full space-y-6 lg:space-y-8 lg:ml-20 mt- 4">
+          <div className="w-full space-y-6 lg:space-y-8 lg:ml-20 mt-4">
             
             {/* Exhibition Info */}
             <div className="space-y-2">
@@ -39,14 +39,17 @@ export default function Intro() {
               </h2>
             </div>
             
-            <div className="mt-6 lg:hidden w-full">
+            {/* Mobile Poster */}
+            <div className="mt-6 lg:hidden w-full relative aspect-[7/10]">
               <Image 
-                src={PosterImage} 
+                src={`${DOMAIN}images/poster/poster.webp`}
                 alt="Exhibition Poster" 
-                layout="responsive"
-                width={700}
-                height={1000}
-                className="w-full h-auto object-contain"
+                fill
+                sizes="100vw"
+                className="object-contain"
+                quality={100}
+                priority
+                unoptimized
               />
             </div>
 

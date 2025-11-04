@@ -3,7 +3,7 @@ import { avantGarde, suitMedium } from '@/styles/fonts';
 
 export default function Executives() {
   return (
-    <div className="bg-white flex flex-col lg:flex-row p-4 lg:p-8 ">
+    <div className="flex flex-col lg:flex-row p-4 lg:p-8 ">
       <div className="w-full lg:w-1/3 flex items-start justify-start">
         <div>
           <h1 className={`${avantGarde.className} text-[24px] lg:text-[70px] font-[400] text-[#1C1C1C] mt-28`}>

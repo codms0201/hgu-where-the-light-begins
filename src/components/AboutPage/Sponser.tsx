@@ -10,7 +10,7 @@ import S5 from "@/img/Sponsers/Moorim.svg";
 
 export default function Sponser() {
   return (
-    <div className="mt-28 lg:h-[300px] bg-white flex flex-col lg:flex-row p-4 lg:p-8">
+    <div className="mt-28 lg:h-[300px] flex flex-col lg:flex-row p-4 lg:p-8">
       
       {/* Left Section - Title */}
       <div className="w-full lg:w-1/3 flex items-start justify-start">

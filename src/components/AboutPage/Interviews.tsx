@@ -5,7 +5,7 @@ export default function Interviews() {
   const youtubeEmbedUrl = "https://www.youtube.com/embed/NSw-B3FHRzQ";
 
   return (
-      <div className="bg-white flex flex-col lg:flex-row p-4 lg:p-8 mb-30 lg:mt-10">
+      <div className="flex flex-col lg:flex-row p-4 lg:p-8 mb-30 lg:mt-10">
         <div className="w-full lg:w-1/3 flex items-start justify-start">
           <div>
             <h1 className={`${avantGarde.className} text-[24px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>

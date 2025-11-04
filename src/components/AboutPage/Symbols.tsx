@@ -190,8 +190,8 @@ const Symbols = ({ containerRef }: SymbolsProps) => {
   const currentText = contentData[activeId as keyof typeof contentData].text;
 
   return (
-    <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
-      <div className="min-h-screen bg-white flex">
+    <div style={{ position: 'sticky', top: '90px', height: '100vh', overflow: 'hidden' }}>
+      <div className="min-h-screen flex">
         {/* Left Panel: Text Content */}
         <div className="w-1/2 flex items-start justify-start p-8">
           <div className="max-w-md">

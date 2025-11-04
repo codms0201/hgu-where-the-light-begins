@@ -2990,7 +2990,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 5,
           extension: "youtube",
-          src: "watch?v=Gcd7joh2WXo",
+          src: "Gcd7joh2WXo",
         },
         {
           id: 6,

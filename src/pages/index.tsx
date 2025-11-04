@@ -67,7 +67,7 @@ const HomePage = () => {
 
       {/* 메인 컨테이너 (opacity 없음) */}
       <div 
-        className={`bg-white flex flex-col min-h-screen relative`}
+        className={`flex flex-col min-h-screen relative`}
       >
         {/* 비디오 (z-10) */}
         <video

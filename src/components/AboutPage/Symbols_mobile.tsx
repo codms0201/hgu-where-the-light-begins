@@ -52,7 +52,7 @@ export default function Symbols_mobile() {
   const currentSymbol = symbolsData[currentIndex];
 
   return (
-    <div className="bg-white p-4 flex flex-col items-center">
+    <div className="p-4 flex flex-col items-center">
       {/* Symbols 제목 */}
       <div className="w-full text-left mb-8">
         <h1 className={`${avantGarde.variable} text-[24px] font-[400] text-[#1C1C1C]`}>

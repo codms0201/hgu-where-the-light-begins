@@ -142,7 +142,7 @@ const WorksPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* --- 데스크톱 헤더 (변경 없음) --- */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50 lg:bg-white">
         <Header />

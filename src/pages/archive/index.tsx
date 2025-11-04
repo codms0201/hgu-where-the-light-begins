@@ -13,7 +13,7 @@ const archiveData = [
 
 export default function Archive() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* 데스크톱 헤더 */}
       <div className="hidden lg:block flex-shrink-0">
         <Header />

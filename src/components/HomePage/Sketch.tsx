@@ -17,7 +17,7 @@ const sketches = [
 
 export default function Sketch() {
   return (
-    <div className="min-h-screen bg-white px-8 py-24">
+    <div className="min-h-screen px-8 py-24">
       <div className="mb-12">
         <h1 className={`${avantGarde.className} text-[40px] lg:text-[70px] font-[400] text-[#1C1C1C]`}>
           Sketch

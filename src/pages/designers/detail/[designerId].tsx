@@ -52,25 +52,25 @@ export default function DesignerDetailPage() {
 
   if (!router.isReady) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
       </div>
     );
   }
 
   if (!designer) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <h1 className={`${suitMedium.className} text-2xl`}>디자이너를 찾을 수 없습니다.</h1>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
-      <div className="flex lg:hidden sticky top-0 z-50 bg-white items-center justify-between p-4">
+      <div className="flex lg:hidden sticky top-0 z-50 items-center justify-between p-4">
         <Link href={PATHS.DESIGNERS} aria-label="Go back to designers">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
             <path d="M15 3L6.5 11.5L15 20" stroke="#1C1C1C" strokeWidth="2" strokeLinecap="round"/>

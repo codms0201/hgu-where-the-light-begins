@@ -70,11 +70,11 @@ export default function DesignersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#1C1C1C] flex flex-col">
+    <div className="min-h-screen text-[#1C1C1C] flex flex-col">
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
-      <div className="lg:hidden sticky top-0 z-50 bg-white">
+      <div className="lg:hidden sticky top-0 z-50">
         <header className="flex items-center justify-between p-4">
           <h1 className={`${avantGarde.className} text-[#1C1C1C] text-[40px] font-[400]`}>Designers</h1>
           <div className="flex items-center gap-4">
@@ -121,7 +121,7 @@ export default function DesignersPage() {
                 className={`${suitMedium.className} w-full text-[50px] font-normal bg-transparent border-none outline-none placeholder-[#BBB]`}
               />
             </div>
-            <div className="w-full flex-1 bg-white overflow-hidden">
+            <div className="w-full flex-1 overflow-hidden">
               <div className="relative w-[289px] h-[434px] mt-30">
                 {DESIGNERS.map((designer) => {
                   const isActive = String(designer.id).padStart(3, '0') === hoveredId;
@@ -142,7 +142,7 @@ export default function DesignersPage() {
             </div>
           </div>
         </div>
-        <div className="flex-1 bg-white lg:pt-18 w-full lg:ml-128">
+        <div className="flex-1 lg:pt-18 w-full lg:ml-128">
           <div className="lg:px-8">
             <div 
               className="border-b border-[#D2D2D2]"

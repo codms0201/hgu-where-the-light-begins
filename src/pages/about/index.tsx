@@ -18,7 +18,7 @@ const AboutPage = () => {
   const symbolsContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="bg-white">
+    <div>
       {/* 데스크탑 헤더 (모바일에서 숨김) */}
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
