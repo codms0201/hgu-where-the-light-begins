@@ -9,7 +9,6 @@ const quadrantData = [
 ];
 
 const Intro = () => {
-  const [isMounted, setIsMounted] = useState(false);
   const [currentColor, setCurrentColor] = useState('#00FF36');
   const [scale, setScale] = useState(1);
   const [boxOffsets, setBoxOffsets] = useState([
@@ -30,8 +29,6 @@ const Intro = () => {
   ];
 
   useEffect(() => {
-    setIsMounted(true);
-    
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         const newScale = window.innerWidth / BASE_WIDTH;
@@ -61,7 +58,7 @@ const Intro = () => {
     const deltaX = mouseX - centerX;
     const deltaY = centerY - mouseY;
     
-    let angleRad = Math.atan2(deltaY, deltaX); 
+    const angleRad = Math.atan2(deltaY, deltaX); 
     let angleDeg = angleRad * (180 / Math.PI);
     
     if (angleDeg < 0) {
