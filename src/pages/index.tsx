@@ -96,7 +96,7 @@ const HomePage = () => {
           }`}
           style={{
             left: `${511 * scale}px`,
-            top: `calc(-99px * ${scale})`,
+            top: `calc(-141px * ${scale})`,
             width: `${1090 * scale}px`,
             height: `${1090 * scale}px`,
             backgroundImage: 'url(/img/home/Gray_radial.svg)',
@@ -113,7 +113,7 @@ const HomePage = () => {
           }`}
         >
           {/* 헤더 */}
-          <div className="hidden bg-transparent lg:block lg:sticky lg:top-0 w-full z-50">
+          <div className="hidden bg-transparent lg:block lg:sticky lg:top-0 w-full z-100">
             <Header />
           </div>
 
@@ -134,7 +134,7 @@ const HomePage = () => {
           <div className="absolute top-8 right-4 z-50 block lg:hidden">
             <Mobile_HeaderBtn />
           </div>
-          <Intro />         
+          <Intro />    
           {/* <Sketch /> */}
           
           {/* Footer */}

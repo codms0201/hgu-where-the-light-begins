@@ -22,10 +22,10 @@ const Intro = () => {
 
   const BASE_WIDTH = 1600;
   const BASE_POSITIONS = [
-    { top: -97, left: 510 },
-    { top: -102, left: 510 },
-    { top: -97, left: 513 },
-    { top: -97, left: 511 }
+    { top: -137, left: 510 },
+    { top: -142, left: 510 },
+    { top: -137, left: 513 },
+    { top: -137, left: 511 }
   ];
 
   useEffect(() => {
@@ -148,7 +148,7 @@ const Intro = () => {
   const BORDER_CIRCLE_TOP_OFFSET = 138;
   const BORDER_CIRCLE_LEFT_OFFSET = -660;
 
-  const DESIGN_BOX_TOP = 448; 
+  const DESIGN_BOX_TOP = 408; 
   const DESIGN_BOX_LEFT = 1055; 
   
   const CIRCLE_TOP = -5; 
@@ -165,11 +165,11 @@ const Intro = () => {
           alt="Main Radial"
           className="absolute transition-opacity duration-300 ease-in-out"
           style={{
-            top: `${-97 * scale}px`,
+            top: `${-137 * scale}px`,
             right: `${-1 * scale}px`,
             width: `${1090 * scale}px`,
             height: `${1090 * scale}px`,
-            opacity: hoveredQuadrantIndex === null ? 1 : 0,
+            opacity: hoveredQuadrantIndex === null ? 1 : 0
           }}
         />
 
