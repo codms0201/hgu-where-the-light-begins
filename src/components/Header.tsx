@@ -36,14 +36,9 @@ const Header = () => {
   ];
 
   const handleLogoClick = (): void => {
-    // 🚀 수정된 로직: 로고 클릭 시 무조건 페이지를 새로고침하여
-    // HomePage의 영상 재생 로직이 처음부터 다시 실행되도록 합니다.
     if (router.pathname === '/') {
-        // 이미 홈 경로일 경우 바로 새로고침
         window.location.reload(); 
     } else {
-        // 다른 경로에서 홈으로 이동하는 경우
-        // Next.js 라우팅으로 홈으로 이동한 후, 브라우저 새로고침을 유발
         router.push('/').then(() => {
             window.location.reload(); 
         });
@@ -127,6 +122,15 @@ const Header = () => {
     if (itemName === 'DESIGNERS') {
       x -= 45;
     }
+    if (itemName === 'ABOUT') {
+      y -= 20;
+    }
+    if (itemName === 'WORKS') {
+      y -= 15;
+    }
+    if (itemName === 'DESIGNERS') {
+      y -= 15;
+    }
     const tiltAngle = angle - 180;
 
     return {
@@ -139,10 +143,28 @@ const Header = () => {
     };
   };
 
+  const getHoverAreaStyle = (angle: number): React.CSSProperties => {
+    const hoverRadius = 120;
+    const radian = (angle * Math.PI) / 180;
+    const x = Math.cos(radian) * hoverRadius;
+    const y = Math.sin(radian) * hoverRadius;
+
+    return {
+      position: 'absolute',
+      width: '200px',
+      height: '200px',
+      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+      left: '50%',
+      top: '50%',
+      borderRadius: '50%',
+      pointerEvents: isMenuOpen ? 'auto' : 'none' as const,
+      zIndex: 15,
+    } as React.CSSProperties;
+  };
+
   return (
     <>
-      {/* 🌟 수정된 부분: 배경색 및 블러 효과 적용 (tailwind.config.js 설정 필수) */}
-      <header className={`flex items-center justify-between pt-1 pb-12 pr-8 pl-8 relative z-50 w-full ${
+      <header className={`flex items-center justify-between pt-1 pb-1 pr-8 pl-8 relative z-50 w-full ${
         currentPath === '/' 
           ? 'bg-transparent' 
           : 'bg-white'
@@ -165,7 +187,6 @@ const Header = () => {
             aria-hidden="true"
             style={{ visibility: 'hidden' }} 
           >
-            {/* 로고 공백 유지 */}
             <div className={`${avantGarde.className} bg-[#00FF36] px-1 text-[#1C1C1C] text-[28px] font-normal transition-colors`}>
               Where
             </div>
@@ -190,41 +211,40 @@ const Header = () => {
         <div 
           onMouseLeave={handleHamburgerLeave}
         >
-          <div
-            className="absolute rounded-full"
-            style={{
-              width: '87px',
-              height: '87px',
-              backgroundColor:'transparent',
-              right: '24px',
-              top: '43%',
-              transform: 'translateY(-50%)',
-              pointerEvents: isMenuOpen ? 'auto' : 'none',
-              zIndex: 10,
-            }}
-          />
           <div className="flex items-center relative h-full w-full">
             {navigationItems.map((item, index) => (
-              <button
-                key={`radial-${item.name}`}
-                onClick={() => handleNavClick(item.path)}
-                onMouseEnter={() => setHoveredItem(item.name)}
-                onMouseLeave={() => setHoveredItem(null)}
-                className={`${avantGarde.variable} absolute font-normal text-[18px] whitespace-nowrap transition-all ${
-                  hoveredItem === item.name ? 'text-[#00FF36]' : 'text-[#1C1C1C]'
-                } ${isMenuOpen ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
-                style={{
-                  ...getMenuItemStyle(item.angle, index),
-                  padding: '4px 12px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  transition: 'color 0.2s ease-in-out, transform 0.3s ease-in-out',
-                  zIndex: 20,
-                }}
-              >
-                {item.name}
-              </button>
+              <div key={`hover-area-${item.name}`}>
+                {/* 🎯 확대된 호버 영역 - 디버깅용 시각화 */}
+                <div
+                  style={getHoverAreaStyle(item.angle)}
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                />
+                
+                {/* 네비게이션 버튼 */}
+                <button
+                  key={`radial-${item.name}`}
+                  onClick={() => handleNavClick(item.path)}
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                  className={`${avantGarde.variable} absolute font-normal text-[18px] whitespace-nowrap transition-all ${
+                    hoveredItem === item.name ? 'text-[#00FF36]' : 'text-[#1C1C1C]'
+                  } ${isMenuOpen ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
+                  style={{
+                    ...getMenuItemStyle(item.angle, index),
+                    padding: '4px 12px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    transition: 'color 0.2s ease-in-out, transform 0.3s ease-in-out',
+                    zIndex: 20,
+                  }}
+                >
+                  {item.name}
+                </button>
+              </div>
             ))}
+            
+            {/* 중앙 햄버거 메뉴 */}
             <div 
               className="relative z-30 flex items-center justify-center h-full ml-auto"
               onMouseEnter={handleHamburgerEnter}
@@ -246,7 +266,6 @@ const Header = () => {
                     className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
                     style={getBarStyle(3)}
                   ></span>
-                  {/* 🌟 햄버거 메뉴 오타 수정: top-1/C1C1C 제거 */}
                   <span
                     className="block absolute h-[4px] w-full bg-black top-1/2 left-0"
                     style={getBarStyle(4)}
