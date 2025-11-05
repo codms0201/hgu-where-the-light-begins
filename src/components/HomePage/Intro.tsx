@@ -156,7 +156,7 @@ const Intro = () => {
 
   return (
     <section 
-      className={`relative w-full bg-transparent h-240 flex justify-center items-center overflow-visible -mt-37`}
+      className={`relative w-full bg-transparent h-240 flex justify-center items-center overflow-visible -mt-26`}
     >
       {/* Background image layer (z-10) */}
       <div className="absolute inset-0 z-10 hidden lg:block pointer-events-none">
