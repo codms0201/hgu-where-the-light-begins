@@ -1263,7 +1263,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 4,
           extension: "youtube",
-          src: "kxim0bnUKAo",
+          src: "PtgwYLtEo90",
         },
         {
           id: 5,
@@ -1273,7 +1273,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 6,
           extension: "youtube",
-          src: "8WI9H9eBSTA",
+          src: "TwEUBzRm9KU",
         },
         {
           id: 7,
@@ -1312,7 +1312,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 4,
           extension: "youtube",
-          src: "kxim0bnUKAo",
+          src: "PtgwYLtEo90",
         },
         {
           id: 5,
@@ -1322,7 +1322,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 6,
           extension: "youtube",
-          src: "8WI9H9eBSTA",
+          src: "TwEUBzRm9KU",
         },
         {
           id: 7,
@@ -1462,7 +1462,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 2,
           extension: "youtube",
-          src: "watch?v=bHvhz1OAhso",
+          src: "bHvhz1OAhso",
         },
       ],
     },
@@ -1713,7 +1713,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 2,
           extension: "youtube",
-          src: "watch?v=w5mIakcp4Ck",
+          src: "uxk9rkw3t5E",
         },
         {
           id: 3,
@@ -2568,7 +2568,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 2,
           extension: "youtube",
-          src: "watch?v=bG5XyCA2rc0",
+          src: "bG5XyCA2rc0",
         },
         {
           id: 3,

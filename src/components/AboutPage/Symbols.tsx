@@ -210,7 +210,7 @@ const Symbols = ({ containerRef }: SymbolsProps) => {
                 </li>
               ))}
             </ul>
-            <div className='w-2/1 mt-39'>
+            <div className='w-2/1 mt-20'>
             <p className={`${suitMedium.className} text-[24px] text-[400] text-[#1C1C1C] leading-[160%] whitespace-pre-line`}>{currentText}</p>
             </div>
           </div>
