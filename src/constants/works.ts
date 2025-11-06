@@ -2371,7 +2371,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 2,
-          extension: "youtube",
+          extension: "webp",
           src: "images/works/ux/HIPPYDEEPY/contents_02.webp",
         },
         {
