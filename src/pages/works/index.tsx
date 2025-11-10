@@ -1,18 +1,17 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { useRouter } from 'next/router'; // 🌟 'next/navigation' -> 'next/router'로 변경
+import { useRouter } from 'next/router'; 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Mobile_HeaderBtn from '../../components/mobile_headerBtn';
 import { avantGarde, suitMedium } from '@/styles/fonts';
 import MobileFooter from '../../components/mobile_footer';
 import { WORKS } from '../../constants/works';
-import { DOMAIN, PATHS } from '../../constants/paths'; // 🌟 PATHS import 추가
+import { DOMAIN, PATHS } from '../../constants/paths';
 
 type CategoryType = 'All' | 'Communication Design' | 'Service Design' | 'UX Design' | 'Industrial Design';
 
-// 🌟 Project 인터페이스 수정 (TypeScript 오류 해결)
 interface Project { 
   id: number; 
   name: string;
@@ -20,11 +19,11 @@ interface Project {
   image: string;
   title: string;
   designerName: string;
-  teamName?: string | null; // 🌟 수정: string | undefined -> string | null | undefined
+  teamName?: string | null; 
 }
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 
-// --- (useIsMounted, useWindowWidth 훅은 변경 없음) ---
+// --- (useIsMounted, useWindowWidth 훅) ---
 const useIsMounted = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -46,7 +45,7 @@ const useWindowWidth = () => {
   return width;
 };
 
-// 🌟 UI 카테고리 이름을 URL 경로 키로 변환하는 맵 추가
+// 🌟 UI 카테고리 이름을 URL 경로 키로 변환하는 맵
 const categoryToUrlKey: { [key in CategoryType]?: string } = {
   'Communication Design': 'communication',
   'Service Design': 'service',
@@ -54,9 +53,19 @@ const categoryToUrlKey: { [key in CategoryType]?: string } = {
   'Industrial Design': 'industrial',
 };
 
+// 🌟 URL 키를 UI 카테고리 이름으로 변환하는 맵 (Intro에서 넘어온 쿼리 파라미터를 읽기 위해 추가)
+const urlKeyToCategory: { [key: string]: CategoryType } = {
+  'communication': 'Communication Design',
+  'service': 'Service Design',
+  'ux': 'UX Design',
+  'industrial': 'Industrial Design',
+};
+
+
 const WorksPage = () => {
-  const router = useRouter(); // 🌟 'next/router'의 useRouter 사용
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
+  const router = useRouter(); 
+  // 🌟 초기 상태를 'All'로 설정하고, useEffect에서 쿼리 파라미터를 읽어 업데이트
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All'); 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const width = useWindowWidth();
@@ -77,9 +86,29 @@ const WorksPage = () => {
     UX: 'UX Design',
     INDUSTRIAL: 'Industrial Design',
   };
+  
+  // 🌟 URL 쿼리 파라미터 읽기 및 상태 설정
+  useEffect(() => {
+    // router.isReady를 확인하여 쿼리가 로드되었는지 확인
+    if (!router.isReady) return; 
 
-  // --- (useMemo 로직 변경 없음) ---
-  const projects: Project[] = useMemo(() => {
+    if (router.query.category && typeof router.query.category === 'string') {
+      const urlKey = router.query.category.toLowerCase();
+      const categoryFromUrl = urlKeyToCategory[urlKey];
+      
+      // 유효한 카테고리일 경우에만 설정
+      if (categoryFromUrl && categoryFromUrl !== selectedCategory) {
+        setSelectedCategory(categoryFromUrl);
+      }
+    } else if (!router.query.category && selectedCategory !== 'All') {
+      // 쿼리가 없을 때 (일반적으로 /works로 들어왔을 때)
+      setSelectedCategory('All');
+    }
+    // router.query가 변경될 때마다 실행되어야 합니다.
+  }, [router.isReady, router.query]);
+
+
+  const projects: Project[] = useMemo(() => { 
     const allProjects: Project[] = [];
 
     (Object.keys(WORKS) as (keyof typeof WORKS)[]).forEach(dataKey => {
@@ -116,14 +145,22 @@ const WorksPage = () => {
   // --- (핸들러 함수들) ---
   const handleCategoryChange = (category: CategoryType) => {
     setSelectedCategory(category);
+    // 🌟 URL 쿼리 파라미터 업데이트 (브라우저 주소창도 함께 변경)
+    const urlKey = categoryToUrlKey[category] || ''; 
+    
+    // URL 변경 (shallow: true로 페이지 리로드 없이 쿼리만 변경)
+    if (category === 'All') {
+      router.replace(`/works`, undefined, { shallow: true });
+    } else {
+      router.replace(`/works?category=${urlKey}`, undefined, { shallow: true });
+    }
+
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
   };
 
-  // 🌟 handleProjectClick 함수 수정
   const handleProjectClick = (project: Project) => {
-    // 'All' 카테고리는 실제 데이터에 없으므로 예외처리
     if (project.category === 'All') return; 
 
     const urlKey = categoryToUrlKey[project.category];
@@ -133,7 +170,6 @@ const WorksPage = () => {
       return;
     }
 
-    // PATHS 상수를 사용하여 동적 경로 생성
     const path = PATHS.WORKS_DETAIL
       .replace(':category', urlKey)
       .replace(':workId', String(project.id));
@@ -188,7 +224,7 @@ const WorksPage = () => {
               </button>
           </div>
         )}
-        {/* --- 모바일 필터 (변경 없음) --- */}
+        {/* --- 모바일 필터 (selectedCategory에 따라 UI 변경) --- */}
         <nav className="flex gap-2 p-4 overflow-x-auto lg:hidden bg-white border-b border-gray-200">
            {categories.map((category, index) => (
             <React.Fragment key={category}>
@@ -239,9 +275,9 @@ const WorksPage = () => {
           ))}
         </nav>
       </div>
-      {/* --- 메인 컨테이너 (사이드바 + 그리드) (변경 없음) --- */}
+      {/* --- 메인 컨테이너 (사이드바 + 그리드) --- */}
       <div className="flex flex-col lg:flex-row">
-        {/* --- 데스크톱 사이드바 (변경 없음) --- */}
+        {/* --- 데스크톱 사이드바 (selectedCategory에 따라 UI 변경) --- */}
         <aside className="hidden lg:block lg:w-1/4 lg:fixed lg:top-[147px] lg:h-[calc(100vh_-_147px)]"> 
         <div className="lg:h-full lg:overflow-y-auto lg:p-8">
           <div className="hidden lg:flex items-baseline mb-8 gap-4">
@@ -318,7 +354,7 @@ const WorksPage = () => {
                 <div 
                   key={project.id} 
                   className="group cursor-pointer"
-                  onClick={() => handleProjectClick(project)} // 🌟 project 객체 전달
+                  onClick={() => handleProjectClick(project)} 
                 >
                   <div className="aspect-[3/2] lg:w-[336px] lg:h-[254px] mb-2 relative transition-all lg:group-hover:outline lg:group-hover:outline-2 lg:group-hover:outline-[#00FF36] lg:group-hover:outline-offset-[-2px]">
                     <img

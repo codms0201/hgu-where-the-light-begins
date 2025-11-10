@@ -1,14 +1,18 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // next/navigation (App Router용)
 import { ITCavantGarde } from '@/styles/fonts';
 
 const quadrantData = [
-  { id: 1, title: 'Project One', imageSrc: '/img/home/CommunicationDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#37F6FF', designType: 'COMMUNICATION DESIGN' },
-  { id: 2, title: 'Project Two', imageSrc: '/img/home/ServiceDesign.svg', baseWidth: 1095, baseHeight: 1095, color: '#FDFF00', designType: 'SERVICE DESIGN' },
-  { id: 3, title: 'Project Three', imageSrc: '/img/home/UXDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#945AFF', designType: 'UX DESIGN' },
-  { id: 4, title: 'Project Four', imageSrc: '/img/home/IndustrialDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#FF586F', designType: 'INDUSTRIAL DESIGN' },
+  { id: 1, title: 'Project One', imageSrc: '/img/home/CommunicationDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#37F6FF', designType: 'COMMUNICATION DESIGN', urlKey: 'communication' },
+  { id: 2, title: 'Project Two', imageSrc: '/img/home/ServiceDesign.svg', baseWidth: 1095, baseHeight: 1095, color: '#FDFF00', designType: 'SERVICE DESIGN', urlKey: 'service' },
+  { id: 3, title: 'Project Three', imageSrc: '/img/home/UXDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#945AFF', designType: 'UX DESIGN', urlKey: 'ux' },
+  { id: 4, title: 'Project Four', imageSrc: '/img/home/IndustrialDesign.svg', baseWidth: 1090, baseHeight: 1090, color: '#FF586F', designType: 'INDUSTRIAL DESIGN', urlKey: 'industrial' },
 ];
 
 const Intro = () => {
+  const router = useRouter(); // useRouter 훅 사용
   const [currentColor, setCurrentColor] = useState('#00FF36');
   const [scale, setScale] = useState(1);
   const [boxOffsets, setBoxOffsets] = useState([
@@ -22,10 +26,10 @@ const Intro = () => {
 
   const BASE_WIDTH = 1600;
   const BASE_POSITIONS = [
-    { top: -137, left: 510 },
-    { top: -142, left: 510 },
-    { top: -137, left: 513 },
-    { top: -137, left: 511 }
+    { top: -138, left: 510 },
+    { top: -142, left: 509 },
+    { top: -138, left: 512 },
+    { top: -140, left: 511 }
   ];
 
   useEffect(() => {
@@ -43,6 +47,25 @@ const Intro = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const getQuadrantIndex = (angleDeg: number): number | null => {
+    // quadrantData 순서: 0:COMMUNICATION, 1:SERVICE, 2:UX, 3:INDUSTRIAL
+    // 0° ~ 80° (우상단) -> 1 (Project Two: Service Design)
+    // 80° ~ 170° (좌상단) -> 0 (Project One: Communication Design)
+    // 170° ~ 260° (좌하단) -> 3 (Project Four: Industrial Design)
+    // 260° ~ 350° (우하단) -> 2 (Project Three: UX Design)
+    // 350° ~ 360° -> 1 (Project Two: Service Design)
+    
+    if ((angleDeg >= 0 && angleDeg < 80) || (angleDeg >= 350 && angleDeg < 360)) {
+      return 1; // Project Two (Service Design)
+    } else if (angleDeg >= 80 && angleDeg < 170) {
+      return 0; // Project One (Communication Design)
+    } else if (angleDeg >= 170 && angleDeg < 260) {
+      return 3; // Project Four (Industrial Design)
+    } else { // 260° ~ 350°
+      return 2; // Project Three (UX Design)
+    }
+  };
+
   const handleBorderCircleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth < 1024) return;
 
@@ -56,7 +79,7 @@ const Intro = () => {
     const mouseY = e.clientY;
 
     const deltaX = mouseX - centerX;
-    const deltaY = centerY - mouseY;
+    const deltaY = centerY - mouseY; // Y축 반전 (브라우저 기준)
     
     const angleRad = Math.atan2(deltaY, deltaX); 
     let angleDeg = angleRad * (180 / Math.PI);
@@ -65,24 +88,22 @@ const Intro = () => {
       angleDeg += 360;
     }
     
-    let targetIndex: number | null = null; 
-
-    if ((angleDeg >= 0 && angleDeg < 80) || (angleDeg >= 350 && angleDeg < 360)) {
-      targetIndex = 1;
-    } else if (angleDeg >= 80 && angleDeg < 170) {
-      targetIndex = 0;
-    } else if (angleDeg >= 170 && angleDeg < 260) {
-      targetIndex = 3;
-    } else {
-      targetIndex = 2;
-    }
+    const targetIndex = getQuadrantIndex(angleDeg); 
 
     if (targetIndex !== hoveredQuadrantIndex) {
       setHoveredQuadrantIndex(targetIndex);
       if (targetIndex !== null) {
+        // quadrantData 인덱스는 0, 1, 2, 3
         setCurrentColor(quadrantData[targetIndex].color);
         setHoveredDesignType(quadrantData[targetIndex].designType); 
       }
+    }
+  };
+
+  const handleBorderCircleClick = () => {
+    if (hoveredQuadrantIndex !== null) {
+      const targetUrlKey = quadrantData[hoveredQuadrantIndex].urlKey;
+      router.push(`/works?category=${targetUrlKey}`);
     }
   };
 
@@ -165,17 +186,17 @@ const Intro = () => {
           alt="Main Radial"
           className="absolute transition-opacity duration-300 ease-in-out"
           style={{
-            top: `${-137 * scale}px`,
-            right: `${-1 * scale}px`,
+            top: `${-139 * scale}px`,
+            right: `${-16 * scale}px`,
             width: `${1090 * scale}px`,
             height: `${1090 * scale}px`,
             opacity: hoveredQuadrantIndex === null ? 1 : 0
           }}
         />
 
-        {/* 보더 원 - 마우스 이벤트 감지 */}
+        {/* 보더 원 - 마우스 이벤트 감지 및 클릭 추가 */}
         <div 
-          className="absolute rounded-full border border-transparent overflow-hidden"
+          className="absolute rounded-full border border-transparent overflow-hidden cursor-pointer" 
           style={{ 
             width: `${BORDER_CIRCLE_SIZE * scale}px`, 
             height: `${BORDER_CIRCLE_SIZE * scale}px`, 
@@ -186,6 +207,7 @@ const Intro = () => {
           }}
           onMouseMove={handleBorderCircleMouseMove} 
           onMouseLeave={handleBorderCircleMouseLeave}
+          onClick={handleBorderCircleClick} 
         >
         </div>
       </div>
