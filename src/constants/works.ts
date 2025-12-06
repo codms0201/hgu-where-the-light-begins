@@ -1787,7 +1787,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "Spotify X Cyworld 팝업스토어\n'What's Your BGM?'",
       description:
         "2000년대, 우린 모두 각자의 배경음이 있었습니다.\n‘What’s Your BGM?’은 음악의 감성적 경험을 기억하는 스포티파이와 싸이월드의 추억을 잇습니다.\n과거의 추억과 현재의 취향이 공존하는 이곳에서 당신의 하루를 물들일 노래를 찾아보세요.",
-      thumbnail: "images/works/communication/HaeunYou/thumbnai.webp",
+      thumbnail: "images/works/communication/HaeunYou/thumbnail.webp",
       creation: [
         {
           id: 1,
@@ -2236,7 +2236,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "교정사고 저감을 위한 수용자 AI 음성 상담 서비스",
       description:
         "수용자의 재범률과 교도관의 직업의식에 영향을 미치는 교정사고는 교정‧교화 기능을 저하시킵니다. 수용자 AI 음성 상담 서비스를 도입해 수용자의 어려움을 조기에 파악하고, 교도관에게 고위험 수용자를 리포트하여 교정사고를 사전에 예방하는 것을 목표로 합니다.",
-      thumbnail: "images/works/service/Dededidi/thumbnail.webp",
+      thumbnail: "images/works/service/Dededidi/thumnail.webp",
       creation: [
         {
           id: 1,
