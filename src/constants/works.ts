@@ -12,7 +12,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "LAVOKE",
       summary: "GRANHAND | LAVOKE",
       description:
-        "서울숲 튤립 축제에서 그랑핸드가 선보이는 새로운 향, ‘LAVOKE’. 4월, 완연한 봄을 맞은 서울숲에는 튤립이 만개합니다. 서울숲에서의 특별한 순간이 오랫동안 기억될 수 있도록, GRANHAND 팝업스토어가 여러분을 기다립니다.",
+        "서울숲 튤립 축제에서\n그랑핸드가 선보이는 새로운 향, ‘LAVOKE’.\n\n4월, 완연한 봄을 맞은 서울숲에는\n튤립이 만개합니다.\n\n 서울숲에서의 특별한 순간이\n오랫동안 기억될 수 있도록,\nGRANHAND 팝업스토어가\n여러분을 기다립니다.",
       thumbnail: "images/works/communication/YeyoungChoi/thumbnail.webp",
       creation: [
         {
@@ -95,7 +95,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "공공예식 연",
       summary: "공공예식 연",
       description:
-        "연은 서울 북촌한옥마을에 위치한 가상의 공공예식장입니다. 현재 공공예식장들은 실제 예식장으로 활용되기에는 일반적인 강당 같은 모습을 지닌 공간들이 많습니다. 공공예식 연은 예식장으로 사용 가능한 공공시설을 브랜딩한 공간입니다.",
+        "연은 서울 북촌한옥마을에 위치한 가상의 공공예식장입니다. 현재 실제로 예식장으로 활용되기 힘든 공공예식장의 문제점을 브랜딩으로 풀어내보고자 합니다.",
       thumbnail: "images/works/communication/GyuinYun/thumbnail.webp",
       creation: [
         {
@@ -203,7 +203,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       designer: [{ id: 52, nameKo: "이어진", studentId: 22000540}],
       professor: "이진구",
       title: "숲칫둠칫: 마음이 춤추는 숲",
-      summary: "숲칫둠칫, 유한양행 청년 마음 건강을 위한 숲 체험 브랜드",
+      summary: "숲칫둠칫, 유한양행의\n청년 마음 건강을 위한\n숲 체험 브랜드",
       description:
         "몸의 건강에서 마음의 건강까지.\n유한양행의 전인적 건강 철학은 숲으로 이어집니다.\n끝없는 경쟁과 불안 속에 살아가는 청년들에게,\n‘숲칫둠칫’은 잠시 멈춰 설 수 있는 초대장을 건넵니다.\n숲의 살아있는 움직임 속에서\n마음의 소리에 귀 기울여 보세요!",
       thumbnail: "images/works/communication/EojinLee/thumbnail.webp",
@@ -683,6 +683,16 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           extension: "gif",
           src: "images/works/communication/HanaRyu/contents_02.gif",
         },
+        {
+          id: 3,
+          extension: "webp",
+          src: "images/works/communication/HanaRyu/contents_03.webp",
+        },
+        {
+          id: 4,
+          extension: "gif",
+          src: "images/works/communication/HanaRyu/contents_04.gif",
+        },
       ],
     },
     {
@@ -713,7 +723,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "Avo Haus",
       summary: "아토피 케어 라이프스타일 브랜드 ‘Avo Haus’",
       description:
-        "'Avo Haus'는 아토피로부터 편안히 보호받는 공간을 제안하는 라이프스타일 브랜드이다. 'Design to Protect'라는 철학 아래, 피부를 포함한 생활 전반의 편안함을 디자인한다. 배려의 미학, 아보하우스가 전하고자 하는 진정한 아름다움이다.",
+        "'Avo Haus'는 아토피로부터 편안히 보호받는 공간을\n제안하는 라이프스타일 브랜드입니다.\n\"Design to Protect\"라는 철학 아래, 피부를 포함한\n생활 전반의 편안함을 디자인한다. 배려의 미학,\n아보하우스가 전하고자 하는 진정한 아름다움입니다.",
       thumbnail: "images/works/communication/EunkyungOh/thumbnail.webp",
       creation: [
         {
@@ -820,7 +830,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 2,
-          extension: "webp",
+          extension: "youtube",
           src: "images/works/communication/HaeunPark/contents_02.webp",
         },
         {
@@ -830,13 +840,8 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 4,
-          extension: "webp",
-          src: "images/works/communication/HaeunPark/contents_04.webp",
-        },
-        {
-          id: 5,
-          extension: "webp",
-          src: "images/works/communication/HaeunPark/contents_05.webp",
+          extension: "youtube",
+          src: "VdJe7KSTNnE",
         },
       ],
     },
@@ -895,6 +900,16 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 3,
           extension: "webp",
           src: "images/works/communication/HyeonjiHong/contents_03.webp",
+        },
+        {
+          id: 4,
+          extension: "youtube",
+          src: "w4DVv10HkLQ",
+        },
+        {
+          id: 5,
+          extension: "webp",
+          src: "images/works/communication/HyeonjiHong/contents_05.webp",
         },
       ],
     },
@@ -1027,6 +1042,26 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           extension: "webp",
           src: "images/works/communication/YeeunCheon/contents_04.webp",
         },
+        {
+          id: 5,
+          extension: "webp",
+          src: "images/works/communication/YeeunCheon/contents_05.webp",
+        },
+        {
+          id: 6,
+          extension: "webp",
+          src: "images/works/communication/YeeunCheon/contents_06.webp",
+        },
+        {
+          id: 7,
+          extension: "youtube",
+          src: "images/works/communication/YeeunCheon/contents_04.webp",
+        },
+        {
+          id: 8,
+          extension: "webp",
+          src: "images/works/communication/YeeunCheon/contents_08.webp",
+        },
       ],
     },
     {
@@ -1082,13 +1117,8 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 2,
-          extension: "gif",
-          src: "images/works/communication/MinaeAn/contents_02.gif",
-        },
-        {
-          id: 3,
           extension: "webp",
-          src: "images/works/communication/MinaeAn/contents_03.webp",
+          src: "images/works/communication/MinaeAn/contents_02.webp",
         },
       ],
     },
@@ -1131,13 +1161,18 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 6,
-          extension: "gif",
-          src: "images/works/communication/YoonjiSung/contents_06.gif",
+          extension: "webp",
+          src: "images/works/communication/YoonjiSung/contents_06.webp",
         },
         {
           id: 7,
+          extension: "gif",
+          src: "images/works/communication/YoonjiSung/contents_07.gif",
+        },
+        {
+          id: 8,
           extension: "webp",
-          src: "images/works/communication/YoonjiSung/contents_07.webp",
+          src: "images/works/communication/YoonjiSung/contents_08.webp",
         },
       ],
     },
@@ -1150,7 +1185,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "KARENCIA",
       summary: "II COMBINED의 5번째\n가상 브랜드 KARENCIA",
       description:
-        "II COMBINED의 가상 브랜드 KARENCIA는 공간을 완성하는\n라이프센스를 제안합니다. 기능보다 무드를, 조형미를 중시하며\n감각을 빚어 분위기의 급과 태도를 완성합니다. 취향이 공간을 바꾸는 순간, 당신의 라이프센스를 펼쳐보세요.",
+        "II COMBINED의 가상 브랜드 KARENCIA는 공간을 완성하는\n라이프센스를 제안합니다. 기능보다 무드를, 조형미를 중시하며\n감각을 빚어 분위기의 급과 태도를 완성합니다. 취향이 공간을\n바꾸는 순간, 당신의 라이프센스를 펼쳐보세요.",
       thumbnail: "images/works/communication/SeowooChoi/thumbnail.webp",
       creation: [
         {
@@ -1201,6 +1236,16 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 1,
           extension: "webp",
           src: "images/works/communication/JinsolYang/contents_01.webp",
+        },
+        {
+          id: 2,
+          extension: "youtube",
+          src: "NbaLpklQRLk",
+        },
+        {
+          id: 3,
+          extension: "webp",
+          src: "images/works/communication/JinsolYang/contents_03.webp",
         },
       ],
     },
@@ -1392,6 +1437,11 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           extension: "webp",
           src: "images/works/communication/MinhaKim/contents_06.webp",
         },
+        {
+          id: 7,
+          extension: "webp",
+          src: "images/works/communication/MinhaKim/contents_07.webp",
+        },
       ],
     },
     {
@@ -1415,11 +1465,6 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 2,
           extension: "webp",
           src: "images/works/communication/ChoHamin/contents_02.webp",
-        },
-        {
-          id: 3,
-          extension: "webp",
-          src: "images/works/communication/ChoHamin/contents_03.webp",
         },
       ],
     },
@@ -1536,9 +1581,9 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       designer: [{ id: 44, nameKo: "오신영", studentId: 22000427}],
       professor: "이진구",
       title: "SŌUL",
-      summary: "닥터 마틴 팝업스토어 ‘닥터 마틴, 소울을 걷다’",
+      summary: "닥터 마틴 팝업스토어\n‘닥터 마틴, 소울을 걷다’",
       description:
-        "‘닥터 마틴, 소울을 걷다’는 브랜드 메시지를 담은 팝업스토어입니다.\n투박하지만 단단한 닥터 마틴과 함께 나만의 SŌUL을 느껴보세요.\n“Too much for them, enough for me” 세상의 평가에 흔들리지 않고 나답게 걷는 이를 위한 응원",
+        "‘닥터 마틴, 소울을 걷다’는 브랜드 메시지를 담은 팝업스토어입니다.\n투박하지만 단단한 닥터 마틴과 함께 나만의 SŌUL을 느껴보세요.\n“Too much for them, enough for me”\n세상의 평가에 흔들리지 않고 나답게 걷는 이를 위한 응원",
       thumbnail: "images/works/communication/GloriaOh/thumbnail.webp",
       creation: [
         {
@@ -1668,7 +1713,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "UNHYANG",
       summary: "전통 꽃차 브랜드 운향",
       description:
-        "운향은 자연과 전통의 시간을 향으로 잇는 꽃차 브랜드입니다.\n한국의 오방색과 색동에서 영감을 받아 전통의 아름다움을\n현대적으로 재해석한 디자인을 담았습니다.\n꽃이 피고 지는 순간을 사라짐이 아닌 ‘기억의 형태’로 바라보며,\n그 시간을 차에 담아냅니다.",
+        "운향은 자연과 전통의 시간을 향으로 잇는 꽃차 브랜드입니다. 한국의 오방색과 색동에서 영감을 받아 전통의 아름다움을 현대적으로 재해석한 디자인을 담았습니다. 꽃이 피고 지는 순간을 사라짐이 아닌 ‘기억의 형태’로 바라보며, 그 시간을 차에 담아냅니다.",
       thumbnail: "images/works/communication/EunkangYou/thumbnail.webp",
       creation: [
         {
@@ -1912,8 +1957,8 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         },
         {
           id: 3,
-          extension: "webp",
-          src: "images/works/industrial/EunsooKim/contents_03.webp",
+          extension: "youtube",
+          src: "https://www.youtube.com/watch?v=6NgmwmKTB2E",
         },
       ],
     },
@@ -1982,77 +2027,77 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "유기동물 예비 임시보호자를 위한 맞춤형 임시보호 서비스",
       description:
         "‘머무름’의 순간을 소중히 여기며, 임시보호자와 유기동물이 서로에게 포근한 쉼이 되어 주는 시간을 만들어갑니다. 따스한 집의 온기, 새로운 희망의 시작. 머뭄은 이 모든 가치를 담아, 유기동물과 사람이 함께하는 더 나은 내일을 만들어갑니다.",
-      thumbnail: "images/works/service/Degreechacha!/thumbnail.webp",
+      thumbnail: "images/works/service/Degreechacha/thumbnail.webp",
       creation: [
         {
           id: 1,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_01.webp",
+          src: "images/works/service/Degreechacha/contents_01.webp",
         },
         {
           id: 2,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_02.webp",
+          src: "images/works/service/Degreechacha/contents_02.webp",
         },
         {
           id: 3,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_03.webp",
+          src: "images/works/service/Degreechacha/contents_03.webp",
         },
         {
           id: 4,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_04.webp",
+          src: "images/works/service/Degreechacha/contents_04.webp",
         },
         {
           id: 5,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_05.webp",
+          src: "images/works/service/Degreechacha/contents_05.webp",
         },
         {
           id: 6,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_06.webp",
+          src: "images/works/service/Degreechacha/contents_06.webp",
         },
         {
           id: 7,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_07.webp",
+          src: "images/works/service/Degreechacha/contents_07.webp",
         },
         {
           id: 8,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_08.webp",
+          src: "images/works/service/Degreechacha/contents_08.webp",
         },
         {
           id: 9,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_09.webp",
+          src: "images/works/service/Degreechacha/contents_09.webp",
         },
         {
           id: 10,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_10.webp",
+          src: "images/works/service/Degreechacha/contents_10.webp",
         },
         {
           id: 11,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_11.webp",
+          src: "images/works/service/Degreechacha/contents_11.webp",
         },
         {
           id: 12,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_12.webp",
+          src: "images/works/service/Degreechacha/contents_12.webp",
         },
         {
           id: 13,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_13.webp",
+          src: "images/works/service/Degreechacha/contents_13.webp",
         },
         {
           id: 14,
           extension: "webp",
-          src: "images/works/service/Degreechacha!/contents_14.webp",
+          src: "images/works/service/Degreechacha/contents_14.webp",
         },
       ],
     },
@@ -2065,7 +2110,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       title: "배우보죠",
       summary: "배우의 연기 연습을 도와주는\nAI 연기 파트너 ‘배우보죠'",
       description:
-        "배우가 되면 혼자서도 연기 연습 잘할 줄 알았어?!\n'배우보죠'는 배우를 위한 AI 인터랙션 기반 연기훈련 서비스입니다.\nAI와 대사를 주고받고, 장면 속 상황에 반응하며  혼자서도 누군가와\n마주 앉은 듯 몰입할 수 있는 새로운 연기 연습 형태를 제안합니다.",
+        "배우가 되면 혼자서도 연기 연습 잘할 줄 알았어?!\n'배우보죠'는 배우를 위한 AI 인터랙션 기반 연기훈련\n서비스입니다.\nAI와 대사를 주고받고, 장면 속 상황에 반응하며  혼자서도 누군가와 마주 앉은 듯\n몰입할 수 있는 새로운 연기 연습 형태를 제안합니다.",
       thumbnail: "images/works/service/Seopssi25do/thumbnail.webp",
       creation: [
         {
@@ -2104,7 +2149,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
       summary: "초고령 시대 고령자의 이동 편의를 돕는 서비스, 온길",
       description:
         "전동휠체어를 이용하는 고령자를 위한 실내 길안내 서비스 ‘온길’은 초고령 사회에 맞춰 이동을 쉽고 안전하게 돕는 서비스를 제공합니다. ‘온길’은 실내 공간에서의 이동 경험에 초점을 맞춰, 사용자가 목적지까지 편안하게 이동할 수 있는 새로운 길안내를 제시합니다.",
-      thumbnail: "images/works/service/ThingPil/thumbnaill.webp",
+      thumbnail: "images/works/service/ThingPil/thumbnail.webp",
       creation: [
         {
           id: 1,
@@ -2129,6 +2174,21 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 1,
           extension: "webp",
           src: "images/works/service/Aldente/contents_01.webp",
+        },
+        {
+          id: 2,
+          extension: "webp",
+          src: "images/works/service/Aldente/contents_02.webp",
+        },
+        {
+          id: 3,
+          extension: "webp",
+          src: "images/works/service/Aldente/contents_03.webp",
+        },
+        {
+          id: 4,
+          extension: "webp",
+          src: "images/works/service/Aldente/contents_04.webp",
         },
       ],
     },
@@ -2192,6 +2252,21 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 3,
           extension: "webp",
           src: "images/works/service/Dededidi/contents_03.webp",
+        },
+        {
+          id: 4,
+          extension: "webp",
+          src: "images/works/service/Dededidi/contents_04.webp",
+        },
+        {
+          id: 5,
+          extension: "webp",
+          src: "images/works/service/Dededidi/contents_05.webp",
+        },
+        {
+          id: 6,
+          extension: "webp",
+          src: "images/works/service/Dededidi/contents_06.webp",
         },
       ],
     },
@@ -2320,6 +2395,11 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 10,
           extension: "webp",
           src: "images/works/ux/MiMO/contents_10.webp",
+        },
+        {
+          id: 11,
+          extension: "youtube",
+          src: "1TCtpI3wYew",
         },
       ],
     },
@@ -2516,6 +2596,16 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 12,
           extension: "webp",
           src: "images/works/ux/Marimo/contents_12.webp",
+        },
+        {
+          id: 13,
+          extension: "youtube",
+          src: "wBKAQVsjb5A",
+        },
+        {
+          id: 14,
+          extension: "webp",
+          src: "images/works/ux/Marimo/contents_14.webp",
         },
       ],
     },
@@ -2838,12 +2928,12 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 5,
           extension: "webp",
-          src: "s3://degree-upload-files/images/works/ux/Decode/stayz/contents_05.webp",
+          src: "images/works/ux/Decode/stayz/contents_05.webp",
         },
         {
           id: 6,
-          extension: "youtube",
-          src: "q6mAzBoP2Ag",
+          extension: "webp",
+          src: "images/works/ux/Decode/stayz/contents_06.webp",
         },
         {
           id: 7,

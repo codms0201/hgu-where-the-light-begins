@@ -949,7 +949,7 @@ export const DESIGNERS = [
     email: "jsolieyang@gmail.com",
     img: "images/designers/comm/JinsolYang.jpg",
     description:
-      "Designing moments of happiness",
+      "Designing moments of happiness!",
     works: [
       {
         work: WORKS.SERVICE,
@@ -1079,7 +1079,7 @@ export const DESIGNERS = [
     email: "ek.you1012@gmail.com",
     img: "images/designers/comm/EunkangYou.jpg",
     description:
-      "하고싶은 것을 좋아하기 위해, 좋아하는 것을 더 사랑하기 위해 디자인을 공부합니다.",
+      "좋아하는 것을 더 사랑하기 위해 디자인을 공부합니다.",
     works: [
       {
         work: WORKS.COMMUNICATION,
@@ -1126,7 +1126,7 @@ export const DESIGNERS = [
     email: "haeunnyouu@gmail.com",
     img: "images/designers/comm/HaeunYou.jpg",
     description:
-      "취향을 찾아가는 과정을 디자인합니다.\n그 여정이 누군가에게도 자신의 취향을 발견하는 계기가 되길 바랍니다.",
+      "취향을 찾아가는 과정을 디자인합니다.\n그 여정이 누군가에게도 자신의 취향을 발견하는 계기가 되길 바랍니다!",
     works: [
       {
         work: WORKS.COMMUNICATION,
