@@ -1055,7 +1055,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 7,
           extension: "youtube",
-          src: "images/works/communication/YeeunCheon/contents_04.webp",
+          src: "dQFBKwVH_wQ",
         },
         {
           id: 8,
@@ -1275,6 +1275,11 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
           id: 3,
           extension: "webp",
           src: "images/works/communication/SeonyeongPark/contents_03.webp",
+        },
+        {
+          id: 4,
+          extension: "gif",
+          src: "images/works/communication/SeonyeongPark/contents_04.gif",
         },
       ],
     },
@@ -1958,7 +1963,7 @@ export const WORKS: { [key in WorkCategory]: Work[] } = {
         {
           id: 3,
           extension: "youtube",
-          src: "https://www.youtube.com/watch?v=6NgmwmKTB2E",
+          src: "6NgmwmKTB2E",
         },
       ],
     },
