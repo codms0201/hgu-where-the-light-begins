@@ -1,19 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Sketch1 from '../../../public/img/home/Sketch_1.png';
-import Sketch2 from '../../../public/img/home/Sketch_2.png';
-import Sketch3 from '../../../public/img/home/Sketch_3.png';
-import Sketch4 from '../../../public/img/home/Sketch_4.png';
+import { DOMAIN } from '../../constants/paths';
+import { SKETCH } from '../../constants/sketch';
 
 import { avantGarde } from '@/styles/fonts';
 
-const sketches = [
-  { id: 1, src: Sketch1, alt: 'Sketch image 1' },
-  { id: 2, src: Sketch2, alt: 'Sketch image 2' },
-  { id: 3, src: Sketch3, alt: 'Sketch image 3' },
-  { id: 4, src: Sketch4, alt: 'Sketch image 4' },
-];
+const sketches = SKETCH;
 
 export default function Sketch() {
   return (
@@ -24,11 +17,11 @@ export default function Sketch() {
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
-        {sketches.map((sketch) => (
+        {sketches.map((sketch, index) => (
           <div key={sketch.id} className="w-full">
             <Image 
-              src={sketch.src}
-              alt={sketch.alt}
+              src={`${DOMAIN}${sketch.imgSrc}`}
+              alt={`Sketch ${sketch.id}`}
               layout="responsive"
               width={600}
               height={800}

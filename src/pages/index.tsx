@@ -135,7 +135,7 @@ const HomePage = () => {
             <Mobile_HeaderBtn />
           </div>
           <Intro />    
-          {/* <Sketch /> */}
+          <Sketch />
           
           {/* Footer */}
           <div className="hidden lg:block lg:z-50 mt-100">

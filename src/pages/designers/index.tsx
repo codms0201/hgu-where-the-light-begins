@@ -74,7 +74,7 @@ export default function DesignersPage() {
       <div className="hidden lg:block lg:sticky lg:top-0 lg:z-50">
         <Header />
       </div>
-      <div className="lg:hidden sticky top-0 z-50">
+      <div className="lg:hidden sticky top-0 z-50 bg-white">
         <header className="flex items-center justify-between p-4">
           <h1 className={`${avantGarde.className} text-[#1C1C1C] text-[40px] font-[400]`}>Designers</h1>
           <div className="flex items-center gap-4">
